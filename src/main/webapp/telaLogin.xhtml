@@ -18,8 +18,9 @@
 						<h:outputText value="Username:" for="username" />
 					</b:column>
 					<b:column medium-screen="4">
-						<b:inputText placeholder="Username" id="username" value=""
-							ajax="true" autocomplete="false" update="@(.message)">
+						<b:inputText placeholder="Username" id="username"
+							value="#{loginMB.login}" ajax="true" autocomplete="false"
+							update="@(.message)">
 							<f:facet name="prepend">
 								<b:icon name="user" />
 							</f:facet>
@@ -34,8 +35,9 @@
 						<h:outputText value="Password:" />
 					</b:column>
 					<b:column medium-screen="4">
-						<b:inputSecret placeholder="Password" id="password" value=""
-							ajax="true" autocomplete="false" update="@(.message)">
+						<b:inputSecret placeholder="Password" id="password"
+							value="#{loginMB.senha}" ajax="true" autocomplete="false"
+							update="@(.message)">
 							<f:facet name="prepend">
 								<b:iconAwesome name="key" />
 							</f:facet>
@@ -47,8 +49,9 @@
 				</b:row>
 				<b:row>
 					<b:column span="2" offset="2">
-						<b:commandButton value="login" onclick="ajax:loginBean.login()"
-							update="@form" look="primary" style="width:100%" />
+						<b:commandButton value="login"
+							action="#{loginMB.verificar}" look="primary"
+							style="width:100%" />
 					</b:column>
 				</b:row>
 			</b:panel>
