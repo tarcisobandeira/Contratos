@@ -20,7 +20,7 @@ CREATE TABLE Pagamento(
 	dia_emissao VARCHAR(50),
 	dia_vencimento VARCHAR(50),
 	dia_pagamento VARCHAR(50),
-	status INT,
+	status_p INT,
 	obs VARCHAR(500),
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
 );
@@ -54,4 +54,11 @@ CREATE TABLE Financeiro(
 	debito_auto INT,
 	entrega VARCHAR(50),
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+);
+
+CREATE TABLE Usuario(
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(50),
+	login VARCHAR(50),
+	senha VARCHAR(50)
 );

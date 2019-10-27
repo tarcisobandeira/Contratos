@@ -34,11 +34,13 @@
 			<artifactId>bootsfaces</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/clj-http/clj-http -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
