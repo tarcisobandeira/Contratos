@@ -5,7 +5,7 @@ USE Contratos;
 CREATE TABLE Empresa(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
-    ativo INT,
+    ativo INT
 );
 
 CREATE TABLE Contrato(
@@ -36,6 +36,14 @@ CREATE TABLE Conta(
 	obs VARCHAR(500),
     ativo INT,
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+);
+
+CREATE TABLE AnexoConta(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_conta INT,
+    arquivo VARCHAR(13),
+    formato VARCHAR(5),
+    FOREIGN KEY (id_conta) REFERENCES Conta(id)
 );
 
 CREATE TABLE Site(
@@ -69,14 +77,6 @@ CREATE TABLE Financeiro(
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
 );
 
-CREATE TABLE AnexoConta(
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_conta INT,
-    arquivo VARCHAR(13),
-    formato VARCHAR(5),
-    FOREIGN KEY (id_conta) REFERENCES Conta(id)
-);
-
 CREATE TABLE Usuario(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
@@ -96,6 +96,7 @@ CREATE TABLE UsuarioConta(
 CREATE TABLE ContaSemContrato(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50),
+    descricao VARCHAR(50),
 	valor FLOAT,
 	valor_pago FLOAT,
 	dia_emitido VARCHAR(50),
@@ -104,7 +105,7 @@ CREATE TABLE ContaSemContrato(
 	status_conta INT,
 	obs VARCHAR(500),
     nota_fiscal VARCHAR(50),
-    ativo INT,
+    ativo INT
 );
 
 CREATE TABLE AnexoContaSemContrato(
@@ -112,5 +113,13 @@ CREATE TABLE AnexoContaSemContrato(
     id_conta_sem_contrato INT,
     arquivo VARCHAR(13),
     formato VARCHAR(5),
-    FOREIGN KEY (id_conta) REFERENCES ContaSemContrato(id)
+    FOREIGN KEY (id_conta_sem_contrato) REFERENCES ContaSemContrato(id)
+);
+
+CREATE TABLE UsuarioContaSC(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_usuario INT,
+    id_conta_sem_contrato INT,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_conta_sem_contrato) REFERENCES ContaSemContrato(id)
 );
