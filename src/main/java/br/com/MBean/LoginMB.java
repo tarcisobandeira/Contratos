@@ -17,7 +17,7 @@ public class LoginMB {
 	Usuario u = new Usuario();
 
 	public LoginMB() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public String verificar() {

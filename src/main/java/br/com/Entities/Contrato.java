@@ -3,27 +3,38 @@ package br.com.Entities;
 public class Contrato {
 
 	private Integer id;
+	private Integer id_empresa;
 	private String nome;
-	private String empresa;
 	private String descricao;
 	private String inicio_c;
 	private String fim_c;
+	private String dia_emissao_conta;
+	private String dia_vencimento_conta;
 	private float valor_mensal;
+	private String arquivo;
+	private String formato;
+	private Integer ativo;
+	private Empresa empresa;
 
-	public Contrato() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Contrato(Integer id, String nome, String empresa, String descricao, String inicio_c, String fim_c,
-			float valor_mensal) {
+	public Contrato(Integer id, Integer id_empresa, String nome, String descricao, String inicio_c, String fim_c,
+			String dia_emissao_conta, String dia_vencimento_conta, float valor_mensal, String arquivo, String formato,
+			Integer ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.empresa = empresa;
 		this.descricao = descricao;
 		this.inicio_c = inicio_c;
 		this.fim_c = fim_c;
+		this.dia_emissao_conta = dia_emissao_conta;
+		this.dia_vencimento_conta = dia_vencimento_conta;
 		this.valor_mensal = valor_mensal;
+		this.arquivo = arquivo;
+		this.formato = formato;
+		this.ativo = ativo;
+	}
+
+	public Contrato() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -34,20 +45,20 @@ public class Contrato {
 		this.id = id;
 	}
 
+	public Integer getId_empresa() {
+		return id_empresa;
+	}
+
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
 	}
 
 	public String getDescricao() {
@@ -74,12 +85,60 @@ public class Contrato {
 		this.fim_c = fim_c;
 	}
 
+	public String getDia_emissao_conta() {
+		return dia_emissao_conta;
+	}
+
+	public void setDia_emissao_conta(String dia_emissao_conta) {
+		this.dia_emissao_conta = dia_emissao_conta;
+	}
+
+	public String getDia_vencimento_conta() {
+		return dia_vencimento_conta;
+	}
+
+	public void setDia_vencimento_conta(String dia_vencimento_conta) {
+		this.dia_vencimento_conta = dia_vencimento_conta;
+	}
+
 	public float getValor_mensal() {
 		return valor_mensal;
 	}
 
 	public void setValor_mensal(float valor_mensal) {
 		this.valor_mensal = valor_mensal;
+	}
+
+	public String getArquivo() {
+		return arquivo;
+	}
+
+	public void setArquivo(String arquivo) {
+		this.arquivo = arquivo;
+	}
+
+	public String getFormato() {
+		return formato;
+	}
+
+	public void setFormato(String formato) {
+		this.formato = formato;
+	}
+
+	public Integer getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Integer ativo) {
+		this.ativo = ativo;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

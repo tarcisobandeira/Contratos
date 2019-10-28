@@ -1,32 +1,34 @@
 package br.com.Entities;
 
-public class Pagamento {
+public class Conta {
 	private Integer id;
 	private Integer id_contrato;
-	private float valor;
 	private float valor_pago;
 	private String dia_emissao;
 	private String dia_vencimento;
 	private String dia_pagamento;
-	private Integer status_p;
+	private Integer status_conta;
+	private String note_fiscal;
 	private String obs;
+	private Integer ativo;
 	private Contrato contrato;
 
-	public Pagamento(Integer id, Integer id_contrato, float valor, float valor_pago, String dia_emissao,
-			String dia_vencimento, String dia_pagamento, Integer status_p, String obs) {
+	public Conta(Integer id, Integer id_contrato, float valor_pago, String dia_emissao, String dia_vencimento,
+			String dia_pagamento, Integer status_conta, String nota_fiscal, String obs, Integer ativo) {
 		super();
 		this.id = id;
 		this.id_contrato = id_contrato;
-		this.valor = valor;
 		this.valor_pago = valor_pago;
 		this.dia_emissao = dia_emissao;
 		this.dia_vencimento = dia_vencimento;
 		this.dia_pagamento = dia_pagamento;
-		this.status_p = status_p;
+		this.status_conta = status_conta;
+		this.note_fiscal = nota_fiscal;
+		this.ativo = ativo;
 		this.obs = obs;
 	}
 
-	public Pagamento() {
+	public Conta() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -44,14 +46,6 @@ public class Pagamento {
 
 	public void setId_contrato(Integer id_contrato) {
 		this.id_contrato = id_contrato;
-	}
-
-	public float getValor() {
-		return valor;
-	}
-
-	public void setValor(float valor) {
-		this.valor = valor;
 	}
 
 	public float getValor_pago() {
@@ -86,12 +80,20 @@ public class Pagamento {
 		this.dia_pagamento = dia_pagamento;
 	}
 
-	public Integer getStatus_p() {
-		return status_p;
+	public Integer getStatus_conta() {
+		return status_conta;
 	}
 
-	public void setStatus_p(Integer status_p) {
-		this.status_p = status_p;
+	public void setStatus_conta(Integer status_conta) {
+		this.status_conta = status_conta;
+	}
+
+	public String getNote_fiscal() {
+		return note_fiscal;
+	}
+
+	public void setNote_fiscal(String note_fiscal) {
+		this.note_fiscal = note_fiscal;
 	}
 
 	public String getObs() {
@@ -100,6 +102,14 @@ public class Pagamento {
 
 	public void setObs(String obs) {
 		this.obs = obs;
+	}
+
+	public Integer getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Integer ativo) {
+		this.ativo = ativo;
 	}
 
 	public Contrato getContrato() {

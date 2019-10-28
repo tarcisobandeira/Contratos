@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionDB {
 
 	private static Connection con;
-	private static String dns = "jdbc:mysql://localhost:3306/ContratoPagamento?useUnicode=true&"
+	private static String dns = "jdbc:mysql://localhost:3306/Contratos?useUnicode=true&"
 			+ "useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&"
 			+ "zeroDateTimeBehavior=convertToNull";
 	private static String user = "root";
