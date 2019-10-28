@@ -115,3 +115,11 @@ CREATE TABLE AnexoContaSemContrato(
     formato VARCHAR(5),
     FOREIGN KEY (id_conta_sem_contrato) REFERENCES ContaSemContrato(id)
 );
+
+CREATE TABLE UsuarioContaSC(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_usuario INT,
+    id_conta_sem_contrato INT,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_conta_sem_contrato) REFERENCES ContaSemContrato(id)
+);
