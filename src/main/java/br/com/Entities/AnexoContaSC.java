@@ -1,21 +1,21 @@
 package br.com.Entities;
 
-public class AnexoContaSemContrato {
+public class AnexoContaSC {
 	private Integer id;
-	private Integer id_conta_sem_contrato;
+	private Integer id_conta_sc;
 	private String arquivo;
 	private String formato;
 	private Conta conta;
 
-	public AnexoContaSemContrato(Integer id, Integer id_conta_sem_contrato, String arquivo, String formato) {
+	public AnexoContaSC(Integer id, Integer id_conta_sc, String arquivo, String formato) {
 		super();
 		this.id = id;
-		this.id_conta_sem_contrato = id_conta_sem_contrato;
+		this.id_conta_sc = id_conta_sc;
 		this.arquivo = arquivo;
 		this.formato = formato;
 	}
 
-	public AnexoContaSemContrato() {
+	public AnexoContaSC() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,12 +27,12 @@ public class AnexoContaSemContrato {
 		this.id = id;
 	}
 
-	public Integer getId_conta_sem_contrato() {
-		return id_conta_sem_contrato;
+	public Integer getId_conta_sc() {
+		return id_conta_sc;
 	}
 
-	public void setId_conta_sem_contrato(Integer id_conta_sem_contrato) {
-		this.id_conta_sem_contrato = id_conta_sem_contrato;
+	public void setId_conta_sc(Integer id_conta_sc) {
+		this.id_conta_sc = id_conta_sc;
 	}
 
 	public String getArquivo() {
@@ -58,4 +58,5 @@ public class AnexoContaSemContrato {
 	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
+
 }

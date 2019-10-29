@@ -4,15 +4,15 @@ public class UsuarioContaSC {
 
 	private Integer id;
 	private Integer id_usuario;
-	private Integer id_conta_sem_contrato;
+	private Integer id_conta_sc;
 	private Usuario usuario;
 	private ContaSemContrato contaSemContrato;
 
-	public UsuarioContaSC(Integer id, Integer id_usuario, Integer id_conta_sem_contrato) {
+	public UsuarioContaSC(Integer id, Integer id_usuario, Integer id_conta_sc) {
 		super();
 		this.id = id;
 		this.id_usuario = id_usuario;
-		this.id_conta_sem_contrato = id_conta_sem_contrato;
+		this.id_conta_sc = id_conta_sc;
 	}
 
 	public UsuarioContaSC() {
@@ -35,12 +35,12 @@ public class UsuarioContaSC {
 		this.id_usuario = id_usuario;
 	}
 
-	public Integer getId_conta_sem_contrato() {
-		return id_conta_sem_contrato;
+	public Integer getId_conta_sc() {
+		return id_conta_sc;
 	}
 
-	public void setId_conta_sem_contrato(Integer id_conta_sem_contrato) {
-		this.id_conta_sem_contrato = id_conta_sem_contrato;
+	public void setId_conta_sc(Integer id_conta_sc) {
+		this.id_conta_sc = id_conta_sc;
 	}
 
 	public Usuario getUsuario() {
