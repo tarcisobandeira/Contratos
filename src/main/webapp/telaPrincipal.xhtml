@@ -11,12 +11,18 @@
 		href="resources/css/CSSprincipal.css" />
 </h:head>
 <h:body styleClass="body">
-
-	<b:navBar brand="Contas" brandHref="telaPrincipal.xhtml">
-		<b:navbarLinks>
-			<b:navLink value="Empresas" />
-		</b:navbarLinks>
-	</b:navBar>
-	
+	<h:form id="formNavbar">
+		<b:navBar brand="Contas" brandHref="telaPrincipal.xhtml">
+			<b:navbarLinks>
+				<b:navCommandLink action="#{templateMB.setOpt(1)}" value="Empresas"
+					ajax="true" update=":formTemplate" />
+			</b:navbarLinks>
+		</b:navBar>
+	</h:form>
+	<h:form id="formTemplate">
+		<ui:insert>
+			<ui:include src="#{templateMB.mudar()}" />
+		</ui:insert>
+	</h:form>
 </h:body>
 </html>
