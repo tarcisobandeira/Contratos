@@ -6,7 +6,16 @@ html {
 	margin: 0;
 }
 
-.navbar{
+.form{
+	margin-bottom: 16px !important;
+}
+
+#formTemplate{
+	margin-left: 1em !important;
+	margin-right: 1em !important;
+}
+
+.ui-menubar{
 	border-radius: 0;
 	border: 0;
 	background: #337ab7;
@@ -21,9 +30,21 @@ html {
 .navbar-default:hover .navbar-nav:hover, li:hover, a:hover{
 	color: #fff !important;
 	text-shadow: 1px 1px 1px black !important;
+	background: none !important;
+	border: 0px !important;
+	box-shadow: none !important;
+}
+
+.ui-menu .ui-menuitem-link{
+	border: none !important; 
+}
+
+.ui-widget .ui-widget{
+	font-size: 1.1em !important;
 }
 
 .body {
 	padding-bottom: 20px;
 	background: #343a40;
+	margin: 0;
 }

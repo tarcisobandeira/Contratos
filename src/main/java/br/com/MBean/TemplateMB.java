@@ -7,13 +7,13 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class TemplateMB {
 
-	public int opt = 0;
+	public int opt = 1;
 
 	public String mudar() {
 		if (opt == 1) {
-			return "/Template/Empresas.xhtml";
-		} else if (opt == 2) {
 			return "";
+		} else if (opt == 2) {
+			return "/Template/Empresas.xhtml";
 		}
 
 		return null;
