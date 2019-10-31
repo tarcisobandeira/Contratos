@@ -14,6 +14,8 @@ public class TemplateMB {
 			return "";
 		} else if (opt == 2) {
 			return "/Template/Empresas.xhtml";
+		} else if (opt == 3) {
+			return "/Template/criar/criarEmpresa.xhtml";
 		}
 
 		return null;

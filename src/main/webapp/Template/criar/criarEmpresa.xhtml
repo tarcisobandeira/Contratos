@@ -5,14 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formEmpresas">
-		<b:commandButton look="primary" styleClass="fa fa-plus-circle"
-			value=" Nova Empresa" action="#{templateMB.setOpt(3)}" ajax="true"
-			update=":formTemplate" />
-
-		<p:dataGrid>
-
-		</p:dataGrid>
+	<h:form id="formCE">
+		<b:container>
+			<b:panel title="Nova Empresa" collapsible="false" look="primary">
+				
+			</b:panel>
+		</b:container>
 	</h:form>
 
 </ui:composition>
