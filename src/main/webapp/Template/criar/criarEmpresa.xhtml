@@ -5,15 +5,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formCE" >
-		<b:container fluid="true" styleClass="col-xs-9" style="float: none">
+	<h:form id="formCE">
+		<b:container fluid="true" styleClass="col-md-8" style="float: none">
 			<b:panel title="Nova Empresa" collapsible="false" look="primary">
-				<b:row >
-					<b:column col-xs="12" col-sm="4" col-md="3">
+				<b:row>
+					<b:column offset-md="5" col-xs="12" col-md="3">
 						<h:outputText value="Nome da Empresa:" />
 					</b:column>
-					<b:column col-xs="12" col-sm="4" col-md="3">
-						<h:inputText />
+					<b:column offset-md="4" col-xs="12" col-md="4">
+						<b:inputText value="#{empresaMB.em.nome}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column offset="4" col-xs="12" col-md="2">
+						<b:commandButton value="Salvar" look="primary" style="width:100%"
+							actionListener="#{empresaMB.criarEmpresa}" />
+					</b:column>
+					<b:column col-xs="12" col-md="2">
+						<b:commandButton value="Voltar" look="primary" style="width:100%"
+							action="#{templateMB.setOpt(2)}" ajax="true"
+							update=":formTemplate" />
 					</b:column>
 				</b:row>
 			</b:panel>
