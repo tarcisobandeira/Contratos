@@ -5,10 +5,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formCE">
-		<b:container>
+	<h:form id="formCE" >
+		<b:container fluid="true" styleClass="col-xs-9" style="float: none">
 			<b:panel title="Nova Empresa" collapsible="false" look="primary">
-				
+				<b:row >
+					<b:column col-xs="12" col-sm="4" col-md="3">
+						<h:outputText value="Nome da Empresa:" />
+					</b:column>
+					<b:column col-xs="12" col-sm="4" col-md="3">
+						<h:inputText />
+					</b:column>
+				</b:row>
 			</b:panel>
 		</b:container>
 	</h:form>
