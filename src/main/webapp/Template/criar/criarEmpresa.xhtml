@@ -22,7 +22,8 @@
 							actionListener="#{empresaMB.criarEmpresa}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">
-						<b:commandButton value="Voltar" look="primary" style="width:100%"
+						<b:commandButton value="Voltar" look="primary"
+							actionListener="#{empresaMB.atualizar}" style="width:100%"
 							action="#{templateMB.setOpt(2)}" ajax="true"
 							update=":formTemplate" />
 					</b:column>

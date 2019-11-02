@@ -2,28 +2,36 @@ html {
 	
 }
 
-.form{
+.form {
 	margin-bottom: 16px !important;
 }
 
-#formTemplate{
+#formTemplate {
 	margin-left: 1em !important;
 	margin-right: 1em !important;
 }
 
-.ui-menubar{
+.ui-panel .ui-panel-title {
+	margin: auto !important;
+}
+
+.ui-dataview-layout-options, .ui-selectonebutton, .ui-buttonset{
+	display: none !important;
+}
+
+.ui-menubar {
 	border-radius: 0;
 	border: 0;
 	background: #337ab7;
 }
 
-.navbar-default .navbar-nav, li, a{
+.navbar-default .navbar-nav, li, a {
 	color: #fff !important;
 	text-shadow: none;
 	transition-duration: 0.4s;
 }
 
-.navbar-default:hover .navbar-nav:hover, li:hover, a:hover{
+.navbar-default:hover .navbar-nav:hover, li:hover, a:hover {
 	color: #fff !important;
 	text-shadow: 1px 1px 1px black !important;
 	background: none !important;
@@ -31,11 +39,11 @@ html {
 	box-shadow: none !important;
 }
 
-.ui-menu .ui-menuitem-link{
-	border: none !important; 
+.ui-menu .ui-menuitem-link {
+	border: none !important;
 }
 
-.ui-widget .ui-widget{
+.ui-widget .ui-widget {
 	font-size: 1.1em !important;
 }
 
