@@ -15,8 +15,8 @@ html {
 	margin: auto !important;
 }
 
-.ui-dataview-layout-options, .ui-selectonebutton, .ui-buttonset{
-	display: none !important;
+ui-dataview-content ui-widget-content{
+	background: blue !important;
 }
 
 .ui-menubar {
