@@ -5,16 +5,29 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formCE">
+	<h:form id="formCC">
 		<b:container fluid="true" styleClass="col-md-8" style="float: none">
 			<b:panel title="Nova Empresa" collapsible="false" look="primary">
 				<b:row>
-					<b:column offset-md="4" col-xs="12" col-md="3">
-						<h:outputText value="Nome da Empresa:" />
+					<b:column>
+						<h:outputText value="Nome do Contrato:" />
 					</b:column>
-					<b:column offset-md="4" col-xs="12" col-md="4">
-						<b:inputText value="#{empresaMB.em.nome}" />
+					<b:column>
+						<b:inputText value="#{contratoMB.c.nome}" />
 					</b:column>
+					<b:column>
+						<h:outputText value="Descrição:" />
+					</b:column>
+					<b:column>
+						<b:inputText value="#{contratoMB.c.descricao}" />
+					</b:column>
+					<b:column>
+						<h:outputText value="Inicio do Contrato:" />
+					</b:column>
+					<b:column>
+						<b:datepicker mode="popup" changeMonth="true" changeYear="true"/>
+					</b:column>
+
 				</b:row>
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
@@ -24,7 +37,7 @@
 					<b:column col-xs="12" col-md="2">
 						<b:commandButton value="Voltar" look="primary"
 							actionListener="#{empresaMB.atualizar}" style="width:100%"
-							action="#{templateMB.setOpt(2)}" ajax="true"
+							action="#{templateMB.setOpt(4)}" ajax="true"
 							update=":formTemplate" />
 					</b:column>
 				</b:row>

@@ -9,13 +9,19 @@
 		<b:commandButton look="primary" value=" Nova Empresa"
 			action="#{templateMB.setOpt(3)}" ajax="true" update=":formTemplate" />
 
-		<p:dataView value="#{empresaMB.listE}"  var="e" id="gridEmpresa" layout="grid" >
-			<p:dataViewGridItem >
+		<p:dataView value="#{empresaMB.listE}" var="e" id="gridEmpresa"
+			layout="grid">
+			<p:dataViewGridItem>
 				<p:panel header="#{e.id}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{e.nome}" />
-						<br/>
-						<b:commandButton value="Contas" look="primary"/>
+						<br />
+						<b:commandButton value="Contratos" look="primary"
+							action="#{templateMB.setOpt(4)}" ajax="true"
+							update=":formTemplate">
+							<f:setPropertyActionListener value="#{e.id}"
+								target="#{contratoMB.id_empresa}" />
+						</b:commandButton>
 					</h:panelGrid>
 				</p:panel>
 			</p:dataViewGridItem>

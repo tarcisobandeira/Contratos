@@ -16,8 +16,11 @@ public class TemplateMB {
 			return "/Template/empresas/Empresas.xhtml";
 		} else if (opt == 3) {
 			return "/Template/empresas/criarEmpresa.xhtml";
+		} else if (opt == 4) {
+			return "/Template/contrato/Contrato.xhtml";
+		} else if (opt == 5) {
+			return "/Template/contrato/criarContrato.xhtml";
 		}
-
 		return null;
 	}
 

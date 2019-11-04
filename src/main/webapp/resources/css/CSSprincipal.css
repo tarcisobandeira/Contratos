@@ -15,8 +15,13 @@ html {
 	margin: auto !important;
 }
 
-ui-dataview-content ui-widget-content{
+ui-dataview-content ui-widget-content {
 	background: blue !important;
+}
+
+.ui-datepicker-calendar {
+	background: #337ab7 !important;
+	font-size: 75% !important;
 }
 
 .ui-menubar {

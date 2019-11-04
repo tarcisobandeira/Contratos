@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formContrato">
+		<b:commandButton look="primary" value="Novo Contrato"
+			action="#{templateMB.setOpt(5)}" ajax="true" update=":formTemplate" />
+
+		<p:dataView value="#{contratoMB.listC}" var="c" id="gridContrato"
+			layout="grid">
+			<p:dataViewGridItem>
+				<p:panel header="#{c.id}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%;text-align:center">
+						<h:outputText value="#{c.nome}" />
+						<br />
+						<b:commandButton value="Contas" look="primary">
+						</b:commandButton>
+					</h:panelGrid>
+				</p:panel>
+			</p:dataViewGridItem>
+		</p:dataView>
+	</h:form>
+
+</ui:composition>

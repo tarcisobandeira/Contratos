@@ -21,9 +21,8 @@ public class EmpresaDAO {
 	public boolean insert(String nome) {
 		String sql = " INSERT INTO Empresa (nome, ativo) VALUES (?,?) ";
 
-		PreparedStatement ps;
 		try {
-			ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, nome);
 			ps.setInt(2, 1);
 
