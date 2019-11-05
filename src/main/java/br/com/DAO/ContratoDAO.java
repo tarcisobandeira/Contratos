@@ -19,7 +19,7 @@ public class ContratoDAO {
 	}
 
 	public boolean insert(Contrato c, int id_empresa) {
-		String sql = " INSERT INTO Contrato (id_empresa, nome, descricao, inicio_c, fim_c, dai_emissao_conta, dia_vencimento_conta, valor_mensal, arquivo, formato, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = " INSERT INTO Contrato (id_empresa, nome, descricao, inicio_c, fim_c, dia_emissao_conta, dia_vencimento_conta, valor_mensal, arquivo, formato, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

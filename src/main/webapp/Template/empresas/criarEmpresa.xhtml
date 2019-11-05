@@ -9,11 +9,8 @@
 		<b:container fluid="true" styleClass="col-md-8" style="float: none">
 			<b:panel title="Nova Empresa" collapsible="false" look="primary">
 				<b:row>
-					<b:column offset-md="4" col-xs="12" col-md="3">
-						<h:outputText value="Nome da Empresa:" />
-					</b:column>
 					<b:column offset-md="4" col-xs="12" col-md="4">
-						<b:inputText value="#{empresaMB.em.nome}" />
+						<b:inputText value="#{empresaMB.em.nome}" label="Nome da Empresa:" />
 					</b:column>
 				</b:row>
 				<b:row>

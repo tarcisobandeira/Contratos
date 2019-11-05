@@ -16,8 +16,12 @@
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{c.nome}" />
 						<br />
-						<b:commandButton value="Contas" look="primary">
-						</b:commandButton>
+						<b:buttonGroup>
+							<b:commandButton value="Contas" look="primary">
+							</b:commandButton>
+							<b:commandButton value="Contatos" look="primary"/>
+							<b:commandButton value="Anexo" look="primary"/>
+						</b:buttonGroup>
 					</h:panelGrid>
 				</p:panel>
 			</p:dataViewGridItem>

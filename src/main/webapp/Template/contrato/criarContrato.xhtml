@@ -7,7 +7,7 @@
 
 	<h:form id="formCC">
 		<b:container fluid="true" styleClass="col-md-8" style="float: none">
-			<b:panel title="Nova Empresa" collapsible="false" look="primary">
+			<b:panel title="Novo Contrato" collapsible="false" look="primary">
 				<b:row>
 					<b:column col-xs="12" col-md="6">
 						<b:inputText value="#{contratoMB.c.nome}" label="Nome:" />
@@ -18,22 +18,22 @@
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
-							label="Inicio do Contrato:" />
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Inicio do Contrato:" value="#{contratoMB.inicio}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
-							label="Fim do Contrato:" />
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Fim do Contrato:" value="#{contratoMB.fim}" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
-							label="Emissão da Conta:" />
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Emissão da Conta:" value="#{contratoMB.emissao}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
-							label="Vencimento da Conta:" />
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Vencimento da Conta:" value="#{contratoMB.vencimento}" />
 					</b:column>
 				</b:row>
 				<b:row>
@@ -42,13 +42,14 @@
 							label="Valor Mensal:" mask="currency" render-label="true" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText value="#{contratoMB.em.nome}" label="Empresa:" disabled="true"/>
+						<b:inputText value="#{contratoMB.em.nome}" label="Empresa:"
+							disabled="true" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{a}" />
+							actionListener="#{contratoMB.criarContrato}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">
 						<b:commandButton value="Voltar" look="primary"
