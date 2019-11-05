@@ -6,7 +6,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formEmpresas">
-		<b:commandButton look="primary" value=" Nova Empresa"
+		<b:commandButton look="primary" value="Nova Empresa"
 			action="#{templateMB.setOpt(3)}" ajax="true" update=":formTemplate" />
 
 		<p:dataView value="#{empresaMB.listE}" var="e" id="gridEmpresa"
@@ -19,8 +19,8 @@
 						<b:commandButton value="Contratos" look="primary"
 							action="#{templateMB.setOpt(4)}" ajax="true"
 							update=":formTemplate">
-							<f:setPropertyActionListener value="#{e.id}"
-								target="#{contratoMB.id_empresa}" />
+							<f:setPropertyActionListener value="#{e}"
+								target="#{contratoMB.em}" />
 						</b:commandButton>
 					</h:panelGrid>
 				</p:panel>

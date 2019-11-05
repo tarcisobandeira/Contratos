@@ -8,12 +8,13 @@ import javax.faces.bean.SessionScoped;
 
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
+import br.com.Entities.Empresa;
 
 @ManagedBean
 @SessionScoped
 public class ContratoMB {
 
-	int id_empresa;
+	Empresa em;
 	List<Contrato> listC = new ArrayList<Contrato>();
 	Contrato c = new Contrato();
 	ContratoDAO cDAO = new ContratoDAO();
@@ -23,15 +24,15 @@ public class ContratoMB {
 	}
 
 	public void listarContrato() {
-		listC = cDAO.listarContratoIdEmp(id_empresa);
+		listC = cDAO.listarContratoIdEmp(em.getId());
 	}
 
-	public int getId_empresa() {
-		return id_empresa;
+	public Empresa getEm() {
+		return em;
 	}
 
-	public void setId_empresa(int id_empresa) {
-		this.id_empresa = id_empresa;
+	public void setEm(Empresa em) {
+		this.em = em;
 		listarContrato();
 	}
 

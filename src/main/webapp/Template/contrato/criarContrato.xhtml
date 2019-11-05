@@ -9,30 +9,46 @@
 		<b:container fluid="true" styleClass="col-md-8" style="float: none">
 			<b:panel title="Nova Empresa" collapsible="false" look="primary">
 				<b:row>
-					<b:column>
-						<h:outputText value="Nome do Contrato:" />
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.c.nome}" label="Nome:" />
 					</b:column>
-					<b:column>
-						<b:inputText value="#{contratoMB.c.nome}" />
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.c.descricao}" label="Descrição:" />
 					</b:column>
-					<b:column>
-						<h:outputText value="Descrição:" />
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
+							label="Inicio do Contrato:" />
 					</b:column>
-					<b:column>
-						<b:inputText value="#{contratoMB.c.descricao}" />
+					<b:column col-xs="12" col-md="6">
+						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
+							label="Fim do Contrato:" />
 					</b:column>
-					<b:column>
-						<h:outputText value="Inicio do Contrato:" />
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
+							label="Emissão da Conta:" />
 					</b:column>
-					<b:column>
-						<b:datepicker mode="popup" changeMonth="true" changeYear="true"/>
+					<b:column col-xs="12" col-md="6">
+						<b:datepicker mode="popup" changeMonth="true" changeYear="true"
+							label="Vencimento da Conta:" />
 					</b:column>
-
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.c.valor_mensal}"
+							label="Valor Mensal:" mask="currency" render-label="true" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.em.nome}" label="Empresa:" disabled="true"/>
+					</b:column>
 				</b:row>
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{empresaMB.criarEmpresa}" />
+							actionListener="#{a}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">
 						<b:commandButton value="Voltar" look="primary"
