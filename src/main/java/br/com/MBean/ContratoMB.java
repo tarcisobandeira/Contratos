@@ -1,5 +1,11 @@
 package br.com.MBean;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +13,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
@@ -19,7 +28,12 @@ public class ContratoMB {
 	Empresa em;
 	List<Contrato> listC = new ArrayList<Contrato>();
 	Contrato c = new Contrato();
+	Contrato anexo = new Contrato();
 	ContratoDAO cDAO = new ContratoDAO();
+
+	private static String caminho = "C:\\Salvar\\";
+	String conteudo;
+
 	Date inicio = new Date();
 	Date fim = new Date();
 	Date emissao = new Date();
@@ -35,11 +49,29 @@ public class ContratoMB {
 		c.setFim_c(sdf.format(fim));
 		c.setDia_emissao_conta(sdf.format(emissao));
 		c.setDia_vencimento_conta(sdf.format(vencimento));
-		
+
 		if (cDAO.insert(c, em.getId())) {
 			System.out.println("deu");
 		} else {
 			System.out.println("ndeu");
+		}
+	}
+
+	public void addAnexo(FileUploadEvent event) {
+		UploadedFile upFile = event.getFile();
+		File file = new File(caminho, upFile.getFileName());
+		try {
+			OutputStream out = new FileOutputStream(file);
+			try {
+				out.write(upFile.getContents());
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -110,6 +142,22 @@ public class ContratoMB {
 
 	public void setVencimento(Date vencimento) {
 		this.vencimento = vencimento;
+	}
+
+	public Contrato getAnexo() {
+		return anexo;
+	}
+
+	public void setAnexo(Contrato anexo) {
+		this.anexo = anexo;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
 	}
 
 }

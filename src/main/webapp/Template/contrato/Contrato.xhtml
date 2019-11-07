@@ -19,13 +19,29 @@
 						<b:buttonGroup>
 							<b:commandButton value="Contas" look="primary">
 							</b:commandButton>
-							<b:commandButton value="Contatos" look="primary"/>
-							<b:commandButton value="Anexo" look="primary"/>
+							<b:commandButton value="Contatos" look="primary" />
+							<b:commandButton oncomplete="PF('anexo').show();" value="Anexo"
+								look="primary" ajax="true" update=":formTemplate">
+								<f:setPropertyActionListener value="#{c}"
+									target="#{contratoMB.anexo}" />
+							</b:commandButton>
 						</b:buttonGroup>
 					</h:panelGrid>
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>
 	</h:form>
+	<h:form id="formDialog">
+		<p:dialog header="#{contratoMB.anexo.nome}" widgetVar="anexo">
+			<h:form id="a" enctype="multipart/form-data">
+				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
+					skinSimple="true" />
+				<br />
+				<b:commandButton value="Upload"
+					actionListener="#{contratoMB.addAnexo}" look="primary" ajax="true" />
+			</h:form>
+		</p:dialog>
+	</h:form>
 
 </ui:composition>
+
