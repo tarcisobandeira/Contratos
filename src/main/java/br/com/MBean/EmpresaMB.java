@@ -24,6 +24,7 @@ public class EmpresaMB {
 	public void criarEmpresa() {
 		if (eDAO.insert(em.getNome())) {
 			System.out.println("deu");
+			atualizar();
 		} else {
 			System.out.println("nolp");
 		}

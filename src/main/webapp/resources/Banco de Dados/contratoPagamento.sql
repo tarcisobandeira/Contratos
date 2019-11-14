@@ -52,21 +52,21 @@ CREATE TABLE Site(
 	site VARCHAR(500),
 	usuario VARCHAR(500),
 	senha VARCHAR (500),
-	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE Telefone(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_empresa INT,
 	telefone VARCHAR(500),
-	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE Email(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_empresa INT,
 	email VARCHAR(500),
-	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE Financeiro(
@@ -74,7 +74,7 @@ CREATE TABLE Financeiro(
 	id_empresa INT,
 	debito_auto INT,
 	entrega VARCHAR(50),
-	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
+	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE Usuario(

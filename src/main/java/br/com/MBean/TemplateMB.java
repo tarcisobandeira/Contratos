@@ -10,7 +10,7 @@ public class TemplateMB {
 	public int opt = 1;
 
 	public String mudar() {
- 		if (opt == 1) {
+		if (opt == 1) {
 			return "";
 		} else if (opt == 2) {
 			return "/Template/empresas/Empresas.xhtml";
