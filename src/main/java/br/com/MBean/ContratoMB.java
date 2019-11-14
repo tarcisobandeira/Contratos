@@ -1,11 +1,5 @@
 package br.com.MBean;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
 
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
@@ -23,7 +16,7 @@ import br.com.Entities.Empresa;
 
 @ManagedBean
 @SessionScoped
-public class ContratoMB {
+public class ContratoMB extends UploadDownloadBM {
 
 	Empresa em;
 	List<Contrato> listC = new ArrayList<Contrato>();
@@ -31,7 +24,6 @@ public class ContratoMB {
 	Contrato anexo = new Contrato();
 	ContratoDAO cDAO = new ContratoDAO();
 
-	private static String caminho = "C:\\Salvar\\";
 	String conteudo;
 
 	Date inicio = new Date();
@@ -57,22 +49,10 @@ public class ContratoMB {
 		}
 	}
 
+	@Override
 	public void addAnexo(FileUploadEvent event) {
-		UploadedFile upFile = event.getFile();
-		File file = new File(caminho, upFile.getFileName());
-		try {
-			OutputStream out = new FileOutputStream(file);
-			try {
-				out.write(upFile.getContents());
-				out.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
+		super.addAnexo(event);
 	}
 
 	public void listarContrato() {

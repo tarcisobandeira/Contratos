@@ -16,12 +16,14 @@
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{e.nome}" />
 						<br />
-						<b:commandButton value="Contratos" look="primary"
-							action="#{templateMB.setOpt(4)}" ajax="true"
-							update=":formTemplate">
-							<f:setPropertyActionListener value="#{e}"
-								target="#{contratoMB.em}" />
-						</b:commandButton>
+						<b:buttonGroup>
+							<b:commandButton value="Contatos" look="primary" />
+							<b:commandButton value="Contratos" look="primary"
+								action="#{templateMB.setOpt(4)}">
+								<f:setPropertyActionListener value="#{e}"
+									target="#{contratoMB.em}" />
+							</b:commandButton>
+						</b:buttonGroup>
 					</h:panelGrid>
 				</p:panel>
 			</p:dataViewGridItem>

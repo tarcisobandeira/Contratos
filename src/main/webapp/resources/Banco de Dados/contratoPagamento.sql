@@ -48,7 +48,7 @@ CREATE TABLE AnexoConta(
 
 CREATE TABLE Site(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_contrato INT,
+	id_empresa INT,
 	site VARCHAR(500),
 	usuario VARCHAR(500),
 	senha VARCHAR (500),
@@ -57,21 +57,21 @@ CREATE TABLE Site(
 
 CREATE TABLE Telefone(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_contrato INT,
+	id_empresa INT,
 	telefone VARCHAR(500),
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
 );
 
 CREATE TABLE Email(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_contrato INT,
+	id_empresa INT,
 	email VARCHAR(500),
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
 );
 
 CREATE TABLE Financeiro(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_contrato INT,
+	id_empresa INT,
 	debito_auto INT,
 	entrega VARCHAR(50),
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)

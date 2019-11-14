@@ -28,7 +28,7 @@ public class EmpresaMB {
 			System.out.println("nolp");
 		}
 	}
-	
+
 	public void atualizar() {
 		listE = eDAO.listarEmpresa();
 	}
