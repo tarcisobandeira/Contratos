@@ -19,17 +19,19 @@ import br.com.Entities.Empresa;
 public class ContratoMB extends UploadDownloadBM {
 
 	Empresa em;
+	Contrato anexo = new Contrato();
+
 	List<Contrato> listC = new ArrayList<Contrato>();
 	Contrato c = new Contrato();
-	Contrato anexo = new Contrato();
+
 	ContratoDAO cDAO = new ContratoDAO();
 
 	String conteudo;
 
-	Date inicio = new Date();
-	Date fim = new Date();
-	Date emissao = new Date();
-	Date vencimento = new Date();
+	Date inicio;
+	Date fim;
+	Date emissao;
+	Date vencimento;
 
 	public ContratoMB() {
 		// TODO Auto-generated constructor stub

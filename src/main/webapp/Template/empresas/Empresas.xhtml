@@ -17,7 +17,11 @@
 						<h:outputText value="#{e.nome}" />
 						<br />
 						<b:buttonGroup>
-							<b:commandButton value="Contatos" look="primary" icon="phone" />
+							<b:commandButton value="Contatos" look="primary"
+								actionListener="#{empresaMB.setMostrar(true)}">
+								<f:setPropertyActionListener value="#{e}"
+									target="#{empresaMB.empresa}" />
+							</b:commandButton>
 							<b:commandButton value="Contratos" look="primary"
 								action="#{templateMB.setOpt(4)}">
 								<f:setPropertyActionListener value="#{e}"
@@ -28,6 +32,31 @@
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>
+		<br />
+		<h:form id="formContato" rendered="#{empresaMB.mostrar==true}">
+			<b:tabView tabPosition="left">
+				<b:tab title="Telefone">
+					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+						<p:dataViewGridItem>
+							<p:panel header="#{t.id}">
+								<h:outputText value="#{t.telefone}" />
+							</p:panel>
+						</p:dataViewGridItem>
+					</p:dataView>
+					<b:commandButton look="primary" value="ADD"
+						action="#{templateMB.setOpt(6)}" />
+				</b:tab>
+				<b:tab title="Email">
+
+				</b:tab>
+				<b:tab title="Site">
+
+				</b:tab>
+				<b:tab title="Financeiro">
+
+				</b:tab>
+			</b:tabView>
+		</h:form>
 	</h:form>
 
 </ui:composition>

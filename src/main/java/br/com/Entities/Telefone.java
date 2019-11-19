@@ -3,14 +3,14 @@ package br.com.Entities;
 public class Telefone {
 
 	private Integer id;
-	private Integer id_contrato;
+	private Integer id_empresa;
 	private String telefone;
-	private Contrato contrato;
+	private Empresa empresa;
 
-	public Telefone(Integer id, Integer id_contrato, String telefone) {
+	public Telefone(Integer id, Integer id_empresa, String telefone) {
 		super();
 		this.id = id;
-		this.id_contrato = id_contrato;
+		this.id_empresa = id_empresa;
 		this.telefone = telefone;
 	}
 
@@ -26,12 +26,12 @@ public class Telefone {
 		this.id = id;
 	}
 
-	public Integer getId_contrato() {
-		return id_contrato;
+	public Integer getId_empresa() {
+		return id_empresa;
 	}
 
-	public void setId_contrato(Integer id_contrato) {
-		this.id_contrato = id_contrato;
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
 	}
 
 	public String getTelefone() {
@@ -42,12 +42,12 @@ public class Telefone {
 		this.telefone = telefone;
 	}
 
-	public Contrato getContrato() {
-		return contrato;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setContrato(Contrato contrato) {
-		this.contrato = contrato;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

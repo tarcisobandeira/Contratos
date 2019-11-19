@@ -30,17 +30,19 @@ ui-dataview-content ui-widget-content {
 	background: #337ab7;
 }
 
-.navbar-default .navbar-nav, li, a {
+li, a {
 	color: #fff !important;
 	text-shadow: none;
 	transition-duration: 0.4s;
+	border-radius: 4px;
 }
 
-.navbar-default:hover .navbar-nav:hover, li:hover, a:hover {
+li:hover, a:hover {
 	color: #fff !important;
 	text-shadow: 1px 1px 1px black !important;
-	background: none !important;
+	background: #337ab7 !important;
 	border: 0px !important;
+	border-radius: 4px;
 	box-shadow: none !important;
 }
 

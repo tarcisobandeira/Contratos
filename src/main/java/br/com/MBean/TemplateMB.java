@@ -20,6 +20,8 @@ public class TemplateMB {
 			return "/Template/contrato/Contrato.xhtml";
 		} else if (opt == 5) {
 			return "/Template/contrato/criarContrato.xhtml";
+		} else if (opt == 6) {
+			return "/Template/empresas/criarTelefone.xhtml";
 		}
 		return null;
 	}
