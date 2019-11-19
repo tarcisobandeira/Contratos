@@ -44,7 +44,7 @@ public class EmpresaMB {
 		t.setId_empresa(empresa.getId());
 		if (ctDAO.insertTelefone(t)) {
 			System.out.println("deu");
-			listT = ctDAO.listarTelefone(em);
+			listT = ctDAO.listarTelefone(empresa);
 		} else {
 			System.out.println("nolp");
 		}

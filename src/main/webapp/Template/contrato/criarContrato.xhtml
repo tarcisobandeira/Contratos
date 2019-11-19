@@ -28,18 +28,18 @@
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:dateTimePicker mode="popup" format="DD"
-							label="Emissão da Conta:" value="#{contratoMB.emissao}" />
+						<b:inputText label="Emissão da Conta:" mask="99"
+							value="#{contratoMB.c.dia_emissao_conta}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:dateTimePicker mode="popup" format="DD"
-							label="Vencimento da Conta:" value="#{contratoMB.vencimento}" />
+						<b:inputText label="Vencimento da Conta:" mask="99"
+							value="#{contratoMB.c.dia_vencimento_conta}" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
 						<b:inputText id="msg" value="#{contratoMB.c.valor_mensal}"
-							label="Valor Mensal:" mask="9{1,6}.99" />
+							label="Valor Mensal:" mask="R$9{1,3}[,999].99" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
 						<b:inputText value="#{contratoMB.em.nome}" label="Empresa:"

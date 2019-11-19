@@ -12,11 +12,15 @@ import org.primefaces.model.UploadedFile;
 
 public class UploadDownloadBM {
 
-	private static String caminho = "C:\\Salvar\\";
+	private static String local = "C:\\Anexos\\";
 	String palavra;
 
-	public void addAnexo(FileUploadEvent event) {
+	public File addAnexo(FileUploadEvent event, String exec) {
 		UploadedFile upFile = event.getFile();
+
+		File caminho = new File(local + exec);
+
+		testeCaminho(caminho);
 
 		File file = new File(caminho, trocaNomeFile(upFile.getFileName()));
 		try {
@@ -32,7 +36,17 @@ public class UploadDownloadBM {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return file;
 	}
+
+	public void testeCaminho(File caminho) {
+		if (!caminho.exists()) {
+			caminho.mkdirs();
+			System.out.println("Diretório criado.");
+		} else {
+			System.out.println("Diretório já existe.");
+		}
+	};
 
 	public String trocaNomeFile(String arquivo) {
 		String nome = null;
@@ -48,5 +62,4 @@ public class UploadDownloadBM {
 		nome = l + "." + palavra;
 		return nome;
 	}
-
 }

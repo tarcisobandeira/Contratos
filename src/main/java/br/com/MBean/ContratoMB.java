@@ -1,5 +1,6 @@
 package br.com.MBean;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,11 +28,10 @@ public class ContratoMB extends UploadDownloadBM {
 	ContratoDAO cDAO = new ContratoDAO();
 
 	String conteudo;
+	String exec = "Contrato";
 
 	Date inicio;
 	Date fim;
-	Date emissao;
-	Date vencimento;
 
 	public ContratoMB() {
 		// TODO Auto-generated constructor stub
@@ -41,8 +41,6 @@ public class ContratoMB extends UploadDownloadBM {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		c.setInicio_c(sdf.format(inicio));
 		c.setFim_c(sdf.format(fim));
-		c.setDia_emissao_conta(sdf.format(emissao));
-		c.setDia_vencimento_conta(sdf.format(vencimento));
 
 		if (cDAO.insert(c, em.getId())) {
 			System.out.println("deu");
@@ -51,10 +49,14 @@ public class ContratoMB extends UploadDownloadBM {
 		}
 	}
 
-	@Override
 	public void addAnexo(FileUploadEvent event) {
 		// TODO Auto-generated method stub
-		super.addAnexo(event);
+		File file = super.addAnexo(event, exec);
+		if (cDAO.updateArquivo(file, anexo)) {
+			System.out.println("FOI");
+		} else {
+			System.out.println("NOLP");
+		}
 	}
 
 	public void listarContrato() {
@@ -94,38 +96,6 @@ public class ContratoMB extends UploadDownloadBM {
 		this.cDAO = cDAO;
 	}
 
-	public Date getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
-
-	public Date getFim() {
-		return fim;
-	}
-
-	public void setFim(Date fim) {
-		this.fim = fim;
-	}
-
-	public Date getEmissao() {
-		return emissao;
-	}
-
-	public void setEmissao(Date emissao) {
-		this.emissao = emissao;
-	}
-
-	public Date getVencimento() {
-		return vencimento;
-	}
-
-	public void setVencimento(Date vencimento) {
-		this.vencimento = vencimento;
-	}
-
 	public Contrato getAnexo() {
 		return anexo;
 	}
@@ -140,6 +110,22 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
+	}
+
+	public Date getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Date inicio) {
+		this.inicio = inicio;
+	}
+
+	public Date getFim() {
+		return fim;
+	}
+
+	public void setFim(Date fim) {
+		this.fim = fim;
 	}
 
 }

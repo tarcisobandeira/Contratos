@@ -17,9 +17,8 @@ CREATE TABLE Contrato(
 	fim_c VARCHAR(50),
     dia_emissao_conta VARCHAR(50),
 	dia_vencimento_conta VARCHAR(50),
-    valor_mensal FLOAT,
-    arquivo VARCHAR(13),
-    formato VARCHAR(5),
+    valor_mensal VARCHAR(15),
+    arquivo VARCHAR(100),
     ativo INT,
     FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
@@ -27,9 +26,8 @@ CREATE TABLE Contrato(
 CREATE TABLE Conta(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_contrato INT,
-	valor_pago FLOAT,
+	valor_pago VARCHAR(15),
 	dia_emitido VARCHAR(50),
-	dia_vencimento VARCHAR(50),
 	dia_pagamento VARCHAR(50),
 	status_conta INT,
     nota_fiscal VARCHAR(50),
@@ -41,8 +39,7 @@ CREATE TABLE Conta(
 CREATE TABLE AnexoConta(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_conta INT,
-    arquivo VARCHAR(13),
-    formato VARCHAR(5),
+    arquivo VARCHAR(100),
     FOREIGN KEY (id_conta) REFERENCES Conta(id)
 );
 
@@ -111,8 +108,7 @@ CREATE TABLE ContaSemContrato(
 CREATE TABLE AnexoContaSC(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_conta_sc INT,
-    arquivo VARCHAR(13),
-    formato VARCHAR(5),
+    arquivo VARCHAR(100),
     FOREIGN KEY (id_conta_sc) REFERENCES ContaSemContrato(id)
 );
 

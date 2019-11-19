@@ -19,8 +19,8 @@
 						<b:buttonGroup>
 							<b:commandButton value="Contas" look="primary">
 							</b:commandButton>
-							<b:commandButton oncomplete="PF('anexo').show();" look="primary"
-								icon="paperclip">
+							<b:commandButton oncomplete="PF('anexo').show();" ajax="true"  look="primary"
+								value="Anexo">
 								<f:setPropertyActionListener value="#{c}"
 									target="#{contratoMB.anexo}" />
 							</b:commandButton>
@@ -31,7 +31,7 @@
 		</p:dataView>
 	</h:form>
 	<h:form id="formDialog">
-		<p:dialog header="#{contratoMB.anexo.nome}" widgetVar="anexo">
+		<p:dialog header="#{contratoMB.anexo.nome}" widgetVar="anexo" modal="true">
 			<h:form id="a" enctype="multipart/form-data">
 				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
 					skinSimple="true" />

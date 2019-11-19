@@ -10,15 +10,13 @@ public class Contrato {
 	private String fim_c;
 	private String dia_emissao_conta;
 	private String dia_vencimento_conta;
-	private float valor_mensal;
+	private String valor_mensal;
 	private String arquivo;
-	private String formato;
 	private Integer ativo;
 	private Empresa empresa;
 
 	public Contrato(Integer id, Integer id_empresa, String nome, String descricao, String inicio_c, String fim_c,
-			String dia_emissao_conta, String dia_vencimento_conta, float valor_mensal, String arquivo, String formato,
-			Integer ativo) {
+			String dia_emissao_conta, String dia_vencimento_conta, String valor_mensal, String arquivo, Integer ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -29,7 +27,6 @@ public class Contrato {
 		this.dia_vencimento_conta = dia_vencimento_conta;
 		this.valor_mensal = valor_mensal;
 		this.arquivo = arquivo;
-		this.formato = formato;
 		this.ativo = ativo;
 	}
 
@@ -101,11 +98,11 @@ public class Contrato {
 		this.dia_vencimento_conta = dia_vencimento_conta;
 	}
 
-	public float getValor_mensal() {
+	public String getValor_mensal() {
 		return valor_mensal;
 	}
 
-	public void setValor_mensal(float valor_mensal) {
+	public void setValor_mensal(String valor_mensal) {
 		this.valor_mensal = valor_mensal;
 	}
 
@@ -115,14 +112,6 @@ public class Contrato {
 
 	public void setArquivo(String arquivo) {
 		this.arquivo = arquivo;
-	}
-
-	public String getFormato() {
-		return formato;
-	}
-
-	public void setFormato(String formato) {
-		this.formato = formato;
 	}
 
 	public Integer getAtivo() {
