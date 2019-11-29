@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.StreamedContent;
 
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
@@ -21,6 +22,8 @@ public class ContratoMB extends UploadDownloadBM {
 
 	Empresa em;
 	Contrato anexo = new Contrato();
+
+	private StreamedContent sc;
 
 	List<Contrato> listC = new ArrayList<Contrato>();
 	Contrato c = new Contrato();
@@ -126,6 +129,23 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setFim(Date fim) {
 		this.fim = fim;
+	}
+
+	public StreamedContent getSc() {
+		sc = super.download(anexo.getArquivo());
+		return sc;
+	}
+
+	public void setSc(StreamedContent sc) {
+		this.sc = sc;
+	}
+
+	public String getExec() {
+		return exec;
+	}
+
+	public void setExec(String exec) {
+		this.exec = exec;
 	}
 
 }

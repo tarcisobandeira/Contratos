@@ -4,15 +4,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
+@ManagedBean
+@ViewScoped
 public class UploadDownloadBM {
 
 	private static String local = "C:\\Anexos\\";
+	private StreamedContent a;
 	String palavra;
 
 	public File addAnexo(FileUploadEvent event, String exec) {
@@ -61,5 +70,28 @@ public class UploadDownloadBM {
 
 		nome = l + "." + palavra;
 		return nome;
+	}
+
+	public StreamedContent download(String file) {
+		InputStream stream = this.getClass().getResourceAsStream(file);
+		a = new DefaultStreamedContent(stream);
+
+		return a;
+	}
+
+	public static String getLocal() {
+		return local;
+	}
+
+	public static void setLocal(String local) {
+		UploadDownloadBM.local = local;
+	}
+
+	public String getPalavra() {
+		return palavra;
+	}
+
+	public void setPalavra(String palavra) {
+		this.palavra = palavra;
 	}
 }

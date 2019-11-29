@@ -38,6 +38,10 @@
 					skinSimple="true" />
 				<br />
 				<h:outputText value="#{contratoMB.anexo.arquivo}" />
+				<p:commandButton value="Baixar" ajax="false"
+					disabled="#{contratoMB.anexo.arquivo == null}">
+					<p:fileDownload value="#{uploadDownloadBM.download}" />
+				</p:commandButton>
 			</h:form>
 		</p:dialog>
 	</h:form>
