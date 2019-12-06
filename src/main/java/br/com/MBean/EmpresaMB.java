@@ -8,7 +8,10 @@ import javax.faces.bean.SessionScoped;
 
 import br.com.DAO.ContatosDAO;
 import br.com.DAO.EmpresaDAO;
+import br.com.Entities.Email;
 import br.com.Entities.Empresa;
+import br.com.Entities.Financeiro;
+import br.com.Entities.Site;
 import br.com.Entities.Telefone;
 
 @ManagedBean
@@ -24,6 +27,9 @@ public class EmpresaMB {
 
 	List<Empresa> listE = new ArrayList<Empresa>();
 	List<Telefone> listT = new ArrayList<Telefone>();
+	List<Email> listEm = new ArrayList<Email>();
+	List<Site> listS = new ArrayList<Site>();
+	List<Financeiro> listF = new ArrayList<Financeiro>();
 
 	boolean mostrar = false;
 
@@ -49,6 +55,8 @@ public class EmpresaMB {
 			System.out.println("nolp");
 		}
 	}
+	
+	
 
 	public void atualizar() {
 		listE = eDAO.listarEmpresa();

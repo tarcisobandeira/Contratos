@@ -47,13 +47,37 @@
 						action="#{templateMB.setOpt(6)}" />
 				</b:tab>
 				<b:tab title="Email">
-
+					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+						<p:dataViewGridItem>
+							<p:panel>
+								<h:outputText value="#{t.telefone}" />
+							</p:panel>
+						</p:dataViewGridItem>
+					</p:dataView>
+					<b:commandButton look="primary" value="ADD"
+						action="#{templateMB.setOpt(7)}" />
 				</b:tab>
 				<b:tab title="Site">
-
+					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+						<p:dataViewGridItem>
+							<p:panel>
+								<h:outputText value="#{t.telefone}" />
+							</p:panel>
+						</p:dataViewGridItem>
+					</p:dataView>
+					<b:commandButton look="primary" value="ADD"
+						action="#{templateMB.setOpt(8)}" />
 				</b:tab>
 				<b:tab title="Financeiro">
-
+					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+						<p:dataViewGridItem>
+							<p:panel>
+								<h:outputText value="#{t.telefone}" />
+							</p:panel>
+						</p:dataViewGridItem>
+					</p:dataView>
+					<b:commandButton look="primary" value="ADD"
+						action="#{templateMB.setOpt(9)}" />
 				</b:tab>
 			</b:tabView>
 		</h:form>

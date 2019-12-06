@@ -22,6 +22,12 @@ public class TemplateMB {
 			return "/Template/contrato/criarContrato.xhtml";
 		} else if (opt == 6) {
 			return "/Template/empresas/criarTelefone.xhtml";
+		} else if (opt == 7) {
+			return "/Template/empresas/criarEmail.xhtml";
+		} else if (opt == 8) {
+			return "/Template/empresas/criarSite.xhtml";
+		} else if (opt == 9) {
+			return "/Template/empresas/criarFinanceiro.xhtml";
 		}
 		return null;
 	}

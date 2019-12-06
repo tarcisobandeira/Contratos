@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formCE">
+		<b:container fluid="true" styleClass="col-md-8" style="float: none">
+			<b:panel title="Novo Email" collapsible="false" look="primary">
+				<b:row>
+					<b:column offset-md="2" col-xs="12" col-md="4">
+						<b:inputText mask="(99)9999-9999" value="#{empresaMB.t.telefone}"
+							label="Telefone:" />
+					</b:column>
+					<b:column col-xs="12" col-md="4">
+						<b:inputText value="#{empresaMB.empresa.nome}" label="Empresa:"
+							disabled="true" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column offset="4" col-xs="12" col-md="2">
+						<b:commandButton value="Salvar" look="primary" style="width:100%"
+							actionListener="#{empresaMB.criarTelefone}"
+							action="#{templateMB.setOpt(2)}" />
+					</b:column>
+					<b:column col-xs="12" col-md="2">
+						<b:commandButton value="Voltar" look="primary"
+							actionListener="#{empresaMB.atualizar}" style="width:100%"
+							action="#{templateMB.setOpt(2)}" ajax="true"
+							update=":formTemplate" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+
+</ui:composition>

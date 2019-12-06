@@ -35,7 +35,8 @@
 		<b:tabView tabPosition="left">
 			<b:tab title="UpLoad">
 				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
-					skinSimple="true" />
+					skinSimple="true" allowTypes="/(\.|\/)(pdf|jpe?g|png)$/"
+					invalidFileMessage="São permitidas somente imagens e PDF (png, jpeg, jpg, pdf)" />
 			</b:tab>
 			<b:tab title="DownLoad">
 				<b:container fluid="true" style="float: none">

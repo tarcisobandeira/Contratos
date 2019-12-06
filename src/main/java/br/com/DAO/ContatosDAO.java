@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.Entities.Email;
 import br.com.Entities.Empresa;
 import br.com.Entities.Telefone;
 import br.com.jdbc.ConnectionDB;
@@ -61,5 +62,12 @@ public class ContatosDAO {
 		}
 
 		return list;
+	}
+	
+	public boolean insertEmail(Email em) {
+		String sql = " INSERT INTO Email () ";
+		
+		
+		return false;
 	}
 }
