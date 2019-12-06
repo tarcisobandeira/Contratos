@@ -19,8 +19,8 @@
 						<b:buttonGroup>
 							<b:commandButton value="Contas" look="primary">
 							</b:commandButton>
-							<b:commandButton oncomplete="PF('anexo').show();" ajax="true"
-								look="primary" value="Anexo" update=":formTemplate:formDialog">
+							<b:commandButton actionListener="#{contratoMB.setMostrar(true)}"
+								look="primary" value="Anexo">
 								<f:setPropertyActionListener value="#{c}"
 									target="#{contratoMB.anexo}" />
 							</b:commandButton>
@@ -30,20 +30,27 @@
 			</p:dataViewGridItem>
 		</p:dataView>
 	</h:form>
-	<h:form id="formDialog">
-		<p:dialog header="#{contratoMB.anexo.nome}" widgetVar="anexo"
-			modal="true">
-			<h:form id="a" enctype="multipart/form-data">
+	<h:form id="formAnexo" rendered="#{contratoMB.mostrar==true}"
+		enctype="multipart/form-data">
+		<b:tabView tabPosition="left">
+			<b:tab title="UpLoad">
 				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
 					skinSimple="true" />
-				<br />
-				<h:outputText value="#{contratoMB.anexo.arquivo}" />
-				<p:commandButton value="Baixar" ajax="false"
-					disabled="#{contratoMB.anexo.arquivo == null}">
-					<p:fileDownload value="#{uploadDownloadBM.download}" />
-				</p:commandButton>
-			</h:form>
-		</p:dialog>
+			</b:tab>
+			<b:tab title="DownLoad">
+				<b:container fluid="true" style="float: none">
+					<b:panel collapsible="false" look="primary">
+						<h:outputText value="#{contratoMB.anexo.arquivo}" />
+						<br />
+						<b:commandButton value="Baixar" ajax="true"
+							disabled="#{contratoMB.anexo.arquivo == null}"
+							actionListener="#{contratoMB.download}">
+							<p:fileDownload value="#{contratoMB.sc}" />
+						</b:commandButton>
+					</b:panel>
+				</b:container>
+			</b:tab>
+		</b:tabView>
 	</h:form>
 
 </ui:composition>

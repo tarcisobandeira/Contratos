@@ -22,7 +22,7 @@ public class ContratoMB extends UploadDownloadBM {
 
 	Empresa em;
 	Contrato anexo = new Contrato();
-
+	boolean mostrar = false;
 	private StreamedContent sc;
 
 	List<Contrato> listC = new ArrayList<Contrato>();
@@ -37,7 +37,7 @@ public class ContratoMB extends UploadDownloadBM {
 	Date fim;
 
 	public ContratoMB() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public void criarContrato() {
@@ -62,8 +62,13 @@ public class ContratoMB extends UploadDownloadBM {
 		}
 	}
 
-	public void listarContrato() {
+	public StreamedContent download(String ll) {
+		return sc = super.download(anexo.getArquivo());
+	}
+
+	public void atualizar() {
 		listC = cDAO.listarContratoIdEmp(em.getId());
+		mostrar = false;
 	}
 
 	public Empresa getEm() {
@@ -72,7 +77,7 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setEm(Empresa em) {
 		this.em = em;
-		listarContrato();
+		atualizar();
 	}
 
 	public List<Contrato> getListC() {
@@ -132,8 +137,7 @@ public class ContratoMB extends UploadDownloadBM {
 	}
 
 	public StreamedContent getSc() {
-		sc = super.download(anexo.getArquivo());
-		return sc;
+		return this.sc;
 	}
 
 	public void setSc(StreamedContent sc) {
@@ -146,6 +150,14 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setExec(String exec) {
 		this.exec = exec;
+	}
+
+	public boolean isMostrar() {
+		return mostrar;
+	}
+
+	public void setMostrar(boolean mostrar) {
+		this.mostrar = mostrar;
 	}
 
 }

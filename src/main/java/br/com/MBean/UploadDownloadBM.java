@@ -1,6 +1,7 @@
 package br.com.MBean;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +22,6 @@ import org.primefaces.model.UploadedFile;
 public class UploadDownloadBM {
 
 	private static String local = "C:\\Anexos\\";
-	private StreamedContent a;
 	String palavra;
 
 	public File addAnexo(FileUploadEvent event, String exec) {
@@ -72,11 +72,47 @@ public class UploadDownloadBM {
 		return nome;
 	}
 
-	public StreamedContent download(String file) {
-		InputStream stream = this.getClass().getResourceAsStream(file);
-		a = new DefaultStreamedContent(stream);
+	public StreamedContent download(String ll) {
+		InputStream in;
+		try {
+			in = new FileInputStream(new File(ll));
+			StreamedContent a = new DefaultStreamedContent(in, pegarExtensao(ll), pegarNome(ll));
+			return a;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-		return a;
+	public String pegarExtensao(String arquivo) {
+		String ex = null;
+		String arquivoN = arquivo.replace('.', '#');
+		String[] s = arquivoN.split("#");
+
+		for (int i = 0; i < s.length; i++) {
+			ex = s[i].trim();
+		}
+
+		if (ex.equals("png")) {
+			return "image/png";
+		} else if (ex.equals("jpg") || (ex.equals("jpeg"))) {
+			return "image/jpg";
+		} else if (ex.equals("pdf")) {
+			return "application/pdf";
+		}
+		return null;
+	}
+
+	public String pegarNome(String arquivo) {
+		String nome = null;
+		String arquivoN = arquivo.replace('\\', '#');
+		String[] s = arquivoN.split("#");
+
+		for (int i = 0; i < s.length; i++) {
+			nome = s[i].trim();
+		}
+		return nome;
 	}
 
 	public static String getLocal() {
