@@ -39,6 +39,23 @@ public class ContatosDAO {
 		return false;
 	}
 
+	public boolean insertEmail(Email em) {
+		String sql = " INSERT INTO Email (id_empresa, email,) VALUES (?,?)";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, em.getId_empresa());
+			ps.setString(2, em.getEmail());
+
+			if (ps.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public List<Telefone> listarTelefone(Empresa em) {
 		List<Telefone> list = new ArrayList<Telefone>();
 		String sql = " SELECT * FROM Telefone WHERE id_empresa = ?";
@@ -63,11 +80,30 @@ public class ContatosDAO {
 
 		return list;
 	}
-	
-	public boolean insertEmail(Email em) {
-		String sql = " INSERT INTO Email () ";
-		
-		
-		return false;
+
+	public List<Email> listarEmail(Empresa em) {
+		List<Email> list = new ArrayList<Email>();
+		String sql = " SELECT * FROM Email WHERE id_empresa = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, em.getId());
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Email e = new Email();
+				e.setId(rs.getInt("id"));
+				e.setId_empresa(rs.getInt("id_empresa"));
+				e.setEmail(rs.getString("email"));
+
+				list.add(e);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return list;
 	}
+
 }

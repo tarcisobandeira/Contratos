@@ -2,16 +2,16 @@ package br.com.Entities;
 
 public class Site {
 	private Integer id;
-	private Integer id_contrato;
+	private Integer id_empresa;
 	private String site;
 	private String usuario;
 	private String senha;
-	private Contrato contrato;
+	private Empresa Empresa;
 
-	public Site(Integer id, Integer id_contrato, String site, String usuario, String senha, Contrato contrato) {
+	public Site(Integer id, Integer id_empresa, String site, String usuario, String senha, Contrato contrato) {
 		super();
 		this.id = id;
-		this.id_contrato = id_contrato;
+		this.id_empresa = id_empresa;
 		this.site = site;
 		this.usuario = usuario;
 		this.senha = senha;
@@ -29,12 +29,12 @@ public class Site {
 		this.id = id;
 	}
 
-	public Integer getId_contrato() {
-		return id_contrato;
+	public Integer getId_empresa() {
+		return id_empresa;
 	}
 
-	public void setId_contrato(Integer id_contrato) {
-		this.id_contrato = id_contrato;
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
 	}
 
 	public String getSite() {
@@ -61,12 +61,12 @@ public class Site {
 		this.senha = senha;
 	}
 
-	public Contrato getContrato() {
-		return contrato;
+	public Empresa getEmpresa() {
+		return Empresa;
 	}
 
-	public void setContrato(Contrato contrato) {
-		this.contrato = contrato;
+	public void setEmpresa(Empresa empresa) {
+		Empresa = empresa;
 	}
 
 }

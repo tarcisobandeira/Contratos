@@ -3,19 +3,19 @@ package br.com.Entities;
 public class Financeiro {
 
 	private Integer id;
-	private Integer id_contrato;
+	private Integer id_empresa;
 	private Integer debito_auto;
 	private String entrega;
-	private Contrato contrato;
+	private Empresa empresa;
 
 	public Financeiro() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Financeiro(Integer id, Integer id_contrato, Integer debito_auto, String entrega) {
+	public Financeiro(Integer id, Integer id_empresa, Integer debito_auto, String entrega) {
 		super();
 		this.id = id;
-		this.id_contrato = id_contrato;
+		this.id_empresa = id_empresa;
 		this.debito_auto = debito_auto;
 		this.entrega = entrega;
 	}
@@ -28,12 +28,12 @@ public class Financeiro {
 		this.id = id;
 	}
 
-	public Integer getId_contrato() {
-		return id_contrato;
+	public Integer getId_empresa() {
+		return id_empresa;
 	}
 
-	public void setId_contrato(Integer id_contrato) {
-		this.id_contrato = id_contrato;
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
 	}
 
 	public Integer getDebito_auto() {
@@ -52,12 +52,12 @@ public class Financeiro {
 		this.entrega = entrega;
 	}
 
-	public Contrato getContrato() {
-		return contrato;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setContrato(Contrato contrato) {
-		this.contrato = contrato;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

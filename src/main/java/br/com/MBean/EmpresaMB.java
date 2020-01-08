@@ -55,8 +55,6 @@ public class EmpresaMB {
 			System.out.println("nolp");
 		}
 	}
-	
-	
 
 	public void atualizar() {
 		listE = eDAO.listarEmpresa();
@@ -65,6 +63,7 @@ public class EmpresaMB {
 
 	public void atualizarContato() {
 		listT = ctDAO.listarTelefone(empresa);
+		listEm = ctDAO.listarEmail(empresa);
 	}
 
 	public Empresa getEm() {
@@ -130,6 +129,30 @@ public class EmpresaMB {
 
 	public void setMostrar(boolean mostrar) {
 		this.mostrar = mostrar;
+	}
+
+	public List<Email> getListEm() {
+		return listEm;
+	}
+
+	public void setListEm(List<Email> listEm) {
+		this.listEm = listEm;
+	}
+
+	public List<Site> getListS() {
+		return listS;
+	}
+
+	public void setListS(List<Site> listS) {
+		this.listS = listS;
+	}
+
+	public List<Financeiro> getListF() {
+		return listF;
+	}
+
+	public void setListF(List<Financeiro> listF) {
+		this.listF = listF;
 	}
 
 }

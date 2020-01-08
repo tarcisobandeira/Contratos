@@ -47,10 +47,10 @@
 						action="#{templateMB.setOpt(6)}" />
 				</b:tab>
 				<b:tab title="Email">
-					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+					<p:dataView value="#{empresaMB.listEm}" var="e" layout="grid">
 						<p:dataViewGridItem>
 							<p:panel>
-								<h:outputText value="#{t.telefone}" />
+								<h:outputText value="#{e.email}" />
 							</p:panel>
 						</p:dataViewGridItem>
 					</p:dataView>
@@ -58,10 +58,12 @@
 						action="#{templateMB.setOpt(7)}" />
 				</b:tab>
 				<b:tab title="Site">
-					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+					<p:dataView value="#{empresaMB.listS}" var="s" layout="grid">
 						<p:dataViewGridItem>
 							<p:panel>
-								<h:outputText value="#{t.telefone}" />
+								<h:outputText value="#{s.site}" />
+								<h:outputText value="#{s.usuario}" />
+								<h:outputText value="#{s.senha}" />
 							</p:panel>
 						</p:dataViewGridItem>
 					</p:dataView>
@@ -69,10 +71,10 @@
 						action="#{templateMB.setOpt(8)}" />
 				</b:tab>
 				<b:tab title="Financeiro">
-					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
+					<p:dataView value="#{empresaMB.listF}" var="f" layout="grid">
 						<p:dataViewGridItem>
 							<p:panel>
-								<h:outputText value="#{t.telefone}" />
+								<h:outputText value="#{f.entrega}" />
 							</p:panel>
 						</p:dataViewGridItem>
 					</p:dataView>
