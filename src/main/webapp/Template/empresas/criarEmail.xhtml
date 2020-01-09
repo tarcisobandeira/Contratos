@@ -10,8 +10,7 @@
 			<b:panel title="Novo Email" collapsible="false" look="primary">
 				<b:row>
 					<b:column offset-md="2" col-xs="12" col-md="4">
-						<b:inputText mask="(99)9999-9999" value="#{empresaMB.t.telefone}"
-							label="Telefone:" />
+						<b:inputText value="#{empresaMB.email.email}" label="Email:" />
 					</b:column>
 					<b:column col-xs="12" col-md="4">
 						<b:inputText value="#{empresaMB.empresa.nome}" label="Empresa:"
@@ -21,7 +20,7 @@
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{empresaMB.criarTelefone}"
+							actionListener="#{empresaMB.criarEmail}"
 							action="#{templateMB.setOpt(2)}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">

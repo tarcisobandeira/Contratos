@@ -21,6 +21,7 @@ public class EmpresaMB {
 	Empresa em = new Empresa();
 	Empresa empresa;
 	Telefone t = new Telefone();
+	Email email = new Email();
 
 	EmpresaDAO eDAO = new EmpresaDAO();
 	ContatosDAO ctDAO = new ContatosDAO();
@@ -51,6 +52,16 @@ public class EmpresaMB {
 		if (ctDAO.insertTelefone(t)) {
 			System.out.println("deu");
 			listT = ctDAO.listarTelefone(empresa);
+		} else {
+			System.out.println("nolp");
+		}
+	}
+
+	public void criarEmail() {
+		email.setId_empresa(empresa.getId());
+		if (ctDAO.insertEmail(email)) {
+			System.out.println("deu");
+			listEm = ctDAO.listarEmail(empresa);
 		} else {
 			System.out.println("nolp");
 		}
@@ -153,6 +164,14 @@ public class EmpresaMB {
 
 	public void setListF(List<Financeiro> listF) {
 		this.listF = listF;
+	}
+
+	public Email getEmail() {
+		return email;
+	}
+
+	public void setEmail(Email email) {
+		this.email = email;
 	}
 
 }
