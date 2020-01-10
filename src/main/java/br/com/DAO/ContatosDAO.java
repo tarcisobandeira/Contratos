@@ -145,8 +145,57 @@ public class ContatosDAO {
 
 		return list;
 	}
-	
-	public List<Site> litarSite(Empresa em){
+
+	public List<Site> litarSite(Empresa em) {
 		List<Site> list = new ArrayList<Site>();
+		String sql = " SELECT * FROM Site WHERE id_empresa = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, em.getId());
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Site s = new Site();
+				s.setId(rs.getInt("id"));
+				s.setId_empresa(rs.getInt("id_empresa"));
+				s.setSite(rs.getString("site"));
+				s.setUsuario(rs.getString("usuario"));
+				s.setSenha(rs.getString("senha"));
+
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	public List<Financeiro> listarFinanceiro(Empresa em) {
+		List<Financeiro> list = new ArrayList<Financeiro>();
+		String sql = " SELECT * FROM Financeiro WHERE id_empresa = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, em.getId());
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Financeiro f = new Financeiro();
+				f.setId(rs.getInt("id"));
+				f.setId_empresa(rs.getInt("id_empresa"));
+				f.setDebito_auto(rs.getInt("debito_auto"));
+				f.setEntrega(rs.getString("entrega"));
+
+				list.add(f);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 }
