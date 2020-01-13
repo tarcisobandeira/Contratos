@@ -2,6 +2,10 @@ html {
 	
 }
 
+.centerText {
+	text-align: center !important;
+}
+
 .form {
 	margin-bottom: 16px !important;
 }
@@ -52,6 +56,10 @@ li:hover, a:hover {
 
 .ui-widget .ui-widget {
 	font-size: 1.1em !important;
+}
+
+.information {
+	font-size: 0.8em !important;
 }
 
 .body {

@@ -10,8 +10,13 @@
 			<b:panel title="Novo Site" collapsible="false" look="primary">
 				<b:row>
 					<b:column offset-md="2" col-xs="12" col-md="4">
-						<b:inputText mask="(99)9999-9999" value="#{empresaMB.t.telefone}"
-							label="Telefone:" />
+						<b:inputText value="#{empresaMB.s.usuario}" label="Usuário:" />
+					</b:column>
+					<b:column col-xs="12" col-md="4">
+						<b:inputText value="#{empresaMB.s.senha}" label="Senha:" />
+					</b:column>
+					<b:column offset-md="2" col-xs="12" col-md="4">
+						<b:inputText value="#{empresaMB.s.site}" label="Site:" />
 					</b:column>
 					<b:column col-xs="12" col-md="4">
 						<b:inputText value="#{empresaMB.empresa.nome}" label="Empresa:"
@@ -21,7 +26,7 @@
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{empresaMB.criarTelefone}"
+							actionListener="#{empresaMB.criarSite}"
 							action="#{templateMB.setOpt(2)}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">

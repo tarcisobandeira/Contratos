@@ -22,6 +22,8 @@ public class EmpresaMB {
 	Empresa empresa;
 	Telefone t = new Telefone();
 	Email email = new Email();
+	Site s = new Site();
+	Financeiro f = new Financeiro();
 
 	EmpresaDAO eDAO = new EmpresaDAO();
 	ContatosDAO ctDAO = new ContatosDAO();
@@ -67,6 +69,26 @@ public class EmpresaMB {
 		}
 	}
 
+	public void criarSite() {
+		s.setId_empresa(empresa.getId());
+		if (ctDAO.insertSite(s)) {
+			System.out.println("deu");
+			listS = ctDAO.listarSite(empresa);
+		} else {
+			System.out.println("nolp");
+		}
+	}
+
+	public void criarFinanceiro() {
+		f.setId_empresa(empresa.getId());
+		if (ctDAO.insertFinanceiro(f)) {
+			System.out.println("deu");
+			listF = ctDAO.listarFinanceiro(empresa);
+		} else {
+			System.out.println("nolp");
+		}
+	}
+
 	public void atualizar() {
 		listE = eDAO.listarEmpresa();
 		mostrar = false;
@@ -75,6 +97,8 @@ public class EmpresaMB {
 	public void atualizarContato() {
 		listT = ctDAO.listarTelefone(empresa);
 		listEm = ctDAO.listarEmail(empresa);
+		listS = ctDAO.listarSite(empresa);
+		listF = ctDAO.listarFinanceiro(empresa);
 	}
 
 	public Empresa getEm() {
@@ -172,6 +196,14 @@ public class EmpresaMB {
 
 	public void setEmail(Email email) {
 		this.email = email;
+	}
+
+	public Site getS() {
+		return s;
+	}
+
+	public void setS(Site s) {
+		this.s = s;
 	}
 
 }

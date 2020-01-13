@@ -19,7 +19,7 @@
 						<b:buttonGroup>
 							<b:commandButton value="Contas" look="primary">
 							</b:commandButton>
-							<b:commandButton actionListener="#{contratoMB.setMostrar(true)}"
+							<b:commandButton actionListener="#{empresaMB.setMostrar(true)}"
 								look="primary" value="Anexo">
 								<f:setPropertyActionListener value="#{c}"
 									target="#{contratoMB.anexo}" />
@@ -30,7 +30,7 @@
 			</p:dataViewGridItem>
 		</p:dataView>
 	</h:form>
-	<h:form id="formAnexo" rendered="#{contratoMB.mostrar==true}"
+	<h:form id="formAnexo" rendered="#{empresaMB.mostrar==true}"
 		enctype="multipart/form-data">
 		<b:tabView tabPosition="left">
 			<b:tab title="UpLoad">

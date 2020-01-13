@@ -58,7 +58,7 @@ public class ContatosDAO {
 	}
 
 	public boolean insertSite(Site s) {
-		String sql = " INSERT INTO Site (id_empres, site, usuario, senha) VALUES (?,?,?,?) ";
+		String sql = " INSERT INTO Site (id_empresa, site, usuario, senha) VALUES (?,?,?,?) ";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getId_empresa());
@@ -146,7 +146,7 @@ public class ContatosDAO {
 		return list;
 	}
 
-	public List<Site> litarSite(Empresa em) {
+	public List<Site> listarSite(Empresa em) {
 		List<Site> list = new ArrayList<Site>();
 		String sql = " SELECT * FROM Site WHERE id_empresa = ? ";
 

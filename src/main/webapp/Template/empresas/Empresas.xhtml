@@ -38,7 +38,7 @@
 				<b:tab title="Telefone">
 					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
 						<p:dataViewGridItem>
-							<p:panel>
+							<p:panel styleClass="centerText">
 								<h:outputText value="#{t.telefone}" />
 							</p:panel>
 						</p:dataViewGridItem>
@@ -49,7 +49,7 @@
 				<b:tab title="Email">
 					<p:dataView value="#{empresaMB.listEm}" var="e" layout="grid">
 						<p:dataViewGridItem>
-							<p:panel>
+							<p:panel styleClass="centerText">
 								<h:outputText value="#{e.email}" />
 							</p:panel>
 						</p:dataViewGridItem>
@@ -60,10 +60,21 @@
 				<b:tab title="Site">
 					<p:dataView value="#{empresaMB.listS}" var="s" layout="grid">
 						<p:dataViewGridItem>
-							<p:panel>
+							<p:panel styleClass="centerText">
 								<h:outputText value="#{s.site}" />
-								<h:outputText value="#{s.usuario}" />
-								<h:outputText value="#{s.senha}" />
+								<b:row />
+								<b:commandButton styleClass="information" look="primary"
+									id="info" value="Info" ajax="true" />
+								<p:overlayPanel for="info" hideEffect="fade">
+									<b:column>
+										<h:outputText value="Usuário: " />
+										<h:outputText value="#{s.usuario}" />
+									</b:column>
+									<b:column>
+										<h:outputText value="Senha: " />
+										<h:outputText value="#{s.senha}" />
+									</b:column>
+								</p:overlayPanel>
 							</p:panel>
 						</p:dataViewGridItem>
 					</p:dataView>
