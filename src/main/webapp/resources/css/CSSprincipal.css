@@ -62,8 +62,19 @@ li:hover, a:hover {
 	font-size: 0.8em !important;
 }
 
+.texto {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
 .body {
 	padding-bottom: 20px;
 	background: #343a40;
 	margin: 0;
+}
+
+.ui-dataview .ui-dataview-header {
+	display: none !important;
 }

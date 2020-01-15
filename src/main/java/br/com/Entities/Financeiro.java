@@ -40,6 +40,14 @@ public class Financeiro {
 		return debito_auto;
 	}
 
+	public String getFormatDebito_auto() {
+		if (debito_auto == 1) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
+	}
+
 	public void setDebito_auto(Integer debito_auto) {
 		this.debito_auto = debito_auto;
 	}

@@ -18,6 +18,8 @@ import br.com.Entities.Telefone;
 @SessionScoped
 public class EmpresaMB {
 
+	int debito;
+
 	Empresa em = new Empresa();
 	Empresa empresa;
 	Telefone t = new Telefone();
@@ -81,6 +83,7 @@ public class EmpresaMB {
 
 	public void criarFinanceiro() {
 		f.setId_empresa(empresa.getId());
+		f.setDebito_auto(debito);
 		if (ctDAO.insertFinanceiro(f)) {
 			System.out.println("deu");
 			listF = ctDAO.listarFinanceiro(empresa);
@@ -204,6 +207,22 @@ public class EmpresaMB {
 
 	public void setS(Site s) {
 		this.s = s;
+	}
+
+	public Financeiro getF() {
+		return f;
+	}
+
+	public void setF(Financeiro f) {
+		this.f = f;
+	}
+
+	public int getDebito() {
+		return debito;
+	}
+
+	public void setDebito(int debito) {
+		this.debito = debito;
 	}
 
 }

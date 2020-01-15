@@ -11,7 +11,7 @@ public class TemplateMB {
 
 	public String mudar() {
 		if (opt == 1) {
-			return "";
+			return "/Template/contas/Contas.xhtml";
 		} else if (opt == 2) {
 			return "/Template/empresas/Empresas.xhtml";
 		} else if (opt == 3) {
