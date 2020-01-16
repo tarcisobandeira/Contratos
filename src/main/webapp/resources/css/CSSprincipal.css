@@ -78,3 +78,7 @@ li:hover, a:hover {
 .ui-dataview .ui-dataview-header {
 	display: none !important;
 }
+
+.ui-widget-content #gridContas {
+	border: none !important;
+}

@@ -17,7 +17,9 @@
 						<h:outputText value="#{c.nome}" />
 						<br />
 						<b:buttonGroup>
-							<b:commandButton value="Contas" look="primary">
+							<b:commandButton value="Contas" look="primary"
+								action="#{templateMB.setOpt(10)}">
+								<f:setPropertyActionListener value="#{c}" target="#{contasMB.c}" />
 							</b:commandButton>
 							<b:commandButton actionListener="#{empresaMB.setMostrar(true)}"
 								look="primary" value="Anexo">

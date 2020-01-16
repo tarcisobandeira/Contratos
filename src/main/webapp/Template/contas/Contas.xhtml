@@ -7,8 +7,10 @@
 
 	<h:form id="formContas">
 
-		<p:dataView value="a" var="c" id="a"
-			layout="grid">
+		<b:commandButton look="primary" value="Nova Conta"
+			action="#{templateMB.setOpt(11)}" ajax="true" update=":formTemplate" />
+
+		<p:dataView value="a" var="" id="gridContas" layout="grid">
 
 		</p:dataView>
 	</h:form>

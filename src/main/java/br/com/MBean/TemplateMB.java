@@ -11,7 +11,7 @@ public class TemplateMB {
 
 	public String mudar() {
 		if (opt == 1) {
-			return "/Template/contas/Contas.xhtml";
+			return "";
 		} else if (opt == 2) {
 			return "/Template/empresas/Empresas.xhtml";
 		} else if (opt == 3) {
@@ -28,6 +28,10 @@ public class TemplateMB {
 			return "/Template/empresas/criarSite.xhtml";
 		} else if (opt == 9) {
 			return "/Template/empresas/criarFinanceiro.xhtml";
+		} else if (opt == 10) {
+			return "/Template/contas/Contas.xhtml";
+		} else if (opt == 11) {
+			return "/Template/contas/criarConta.xhtml";
 		}
 		return null;
 	}
