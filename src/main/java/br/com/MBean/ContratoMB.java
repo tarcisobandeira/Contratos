@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.StreamedContent;
 
+import br.com.DAO.ContasDAO;
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
 import br.com.Entities.Empresa;
@@ -29,6 +30,7 @@ public class ContratoMB extends UploadDownloadBM {
 	Contrato c = new Contrato();
 
 	ContratoDAO cDAO = new ContratoDAO();
+	ContasDAO ccDAO = new ContasDAO();
 
 	String conteudo;
 	String exec = "Contrato";
@@ -46,7 +48,12 @@ public class ContratoMB extends UploadDownloadBM {
 		c.setFim_c(sdf.format(fim));
 
 		if (cDAO.insert(c, em.getId())) {
-			System.out.println("deu");
+			System.out.println("deu Contrato");
+			if (ccDAO.insertConta(c)) {
+				System.out.println("deu Conta");
+			} else {
+				System.out.println("ndeu Conta");
+			}
 		} else {
 			System.out.println("ndeu");
 		}

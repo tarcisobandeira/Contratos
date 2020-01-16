@@ -30,7 +30,7 @@ CREATE TABLE Conta(
 	dia_emitido VARCHAR(50),
 	dia_pagamento VARCHAR(50),
 	status_conta INT,
-    nota_fiscal VARCHAR(50),
+    nota_fiscal VARCHAR(100),
 	obs VARCHAR(500),
     ativo INT,
 	FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
