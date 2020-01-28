@@ -23,7 +23,7 @@ public class ContratoMB extends UploadDownloadBM {
 
 	Empresa em;
 	Contrato anexo = new Contrato();
-	boolean mostrar = false;
+	boolean show = false;
 	private StreamedContent sc;
 
 	List<Contrato> listC = new ArrayList<Contrato>();
@@ -69,13 +69,21 @@ public class ContratoMB extends UploadDownloadBM {
 		}
 	}
 
+	public void mostrar() {
+		if (show == false) {
+			show = true;
+		} else {
+			show = false;
+		}
+	}
+
 	public StreamedContent download(String ll) {
 		return sc = super.download(anexo.getArquivo());
 	}
 
 	public void atualizar() {
 		listC = cDAO.listarContratoIdEmp(em.getId());
-		mostrar = false;
+		show = false;
 	}
 
 	public Empresa getEm() {
@@ -159,12 +167,20 @@ public class ContratoMB extends UploadDownloadBM {
 		this.exec = exec;
 	}
 
-	public boolean isMostrar() {
-		return mostrar;
+	public boolean isShow() {
+		return show;
 	}
 
-	public void setMostrar(boolean mostrar) {
-		this.mostrar = mostrar;
+	public void setShow(boolean show) {
+		this.show = show;
+	}
+
+	public ContasDAO getCcDAO() {
+		return ccDAO;
+	}
+
+	public void setCcDAO(ContasDAO ccDAO) {
+		this.ccDAO = ccDAO;
 	}
 
 }

@@ -119,3 +119,6 @@ CREATE TABLE UsuarioContaSC(
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_conta_sc) REFERENCES ContaSemContrato(id)
 );
+
+INSERT INTO Usuario (nome, login, senha, ativo)
+VALUES  ("Tarciso", "tjbandeira", "123", 1);
