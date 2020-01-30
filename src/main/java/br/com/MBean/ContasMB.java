@@ -16,15 +16,15 @@ public class ContasMB {
 
 	Contrato c;
 	Conta cc = new Conta();
-	
+
 	ContasDAO ccDAO = new ContasDAO();
-	
+
 	List<Conta> listCC = new ArrayList<Conta>();
 
 	public void atualizar() {
 		listCC = ccDAO.listConta(c);
 	}
-	
+
 	public Contrato getC() {
 		return c;
 	}
@@ -40,6 +40,22 @@ public class ContasMB {
 
 	public void setCc(Conta cc) {
 		this.cc = cc;
+	}
+
+	public ContasDAO getCcDAO() {
+		return ccDAO;
+	}
+
+	public void setCcDAO(ContasDAO ccDAO) {
+		this.ccDAO = ccDAO;
+	}
+
+	public List<Conta> getListCC() {
+		return listCC;
+	}
+
+	public void setListCC(List<Conta> listCC) {
+		this.listCC = listCC;
 	}
 
 }

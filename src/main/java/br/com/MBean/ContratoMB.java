@@ -49,7 +49,8 @@ public class ContratoMB extends UploadDownloadBM {
 
 		if (cDAO.insert(c, em.getId())) {
 			System.out.println("deu Contrato");
-			
+			c.setId_empresa(em.getId());
+			c = cDAO.listarContratoComId(c);
 			if (ccDAO.insertConta(c)) {
 				System.out.println("deu Conta");
 			} else {

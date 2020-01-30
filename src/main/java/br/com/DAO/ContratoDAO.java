@@ -116,8 +116,8 @@ public class ContratoDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, file.toString());
 			ps.setInt(2, c.getId());
-			
-			if(ps.executeUpdate() == 1) {
+
+			if (ps.executeUpdate() == 1) {
 				return true;
 			}
 		} catch (SQLException e) {
@@ -127,4 +127,36 @@ public class ContratoDAO {
 		return false;
 	}
 
+	public Contrato listarContratoComId(Contrato contrato) {
+		String sql = " SELECT * FROM Contrato WHERE id_empresa = ? and nome = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, contrato.getId_empresa());
+			ps.setString(2, contrato.getNome());
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				Contrato c = new Contrato();
+				c.setId(rs.getInt("id"));
+				c.setId_empresa(rs.getInt("id_empresa"));
+				c.setNome(rs.getString("nome"));
+				c.setDescricao(rs.getString("descricao"));
+				c.setInicio_c(rs.getString("inicio_c"));
+				c.setFim_c(rs.getString("fim_c"));
+				c.setDia_emissao_conta(rs.getString("dia_emissao_conta"));
+				c.setDia_vencimento_conta(rs.getString("dia_vencimento_conta"));
+				c.setValor_mensal(rs.getString("valor_mensal"));
+				c.setArquivo(rs.getString("arquivo"));
+				c.setAtivo(rs.getInt("ativo"));
+
+				return c;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }
