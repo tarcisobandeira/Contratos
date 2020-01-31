@@ -27,6 +27,7 @@ CREATE TABLE Conta(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_contrato INT,
 	valor_pago VARCHAR(15),
+    dia_criado VARCHAR(50),
 	dia_emitido VARCHAR(50),
 	dia_pagamento VARCHAR(50),
 	status_conta INT,

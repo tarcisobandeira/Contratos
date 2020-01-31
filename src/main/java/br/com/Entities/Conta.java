@@ -4,6 +4,7 @@ public class Conta {
 	private Integer id;
 	private Integer id_contrato;
 	private String valor_pago;
+	private String dia_criado;
 	private String dia_emitido;
 	private String dia_pagamento;
 	private Integer status_conta;
@@ -12,12 +13,13 @@ public class Conta {
 	private Integer ativo;
 	private Contrato contrato;
 
-	public Conta(Integer id, Integer id_contrato, String valor_pago, String dia_emitido, String dia_pagamento,
-			Integer status_conta, String nota_fiscal, String obs, Integer ativo) {
+	public Conta(Integer id, Integer id_contrato, String valor_pago, String dia_criado, String dia_emitido,
+			String dia_pagamento, Integer status_conta, String nota_fiscal, String obs, Integer ativo) {
 		super();
 		this.id = id;
 		this.id_contrato = id_contrato;
 		this.valor_pago = valor_pago;
+		this.dia_criado = dia_criado;
 		this.dia_emitido = dia_emitido;
 		this.dia_pagamento = dia_pagamento;
 		this.status_conta = status_conta;
@@ -108,6 +110,14 @@ public class Conta {
 
 	public void setContrato(Contrato contrato) {
 		this.contrato = contrato;
+	}
+
+	public String getDia_criado() {
+		return dia_criado;
+	}
+
+	public void setDia_criado(String dia_criado) {
+		this.dia_criado = dia_criado;
 	}
 
 }

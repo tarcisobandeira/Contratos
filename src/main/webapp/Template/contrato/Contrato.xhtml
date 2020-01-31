@@ -17,14 +17,14 @@
 						<h:outputText value="#{c.nome}" />
 						<br />
 						<b:buttonGroup>
-							<b:commandButton value="Contas" look="primary"
-								action="#{templateMB.setOpt(10)}">
-								<f:setPropertyActionListener value="#{c}" target="#{contasMB.c}" />
-							</b:commandButton>
 							<b:commandButton actionListener="#{contratoMB.mostrar}"
 								look="primary" value="Anexo">
 								<f:setPropertyActionListener value="#{c}"
 									target="#{contratoMB.anexo}" />
+							</b:commandButton>
+							<b:commandButton value="Contas" look="primary"
+								action="#{templateMB.setOpt(10)}">
+								<f:setPropertyActionListener value="#{c}" target="#{contasMB.c}" />
 							</b:commandButton>
 						</b:buttonGroup>
 					</h:panelGrid>

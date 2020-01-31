@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -51,7 +52,9 @@ public class ContratoMB extends UploadDownloadBM {
 			System.out.println("deu Contrato");
 			c.setId_empresa(em.getId());
 			c = cDAO.listarContratoComId(c);
-			if (ccDAO.insertConta(c)) {
+			GregorianCalendar d = new GregorianCalendar();
+			String data = sdf.format(d.getTime());
+			if (ccDAO.insertConta(c, data)) {
 				System.out.println("deu Conta");
 			} else {
 				System.out.println("ndeu Conta");
