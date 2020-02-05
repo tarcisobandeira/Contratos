@@ -59,6 +59,7 @@ public class ContasDAO {
 				cc.setId(rs.getInt("id"));
 				cc.setId_contrato(rs.getInt("id_contrato"));
 				cc.setValor_pago(rs.getString("valor_pago"));
+				cc.setDia_criado(rs.getString("dia_criado"));
 				cc.setDia_emitido(rs.getString("dia_emitido"));
 				cc.setDia_pagamento(rs.getString("dia_pagamento"));
 				cc.setStatus_conta(rs.getInt("status_conta"));
