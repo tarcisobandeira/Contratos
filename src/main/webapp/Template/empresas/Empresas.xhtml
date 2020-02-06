@@ -19,15 +19,19 @@
 						<h:outputText value="#{e.nome}" />
 						<br />
 						<b:buttonGroup>
-							<b:commandButton value="Contatos" look="primary"
-								actionListener="#{empresaMB.setMostrar(true)}">
-								<f:setPropertyActionListener value="#{e}"
-									target="#{empresaMB.empresa}" />
+							<b:commandButton value="Contas" look="primary"
+								action="#{templateMB.setOpt(10)}">
+
 							</b:commandButton>
 							<b:commandButton value="Contratos" look="primary"
 								action="#{templateMB.setOpt(4)}">
 								<f:setPropertyActionListener value="#{e}"
 									target="#{contratoMB.em}" />
+							</b:commandButton>
+							<b:commandButton value="Contatos" look="primary"
+								actionListener="#{empresaMB.setMostrar(true)}">
+								<f:setPropertyActionListener value="#{e}"
+									target="#{empresaMB.empresa}" />
 							</b:commandButton>
 						</b:buttonGroup>
 					</h:panelGrid>
