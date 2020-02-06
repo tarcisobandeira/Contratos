@@ -14,8 +14,8 @@ CREATE TABLE Contrato(
     id_empresa INT,
 	nome VARCHAR(50),
 	descricao VARCHAR(500),
-	inicio_c VARCHAR(50),
-	fim_c VARCHAR(50),
+	inicio VARCHAR(50),
+	fim VARCHAR(50),
     arquivo VARCHAR(100),
     ativo INT,
     FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
@@ -30,10 +30,16 @@ CREATE TABLE Conta(
     dia_emissao VARCHAR(50),
     dia_vencimento VARCHAR(50),
     valor VARCHAR(50),
-	arquivo VARCHAR(100),
 	obs VARCHAR(500),
     ativo INT,
 	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
+);
+
+CREATE TABLE AnexoConta(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_conta INT,
+    arquivo VARCHAR(100),
+    FOREIGN KEY (id_conta) REFERENCES Conta(id)
 );
 
 CREATE TABLE Usuario(
@@ -75,7 +81,7 @@ CREATE TABLE Financeiro(
 	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
-CREATE TABLE linkEmpresaFixaUsuario(
+CREATE TABLE linkEmpresaUsuario(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_empresa INT,
     id_usuario INT,

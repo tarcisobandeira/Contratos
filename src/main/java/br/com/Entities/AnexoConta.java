@@ -1,19 +1,16 @@
 package br.com.Entities;
 
 public class AnexoConta {
-
 	private Integer id;
 	private Integer id_conta;
 	private String arquivo;
-	private String formato;
 	private Conta conta;
 
-	public AnexoConta(Integer id, Integer id_conta, String arquivo, String formato) {
+	public AnexoConta(Integer id, Integer id_conta, String arquivo) {
 		super();
 		this.id = id;
 		this.id_conta = id_conta;
 		this.arquivo = arquivo;
-		this.formato = formato;
 	}
 
 	public AnexoConta() {
@@ -42,14 +39,6 @@ public class AnexoConta {
 
 	public void setArquivo(String arquivo) {
 		this.arquivo = arquivo;
-	}
-
-	public String getFormato() {
-		return formato;
-	}
-
-	public void setFormato(String formato) {
-		this.formato = formato;
 	}
 
 	public Conta getConta() {

@@ -1,21 +1,20 @@
 package br.com.Entities;
 
-public class UsuarioContaSC {
-
+public class linkEmpresaUsuario {
 	private Integer id;
+	private Integer id_empresa;
 	private Integer id_usuario;
-	private Integer id_conta_sc;
+	private Empresa empresa;
 	private Usuario usuario;
-	private ContaSemContrato contaSemContrato;
 
-	public UsuarioContaSC(Integer id, Integer id_usuario, Integer id_conta_sc) {
+	public linkEmpresaUsuario(Integer id, Integer id_empresa, Integer id_usuario) {
 		super();
 		this.id = id;
+		this.id_empresa = id_empresa;
 		this.id_usuario = id_usuario;
-		this.id_conta_sc = id_conta_sc;
 	}
 
-	public UsuarioContaSC() {
+	public linkEmpresaUsuario() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,6 +26,14 @@ public class UsuarioContaSC {
 		this.id = id;
 	}
 
+	public Integer getId_empresa() {
+		return id_empresa;
+	}
+
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
+	}
+
 	public Integer getId_usuario() {
 		return id_usuario;
 	}
@@ -35,12 +42,12 @@ public class UsuarioContaSC {
 		this.id_usuario = id_usuario;
 	}
 
-	public Integer getId_conta_sc() {
-		return id_conta_sc;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setId_conta_sc(Integer id_conta_sc) {
-		this.id_conta_sc = id_conta_sc;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public Usuario getUsuario() {
@@ -49,14 +56,6 @@ public class UsuarioContaSC {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public ContaSemContrato getContaSemContrato() {
-		return contaSemContrato;
-	}
-
-	public void setContaSemContrato(ContaSemContrato contaSemContrato) {
-		this.contaSemContrato = contaSemContrato;
 	}
 
 }

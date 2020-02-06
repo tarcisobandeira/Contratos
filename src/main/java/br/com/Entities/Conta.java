@@ -2,30 +2,30 @@ package br.com.Entities;
 
 public class Conta {
 	private Integer id;
-	private Integer id_contrato;
-	private String valor_pago;
-	private String dia_criado;
-	private String dia_emitido;
-	private String dia_pagamento;
-	private Integer status_conta;
-	private String nota_fiscal;
+	private Integer id_emprego;
+	private Integer contador;
+	private String nome;
+	private String mes_ano;
+	private String dia_emissao;
+	private String dia_vencimento;
+	private String valor;
 	private String obs;
 	private Integer ativo;
-	private Contrato contrato;
+	private Empresa empresa;
 
-	public Conta(Integer id, Integer id_contrato, String valor_pago, String dia_criado, String dia_emitido,
-			String dia_pagamento, Integer status_conta, String nota_fiscal, String obs, Integer ativo) {
+	public Conta(Integer id, Integer id_emprego, Integer contador, String nome, String mes_ano, String dia_emissao,
+			String dia_vencimento, String valor, String obs, Integer ativo) {
 		super();
 		this.id = id;
-		this.id_contrato = id_contrato;
-		this.valor_pago = valor_pago;
-		this.dia_criado = dia_criado;
-		this.dia_emitido = dia_emitido;
-		this.dia_pagamento = dia_pagamento;
-		this.status_conta = status_conta;
-		this.nota_fiscal = nota_fiscal;
-		this.ativo = ativo;
+		this.id_emprego = id_emprego;
+		this.contador = contador;
+		this.nome = nome;
+		this.mes_ano = mes_ano;
+		this.dia_emissao = dia_emissao;
+		this.dia_vencimento = dia_vencimento;
+		this.valor = valor;
 		this.obs = obs;
+		this.ativo = ativo;
 	}
 
 	public Conta() {
@@ -40,52 +40,60 @@ public class Conta {
 		this.id = id;
 	}
 
-	public Integer getId_contrato() {
-		return id_contrato;
+	public Integer getId_emprego() {
+		return id_emprego;
 	}
 
-	public void setId_contrato(Integer id_contrato) {
-		this.id_contrato = id_contrato;
+	public void setId_emprego(Integer id_emprego) {
+		this.id_emprego = id_emprego;
 	}
 
-	public String getValor_pago() {
-		return valor_pago;
+	public Integer getContador() {
+		return contador;
 	}
 
-	public void setValor_pago(String valor_pago) {
-		this.valor_pago = valor_pago;
+	public void setContador(Integer contador) {
+		this.contador = contador;
 	}
 
-	public String getDia_emitido() {
-		return dia_emitido;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDia_emitido(String dia_emitido) {
-		this.dia_emitido = dia_emitido;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getDia_pagamento() {
-		return dia_pagamento;
+	public String getMes_ano() {
+		return mes_ano;
 	}
 
-	public void setDia_pagamento(String dia_pagamento) {
-		this.dia_pagamento = dia_pagamento;
+	public void setMes_ano(String mes_ano) {
+		this.mes_ano = mes_ano;
 	}
 
-	public Integer getStatus_conta() {
-		return status_conta;
+	public String getDia_emissao() {
+		return dia_emissao;
 	}
 
-	public void setStatus_conta(Integer status_conta) {
-		this.status_conta = status_conta;
+	public void setDia_emissao(String dia_emissao) {
+		this.dia_emissao = dia_emissao;
 	}
 
-	public String getNota_fiscal() {
-		return nota_fiscal;
+	public String getDia_vencimento() {
+		return dia_vencimento;
 	}
 
-	public void setNota_fiscal(String nota_fiscal) {
-		this.nota_fiscal = nota_fiscal;
+	public void setDia_vencimento(String dia_vencimento) {
+		this.dia_vencimento = dia_vencimento;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 	public String getObs() {
@@ -104,20 +112,12 @@ public class Conta {
 		this.ativo = ativo;
 	}
 
-	public Contrato getContrato() {
-		return contrato;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setContrato(Contrato contrato) {
-		this.contrato = contrato;
-	}
-
-	public String getDia_criado() {
-		return dia_criado;
-	}
-
-	public void setDia_criado(String dia_criado) {
-		this.dia_criado = dia_criado;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

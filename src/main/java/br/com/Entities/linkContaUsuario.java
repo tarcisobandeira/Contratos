@@ -1,21 +1,20 @@
 package br.com.Entities;
 
-public class UsuarioConta {
-
+public class linkContaUsuario {
 	private Integer id;
-	private Integer id_usuario;
 	private Integer id_conta;
-	private Usuario usuario;
+	private Integer id_usuario;
 	private Conta conta;
+	private Usuario usuario;
 
-	public UsuarioConta(Integer id, Integer id_usuario, Integer id_conta) {
+	public linkContaUsuario(Integer id, Integer id_conta, Integer id_usuario) {
 		super();
 		this.id = id;
 		this.id_conta = id_conta;
 		this.id_usuario = id_usuario;
 	}
 
-	public UsuarioConta() {
+	public linkContaUsuario() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,14 +26,6 @@ public class UsuarioConta {
 		this.id = id;
 	}
 
-	public Integer getId_usuario() {
-		return id_usuario;
-	}
-
-	public void setId_usuario(Integer id_usuario) {
-		this.id_usuario = id_usuario;
-	}
-
 	public Integer getId_conta() {
 		return id_conta;
 	}
@@ -43,12 +34,12 @@ public class UsuarioConta {
 		this.id_conta = id_conta;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setId_usuario(Integer id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public Conta getConta() {
@@ -57,6 +48,14 @@ public class UsuarioConta {
 
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
