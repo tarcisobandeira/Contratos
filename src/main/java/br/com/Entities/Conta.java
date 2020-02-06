@@ -10,11 +10,12 @@ public class Conta {
 	private String dia_vencimento;
 	private String valor;
 	private String obs;
+	private Integer status_conta;
 	private Integer ativo;
 	private Empresa empresa;
 
 	public Conta(Integer id, Integer id_emprego, Integer contador, String nome, String mes_ano, String dia_emissao,
-			String dia_vencimento, String valor, String obs, Integer ativo) {
+			String dia_vencimento, String valor, Integer status_conta, String obs, Integer ativo) {
 		super();
 		this.id = id;
 		this.id_emprego = id_emprego;
@@ -24,6 +25,7 @@ public class Conta {
 		this.dia_emissao = dia_emissao;
 		this.dia_vencimento = dia_vencimento;
 		this.valor = valor;
+		this.status_conta = status_conta;
 		this.obs = obs;
 		this.ativo = ativo;
 	}
@@ -118,6 +120,14 @@ public class Conta {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	public Integer getStatus_conta() {
+		return status_conta;
+	}
+
+	public void setStatus_conta(Integer status_conta) {
+		this.status_conta = status_conta;
 	}
 
 }

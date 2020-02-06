@@ -20,7 +20,7 @@ public class ContasDAO {
 	}
 
 	public boolean insertConta(Contrato c, String d) {
-		String sql = " INSERT INTO Conta (id_contrato, valor_pago, dia_criado, dia_emitido, dia_pagamento, status_conta, nota_fiscal, obs, ativo) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = " INSERT INTO Conta (id_empresa, contador, nome, mes_ano, dia_emissao, dia_vencimento, valor, obs, ativo) VALUES (?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

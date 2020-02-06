@@ -31,6 +31,7 @@ CREATE TABLE Conta(
     dia_vencimento VARCHAR(50),
     valor VARCHAR(50),
 	obs VARCHAR(500),
+    status_conta INT,
     ativo INT,
 	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
