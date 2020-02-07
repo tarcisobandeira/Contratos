@@ -18,13 +18,14 @@ public class EmpresaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean insert(String nome) {
-		String sql = " INSERT INTO Empresa (nome, ativo) VALUES (?,?) ";
+	public boolean insert(Empresa em) {
+		String sql = " INSERT INTO Empresa (nome, tipo, ativo) VALUES (?,?,?) ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, nome);
-			ps.setInt(2, 1);
+			ps.setString(1, em.getNome());
+			ps.setInt(2, em.getTipo());
+			ps.setInt(3, 1);
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -49,6 +50,7 @@ public class EmpresaDAO {
 				Empresa em = new Empresa();
 				em.setId(rs.getInt("id"));
 				em.setNome(rs.getString("nome"));
+				em.setTipo(rs.getInt("tipo"));
 				em.setAtivo(rs.getInt("ativo"));
 				list.add(em);
 			}
