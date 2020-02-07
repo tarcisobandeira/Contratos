@@ -43,7 +43,7 @@ public class EmpresaMB {
 	}
 
 	public void criarEmpresa() {
-		if (eDAO.insert(em.getNome())) {
+		if (eDAO.insert(em)) {
 			System.out.println("deu");
 			atualizar();
 		} else {

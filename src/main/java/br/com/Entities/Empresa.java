@@ -42,6 +42,14 @@ public class Empresa {
 		this.tipo = tipo;
 	}
 
+	public String getFormatTipo() {
+		if (tipo == 1) {
+			return "Fixo";
+		} else {
+			return "Ocasional";
+		}
+	}
+
 	public Integer getAtivo() {
 		return ativo;
 	}
