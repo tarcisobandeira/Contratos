@@ -21,7 +21,8 @@
 						<b:buttonGroup>
 							<b:commandButton value="Contas" look="primary"
 								action="#{templateMB.setOpt(10)}">
-
+								<f:setPropertyActionListener value="#{e}"
+									target="#{contasMB.em}" />
 							</b:commandButton>
 							<b:commandButton value="Contratos" look="primary"
 								action="#{templateMB.setOpt(4)}">

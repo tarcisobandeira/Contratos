@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formC">
+		<b:container fluid="true" styleClass="col-md-8" style="float: none">
+			<b:panel title="Novo Contrato" collapsible="false" look="primary">
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.c.nome}" label="Nome:" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{contratoMB.c.descricao}" label="Descrição:" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Inicio do Contrato:" value="#{contratoMB.inicio}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Fim do Contrato:" value="#{contratoMB.fim}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column offset="4" col-xs="12" col-md="2">
+						<b:commandButton value="Salvar" look="primary" style="width:100%"
+							actionListener="#{contratoMB.criarContrato}" />
+					</b:column>
+					<b:column col-xs="12" col-md="2">
+						<b:commandButton value="Voltar" look="primary"
+							actionListener="#{empresaMB.atualizar}" style="width:100%"
+							action="#{templateMB.setOpt(4)}" ajax="true"
+							update=":formTemplate" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+
+</ui:composition>

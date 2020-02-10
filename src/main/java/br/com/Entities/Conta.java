@@ -2,7 +2,7 @@ package br.com.Entities;
 
 public class Conta {
 	private Integer id;
-	private Integer id_emprego;
+	private Integer id_empresa;
 	private Integer contador;
 	private String nome;
 	private String mes_ano;
@@ -14,11 +14,11 @@ public class Conta {
 	private Integer ativo;
 	private Empresa empresa;
 
-	public Conta(Integer id, Integer id_emprego, Integer contador, String nome, String mes_ano, String dia_emissao,
+	public Conta(Integer id, Integer id_empresa, Integer contador, String nome, String mes_ano, String dia_emissao,
 			String dia_vencimento, String valor, Integer status_conta, String obs, Integer ativo) {
 		super();
 		this.id = id;
-		this.id_emprego = id_emprego;
+		this.id_empresa = id_empresa;
 		this.contador = contador;
 		this.nome = nome;
 		this.mes_ano = mes_ano;
@@ -40,14 +40,6 @@ public class Conta {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getId_emprego() {
-		return id_emprego;
-	}
-
-	public void setId_emprego(Integer id_emprego) {
-		this.id_emprego = id_emprego;
 	}
 
 	public Integer getContador() {
@@ -128,6 +120,14 @@ public class Conta {
 
 	public void setStatus_conta(Integer status_conta) {
 		this.status_conta = status_conta;
+	}
+
+	public Integer getId_empresa() {
+		return id_empresa;
+	}
+
+	public void setId_empresa(Integer id_empresa) {
+		this.id_empresa = id_empresa;
 	}
 
 }

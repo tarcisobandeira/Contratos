@@ -6,12 +6,14 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formContas">
-
+		<b:commandButton look="primary" value="Nova Conta"
+			action="#{templateMB.setOpt(11)}" ajax="true" update=":formTemplate" />
+			
 		<p:dataView value="#{contasMB.listCC}" var="cc" id="gridContas"
 			layout="grid">
 			<p:dataViewGridItem>
 				<p:panel header="Conta: #{cc.id}º">
-					<h:outputText value="Dia criado: #{cc.dia_criado}"/>
+					<h:outputText value="Dia criado: #{cc.dia_criado}" />
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>

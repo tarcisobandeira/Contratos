@@ -8,13 +8,13 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.ContasDAO;
 import br.com.Entities.Conta;
-import br.com.Entities.Contrato;
+import br.com.Entities.Empresa;
 
 @ManagedBean
 @ViewScoped
 public class ContasMB {
 
-	Contrato c;
+	Empresa em;
 	Conta cc = new Conta();
 
 	ContasDAO ccDAO = new ContasDAO();
@@ -22,16 +22,15 @@ public class ContasMB {
 	List<Conta> listCC = new ArrayList<Conta>();
 
 	public void atualizar() {
-		listCC = ccDAO.listConta(c);
+		listCC = ccDAO.listConta(em);
 	}
 
-	public Contrato getC() {
-		return c;
+	public Empresa getEm() {
+		return em;
 	}
 
-	public void setC(Contrato c) {
-		this.c = c;
-		atualizar();
+	public void setEm(Empresa em) {
+		this.em = em;
 	}
 
 	public Conta getCc() {

@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.Entities.Conta;
 import br.com.Entities.Contrato;
+import br.com.Entities.Empresa;
 import br.com.jdbc.ConnectionDB;
 
 public class ContasDAO {
@@ -45,26 +46,27 @@ public class ContasDAO {
 		return false;
 	}
 
-	public List<Conta> listConta(Contrato c) {
+	public List<Conta> listConta(Empresa em) {
 		List<Conta> list = new ArrayList<Conta>();
 		String sql = " SELECT * FROM Conta WHERE id_contrato = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, c.getId());
+			ps.setInt(1, em.getId());
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Conta cc = new Conta();
 				cc.setId(rs.getInt("id"));
-				cc.setId_contrato(rs.getInt("id_contrato"));
-				cc.setValor_pago(rs.getString("valor_pago"));
-				cc.setDia_criado(rs.getString("dia_criado"));
-				cc.setDia_emitido(rs.getString("dia_emitido"));
-				cc.setDia_pagamento(rs.getString("dia_pagamento"));
-				cc.setStatus_conta(rs.getInt("status_conta"));
-				cc.setNota_fiscal(rs.getString("nota_fiscal"));
+				cc.setId_empresa(rs.getInt("id_empresa"));
+				cc.setContador(rs.getInt("contador"));
+				cc.setNome(rs.getString("nome"));
+				cc.setMes_ano(rs.getString("mes_ano"));
+				cc.setDia_emissao(rs.getString("dia_emissao"));
+				cc.setDia_vencimento(rs.getString("dia_vencimento"));
+				cc.setValor(rs.getString("valor"));
 				cc.setObs(rs.getString("obs"));
+				cc.setStatus_conta(rs.getInt("status_conta"));
 				cc.setAtivo(rs.getInt("ativo"));
 
 				list.add(cc);
@@ -75,6 +77,11 @@ public class ContasDAO {
 		}
 
 		return list;
+	}
+	
+	public int contador() {
+		int i = 
+		return i++;
 	}
 
 }
