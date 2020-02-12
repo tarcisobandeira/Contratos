@@ -20,20 +20,16 @@ public class ContasDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean insertConta(Contrato c, String d) {
-		String sql = " INSERT INTO Conta (id_empresa, contador, nome, mes_ano, dia_emissao, dia_vencimento, valor, obs, ativo) VALUES (?,?,?,?,?,?,?,?,?)";
+	public boolean insertConta(Conta c) {
+		String sql = " INSERT INTO Conta (id_empresa, nome, dia_emissao, dia_vencimento, ativo) VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, c.getId());
-			ps.setString(2, null);
-			ps.setString(3, d);
-			ps.setString(4, null);
-			ps.setString(5, null);
-			ps.setInt(6, 1);
-			ps.setString(7, null);
-			ps.setString(8, null);
-			ps.setInt(9, 1);
+			ps.setInt(1, c.getId_empresa());
+			ps.setString(2, c.getNome());
+			ps.setString(3, c.getDia_emissao());
+			ps.setString(4, c.getDia_vencimento());
+			ps.setInt(5, 1);
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -48,7 +44,7 @@ public class ContasDAO {
 
 	public List<Conta> listConta(Empresa em) {
 		List<Conta> list = new ArrayList<Conta>();
-		String sql = " SELECT * FROM Conta WHERE id_contrato = ? ";
+		String sql = " SELECT * FROM Conta WHERE id_empresa = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -59,14 +55,9 @@ public class ContasDAO {
 				Conta cc = new Conta();
 				cc.setId(rs.getInt("id"));
 				cc.setId_empresa(rs.getInt("id_empresa"));
-				cc.setContador(rs.getInt("contador"));
 				cc.setNome(rs.getString("nome"));
-				cc.setMes_ano(rs.getString("mes_ano"));
 				cc.setDia_emissao(rs.getString("dia_emissao"));
 				cc.setDia_vencimento(rs.getString("dia_vencimento"));
-				cc.setValor(rs.getString("valor"));
-				cc.setObs(rs.getString("obs"));
-				cc.setStatus_conta(rs.getInt("status_conta"));
 				cc.setAtivo(rs.getInt("ativo"));
 
 				list.add(cc);
@@ -78,7 +69,7 @@ public class ContasDAO {
 
 		return list;
 	}
-	
+
 	public int contador() {
 		int i = 
 		return i++;

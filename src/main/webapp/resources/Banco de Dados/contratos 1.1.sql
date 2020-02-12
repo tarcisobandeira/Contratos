@@ -22,18 +22,24 @@ CREATE TABLE Contrato(
 );
 
 CREATE TABLE Conta(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_empresa INT,
-    contador INT,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_empresa INT,
     nome VARCHAR(50),
-    mes_ano VARCHAR(50),
     dia_emissao VARCHAR(50),
     dia_vencimento VARCHAR(50),
+    ativo INT,
+    FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
+);
+
+CREATE TABLE GerarConta(
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_gerarConta INT,
+    contador INT,
+    mes_ano VARCHAR(50),
     valor VARCHAR(50),
 	obs VARCHAR(500),
     status_conta INT,
-    ativo INT,
-	FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
+	FOREIGN KEY (id_gerarConta) REFERENCES GerarConta(id)
 );
 
 CREATE TABLE AnexoConta(
