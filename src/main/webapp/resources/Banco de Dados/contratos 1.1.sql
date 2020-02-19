@@ -2,6 +2,11 @@ CREATE DATABASE Contratos;
 
 USE Contratos;
 
+CREATE TABLE Status_conta(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    descricao VARCHAR(30)
+);
+
 CREATE TABLE Empresa(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50),
@@ -33,13 +38,15 @@ CREATE TABLE Conta(
 
 CREATE TABLE GerarConta(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_gerarConta INT,
+    id_conta INT,
     contador INT,
     mes_ano VARCHAR(50),
+    dia_pagamento  VARCHAR(50),
     valor VARCHAR(50),
 	obs VARCHAR(500),
-    status_conta INT,
-	FOREIGN KEY (id_gerarConta) REFERENCES GerarConta(id)
+    id_status_conta INT,
+	FOREIGN KEY (id_conta) REFERENCES Conta(id),
+    FOREIGN KEY (id_status_conta) REFERENCES Status_conta(id)
 );
 
 CREATE TABLE AnexoConta(
@@ -114,3 +121,10 @@ CREATE TABLE linkContaUsuario(
 
 INSERT INTO Usuario (nome, login, senha, ativo)
 VALUES  ("Tarciso", "tjbandeira", "123", 1);
+
+INSERT INTO Status_conta (id, descricao)
+VALUES  (1, "Aberto"),
+        (2, "Proximo do fechamento"),
+        (3, "Fechado"),
+        (4, "Atrasado"),
+        (5, "Fechado com juros");

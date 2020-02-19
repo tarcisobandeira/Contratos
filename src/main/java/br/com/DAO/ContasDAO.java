@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.Entities.Conta;
-import br.com.Entities.Contrato;
 import br.com.Entities.Empresa;
 import br.com.jdbc.ConnectionDB;
 
@@ -20,15 +19,15 @@ public class ContasDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean insertConta(Conta c) {
+	public boolean insertConta(Conta cc) {
 		String sql = " INSERT INTO Conta (id_empresa, nome, dia_emissao, dia_vencimento, ativo) VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, c.getId_empresa());
-			ps.setString(2, c.getNome());
-			ps.setString(3, c.getDia_emissao());
-			ps.setString(4, c.getDia_vencimento());
+			ps.setInt(1, cc.getId_empresa());
+			ps.setString(2, cc.getNome());
+			ps.setString(3, cc.getDia_emissao());
+			ps.setString(4, cc.getDia_vencimento());
 			ps.setInt(5, 1);
 
 			if (ps.executeUpdate() == 1) {
@@ -68,11 +67,6 @@ public class ContasDAO {
 		}
 
 		return list;
-	}
-
-	public int contador() {
-		int i = 
-		return i++;
 	}
 
 }

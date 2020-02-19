@@ -10,26 +10,26 @@
 			<b:panel title="Novo Contrato" collapsible="false" look="primary">
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText value="#{contratoMB.c.nome}" label="Nome:" />
+						<b:inputText value="#{contasMB.cc.nome}" label="Nome:" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText value="#{contratoMB.c.descricao}" label="Descrição:" />
+						<b:inputText value="#{contasMB.em.nome}" disabled="true" label="Empresa:" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
-							label="Inicio do Contrato:" value="#{contratoMB.inicio}" />
+						<b:dateTimePicker mode="popup" format="DD"
+							label="Emissão da conta:" value="#{contasMB.emissao}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
-							label="Fim do Contrato:" value="#{contratoMB.fim}" />
+						<b:dateTimePicker mode="popup" format="DD"
+							label="Vencimento da conta:" value="#{contasMB.vencimento}" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{contratoMB.criarContrato}" />
+							actionListener="#{contasMB.criarConta}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">
 						<b:commandButton value="Voltar" look="primary"

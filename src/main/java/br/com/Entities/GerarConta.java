@@ -2,24 +2,27 @@ package br.com.Entities;
 
 public class GerarConta {
 	private Integer id;
-	private Integer id_gerarConta;
+	private Integer id_conta;
 	private Integer contador;
 	private String mes_ano;
+	private String dia_pagamento;
 	private String valor;
 	private String obs;
-	private Integer status_conta;
+	private Integer id_status_conta;
 	private Conta conta;
+	private Status_conta status_conta;
 
-	public GerarConta(Integer id, Integer id_gerarConta, Integer contador, String mes_ano, String valor,
-			Integer status_conta, String obs) {
+	public GerarConta(Integer id, Integer id_conta, Integer contador, String mes_ano, String dia_pagamento,
+			String valor, Integer id_status_conta, String obs) {
 		super();
 		this.id = id;
-		this.id_gerarConta = id_gerarConta;
+		this.id_conta = id_conta;
 		this.contador = contador;
 		this.mes_ano = mes_ano;
+		this.dia_pagamento = dia_pagamento;
 		this.valor = valor;
 		this.obs = obs;
-		this.status_conta = status_conta;
+		this.id_status_conta = id_status_conta;
 	}
 
 	public GerarConta() {
@@ -34,12 +37,12 @@ public class GerarConta {
 		this.id = id;
 	}
 
-	public Integer getId_gerarConta() {
-		return id_gerarConta;
+	public Integer getId_conta() {
+		return id_conta;
 	}
 
-	public void setId_gerarConta(Integer id_gerarConta) {
-		this.id_gerarConta = id_gerarConta;
+	public void setId_conta(Integer id_conta) {
+		this.id_conta = id_conta;
 	}
 
 	public Integer getContador() {
@@ -58,6 +61,14 @@ public class GerarConta {
 		this.mes_ano = mes_ano;
 	}
 
+	public String getDia_pagamento() {
+		return dia_pagamento;
+	}
+
+	public void setDia_pagamento(String dia_pagamento) {
+		this.dia_pagamento = dia_pagamento;
+	}
+
 	public String getValor() {
 		return valor;
 	}
@@ -74,12 +85,12 @@ public class GerarConta {
 		this.obs = obs;
 	}
 
-	public Integer getStatus_conta() {
-		return status_conta;
+	public Integer getId_status_conta() {
+		return id_status_conta;
 	}
 
-	public void setStatus_conta(Integer status_conta) {
-		this.status_conta = status_conta;
+	public void setId_status_conta(Integer id_status_conta) {
+		this.id_status_conta = id_status_conta;
 	}
 
 	public Conta getConta() {
@@ -88,6 +99,14 @@ public class GerarConta {
 
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+
+	public Status_conta getStatus_conta() {
+		return status_conta;
+	}
+
+	public void setStatus_conta(Status_conta status_conta) {
+		this.status_conta = status_conta;
 	}
 
 }

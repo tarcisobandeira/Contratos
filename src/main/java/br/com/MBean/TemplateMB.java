@@ -32,6 +32,8 @@ public class TemplateMB {
 			return "/Template/contas/Contas.xhtml";
 		} else if (opt == 11) {
 			return "/Template/contas/criarConta.xhtml";
+		} else if (opt == 12) {
+			return "/Template/contas/GerarContas.xhtml";
 		}
 		return null;
 	}

@@ -5,20 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formContas">
-		<b:commandButton look="primary" value="Nova Conta"
-			action="#{templateMB.setOpt(11)}" />
+	<h:form id="formGContas">
 
-		<p:dataView value="#{contasMB.listCC}" var="cc" id="gridContas"
-			layout="grid">
+		<p:dataView value="" var="" id="gridGContas" layout="grid">
 			<p:dataViewGridItem>
 				<p:panel header="Conta: #{cc.id}º">
 					<h:outputText value="Nome: #{cc.nome}" />
 					<br />
-					<b:commandButton value="Dependências" look="primary"
-						action="#{templateMB.setOpt(12)}">
-						<f:setPropertyActionListener value="#{cc}"
-							target="#{gerarContaMB.cc}" />
+					<b:commandButton value="Dependências" look="primary">
+						<f:setPropertyActionListener value="#{cc}" target="#{contasMB.em}" />
 					</b:commandButton>
 				</p:panel>
 			</p:dataViewGridItem>
