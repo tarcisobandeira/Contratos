@@ -28,6 +28,7 @@ public class GerarContaMB {
 
 	public void atualizar() {
 		criarGc();
+		listGc = gcDAO.listarTodos(cc.getId());
 	}
 
 	public void criarGc() {

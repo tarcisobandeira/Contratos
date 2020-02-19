@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.Entities.GerarConta;
+import br.com.Entities.Status_conta;
 import br.com.jdbc.ConnectionDB;
 
 public class GerarContaDAO {
@@ -42,7 +43,8 @@ public class GerarContaDAO {
 	}
 
 	public List<GerarConta> listarTodos(Integer i) {
-		String sql = " SELECT * FROM GerarConta WHERE id_conta = ? ";
+		String sql = " SELECT gc.*, s.descricao AS texto " + " FROM GerarConta gc " + " INNER JOIN Status_conta s "
+				+ " ON gc.id_status_conta = s.id " + " WHERE id_conta = ? ";
 		List<GerarConta> list = new ArrayList<GerarConta>();
 
 		try {
@@ -60,6 +62,7 @@ public class GerarContaDAO {
 				gc.setValor(rs.getString("valor"));
 				gc.setObs(rs.getString("obs"));
 				gc.setId_status_conta(rs.getInt("id_status_conta"));
+				gc.setStatus_conta(new Status_conta(rs.getInt("id_status_conta"), rs.getString("texto")));
 
 				list.add(gc);
 			}

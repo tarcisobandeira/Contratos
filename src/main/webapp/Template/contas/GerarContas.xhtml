@@ -7,10 +7,11 @@
 
 	<h:form id="formGContas">
 
-		<p:dataView value="" var="" id="gridGContas" layout="grid">
+		<p:dataView value="#{gerarContaMB.listGc}" var="gc" id="gridGContas"
+			layout="grid">
 			<p:dataViewGridItem>
-				<p:panel header="Conta: #{cc.id}º">
-					<h:outputText value="Nome: #{cc.nome}" />
+				<p:panel header="#{gc.mes_ano}">
+					<h:outputText value="Status: #{gc.status_conta.descricao}" />
 					<br />
 					<b:commandButton value="Dependências" look="primary">
 						<f:setPropertyActionListener value="#{cc}" target="#{contasMB.em}" />
