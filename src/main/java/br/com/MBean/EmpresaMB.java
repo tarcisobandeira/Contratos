@@ -19,6 +19,8 @@ import br.com.Entities.Telefone;
 public class EmpresaMB {
 
 	int debito;
+	
+	TemplateMB tMB = new TemplateMB();
 
 	Empresa em = new Empresa();
 	Empresa empresa;
@@ -46,6 +48,7 @@ public class EmpresaMB {
 		if (eDAO.insert(em)) {
 			System.out.println("deu");
 			atualizar();
+			tMB.setOpt(2);
 		} else {
 			System.out.println("nolp");
 		}
@@ -97,6 +100,14 @@ public class EmpresaMB {
 		mostrar = false;
 	}
 
+	public void zerar() {
+		em = new Empresa();
+		email = new Email();
+		t = new Telefone();
+		s = new Site();
+		f = new Financeiro();
+	}
+	
 	public void atualizarContato() {
 		listT = ctDAO.listarTelefone(empresa);
 		listEm = ctDAO.listarEmail(empresa);

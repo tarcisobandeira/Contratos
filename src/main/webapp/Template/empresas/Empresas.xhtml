@@ -10,8 +10,8 @@
 		<b:commandButton look="primary" value="Nova Empresa"
 			action="#{templateMB.setOpt(3)}" />
 
-		<p:dataView value="#{empresaMB.listE}" paginator="true" rows="6"
-			rowsPerPageTemplate="3,6,9" var="e" id="gridEmpresa" layout="grid"
+		<p:dataView value="#{empresaMB.listE}" var="e" id="gridEmpresa"
+			layout="grid" paginator="true" rows="6" rowsPerPageTemplate="3,6,9"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 			<p:dataViewGridItem>
 				<p:panel header="#{e.getFormatTipo()}" style="text-align:center">

@@ -10,9 +10,10 @@
 			action="#{templateMB.setOpt(11)}" />
 
 		<p:dataView value="#{contasMB.listCC}" var="cc" id="gridContas"
-			layout="grid">
+			layout="grid" paginator="true" rows="6" rowsPerPageTemplate="3,6,9"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">>
 			<p:dataViewGridItem>
-				<p:panel header="Conta: #{cc.id}º">
+				<p:panel header="Conta: #{cc.id}º" style="text-align:center">
 					<h:outputText value="Nome: #{cc.nome}" />
 					<br />
 					<b:commandButton value="Dependências" look="primary"
