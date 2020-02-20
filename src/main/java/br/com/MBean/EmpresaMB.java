@@ -19,7 +19,7 @@ import br.com.Entities.Telefone;
 public class EmpresaMB {
 
 	int debito;
-	
+
 	TemplateMB tMB = new TemplateMB();
 
 	Empresa em = new Empresa();
@@ -38,7 +38,7 @@ public class EmpresaMB {
 	List<Site> listS = new ArrayList<Site>();
 	List<Financeiro> listF = new ArrayList<Financeiro>();
 
-	boolean mostrar = false;
+	boolean show = false;
 
 	public EmpresaMB() {
 		atualizar();
@@ -59,6 +59,7 @@ public class EmpresaMB {
 		if (ctDAO.insertTelefone(t)) {
 			System.out.println("deu");
 			listT = ctDAO.listarTelefone(empresa);
+			zerar();
 		} else {
 			System.out.println("nolp");
 		}
@@ -69,6 +70,7 @@ public class EmpresaMB {
 		if (ctDAO.insertEmail(email)) {
 			System.out.println("deu");
 			listEm = ctDAO.listarEmail(empresa);
+			zerar();
 		} else {
 			System.out.println("nolp");
 		}
@@ -79,6 +81,7 @@ public class EmpresaMB {
 		if (ctDAO.insertSite(s)) {
 			System.out.println("deu");
 			listS = ctDAO.listarSite(empresa);
+			zerar();
 		} else {
 			System.out.println("nolp");
 		}
@@ -90,6 +93,7 @@ public class EmpresaMB {
 		if (ctDAO.insertFinanceiro(f)) {
 			System.out.println("deu");
 			listF = ctDAO.listarFinanceiro(empresa);
+			zerar();
 		} else {
 			System.out.println("nolp");
 		}
@@ -97,7 +101,15 @@ public class EmpresaMB {
 
 	public void atualizar() {
 		listE = eDAO.listarEmpresa();
-		mostrar = false;
+		zerar();
+	}
+
+	public void mostrar() {
+		if (show == false) {
+			show = true;
+		} else {
+			show = false;
+		}
 	}
 
 	public void zerar() {
@@ -107,7 +119,7 @@ public class EmpresaMB {
 		s = new Site();
 		f = new Financeiro();
 	}
-	
+
 	public void atualizarContato() {
 		listT = ctDAO.listarTelefone(empresa);
 		listEm = ctDAO.listarEmail(empresa);
@@ -172,14 +184,6 @@ public class EmpresaMB {
 		atualizarContato();
 	}
 
-	public boolean isMostrar() {
-		return mostrar;
-	}
-
-	public void setMostrar(boolean mostrar) {
-		this.mostrar = mostrar;
-	}
-
 	public List<Email> getListEm() {
 		return listEm;
 	}
@@ -234,6 +238,22 @@ public class EmpresaMB {
 
 	public void setDebito(int debito) {
 		this.debito = debito;
+	}
+
+	public TemplateMB gettMB() {
+		return tMB;
+	}
+
+	public void settMB(TemplateMB tMB) {
+		this.tMB = tMB;
+	}
+
+	public boolean isShow() {
+		return show;
+	}
+
+	public void setShow(boolean show) {
+		this.show = show;
 	}
 
 }

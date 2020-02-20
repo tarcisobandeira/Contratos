@@ -34,6 +34,7 @@ public class GerarContaMB {
 	public void criarGc() {
 		sdf = new SimpleDateFormat("MMM/yyyy");
 		gc.setId_conta(cc.getId());
+		calendar.add(Calendar.MONDAY, 1);
 		gc.setMes_ano(sdf.format(calendar.getTime()));
 		sdf= new SimpleDateFormat("dd");
 		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime()))) && (!gcDAO.existe(gc.getMes_ano()))) {

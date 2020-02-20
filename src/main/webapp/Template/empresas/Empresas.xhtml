@@ -25,12 +25,12 @@
 									target="#{contasMB.em}" />
 							</b:commandButton>
 							<b:commandButton value="Contratos" look="primary"
-								action="#{templateMB.setOpt(4)}">
+								action="#{templateMB.setOpt(4)}" rendered="#{e.tipo == 1}">
 								<f:setPropertyActionListener value="#{e}"
 									target="#{contratoMB.em}" />
 							</b:commandButton>
 							<b:commandButton value="Contatos" look="primary"
-								actionListener="#{empresaMB.setMostrar(true)}">
+								actionListener="#{empresaMB.mostrar}">
 								<f:setPropertyActionListener value="#{e}"
 									target="#{empresaMB.empresa}" />
 							</b:commandButton>
@@ -40,7 +40,7 @@
 			</p:dataViewGridItem>
 		</p:dataView>
 		<br />
-		<h:form id="formContato" rendered="#{empresaMB.mostrar==true}">
+		<h:form id="formContato" rendered="#{empresaMB.show == true}">
 			<b:tabView tabPosition="left">
 				<b:tab title="Telefone">
 					<p:dataView value="#{empresaMB.listT}" var="t" layout="grid">
