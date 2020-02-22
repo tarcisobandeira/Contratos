@@ -5,21 +5,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formContas">
-		<b:commandButton look="primary" value="Nova Conta"
-			action="#{templateMB.setOpt(11)}" />
-
-		<p:dataView value="#{contasMB.listCC}" var="cc" id="gridContas"
+	<h:form id="formHContas">
+		<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}" var="hc" id="gridContas"
 			layout="grid" paginator="true" rows="6" rowsPerPageTemplate="3,6,9"
-			paginatorPosition="bottom" styleClass="dataV"
+			paginatorPosition="bottom"
 			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}">
+
 			<p:dataViewGridItem>
-				<p:panel header="#{cc.nome}" styleClass="camposItens">
-					<b:commandButton value="Dependências" look="primary"
-						action="#{templateMB.setOpt(12)}">
-						<f:setPropertyActionListener value="#{cc}"
-							target="#{gerarContaMB.cc}" />
-					</b:commandButton>
+				<p:panel header="#{hc.conta.nome}" styleClass="camposItens">
+					<h:outputText value="#{hc.status_conta.descricao}" />
+					<br />
+					<h:outputText value="#{hc.mes_ano}" />
+					<br />
+					<b:buttonGroup>
+						<b:commandButton>
+
+						</b:commandButton>
+						<b:commandButton>
+
+						</b:commandButton>
+					</b:buttonGroup>
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>

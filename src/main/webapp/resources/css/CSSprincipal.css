@@ -2,8 +2,9 @@ html {
 	
 }
 
-.centerText {
-	text-align: center !important;
+.body {
+	background: #343a40;
+	margin: 0;
 }
 
 .form {
@@ -34,14 +35,14 @@ ui-dataview-content ui-widget-content {
 	background: #337ab7;
 }
 
-li, a {
+.menuBut li, .menuBut a {
 	color: #fff !important;
 	text-shadow: none;
 	transition-duration: 0.4s;
 	border-radius: 4px;
 }
 
-li:hover, a:hover {
+.menuBut li:hover, .menuBut a:hover {
 	color: #fff !important;
 	text-shadow: 1px 1px 1px black !important;
 	background: #337ab7 !important;
@@ -69,16 +70,38 @@ li:hover, a:hover {
 	font-weight: bold;
 }
 
-.body {
-	padding-bottom: 20px;
-	background: #343a40;
-	margin: 0;
-}
-
 .ui-dataview .ui-dataview-header {
 	display: none !important;
 }
 
 .ui-widget-content #gridContas {
 	border: none !important;
+}
+
+.camposItens, .contatos {
+	text-align: center !important;
+	background: white !important;
+}
+
+.camposItens .ui-widget-header {
+	border: none;
+	background: none;
+}
+
+.camposItens .ui-panel-content {
+	padding-top: 0px !important;
+}
+
+.dataV .ui-widget-content {
+	background: none;
+	border: none;
+}
+
+.dataV .ui-paginator {
+	background: white !important;
+	width: 358px;
+	margin: auto;
+	border: 1px solid;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }

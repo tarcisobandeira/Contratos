@@ -23,6 +23,8 @@ public class ContasMB {
 
 	Date emissao;
 	Date vencimento;
+	
+	TemplateMB tMB = new TemplateMB();
 
 	List<Conta> listCC = new ArrayList<Conta>();
 
@@ -36,6 +38,8 @@ public class ContasMB {
 		if (ccDAO.insertConta(cc)) {
 			System.out.println("Deu");
 			atualizar();
+			tMB.setOpt(10);
+			zerar();
 		} else {
 			System.out.println("n Deu");
 		}
@@ -43,6 +47,12 @@ public class ContasMB {
 
 	public void atualizar() {
 		listCC = ccDAO.listConta(em);
+	}
+	
+	public void zerar() {
+		cc = new Conta();
+		emissao = null;
+		vencimento = null;
 	}
 
 	public Empresa getEm() {

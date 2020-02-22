@@ -32,12 +32,13 @@ public class GerarContaMB {
 	}
 
 	public void criarGc() {
+		calendar = new GregorianCalendar();
 		sdf = new SimpleDateFormat("MMM/yyyy");
 		gc.setId_conta(cc.getId());
 		calendar.add(Calendar.MONDAY, 1);
 		gc.setMes_ano(sdf.format(calendar.getTime()));
 		sdf= new SimpleDateFormat("dd");
-		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime()))) && (!gcDAO.existe(gc.getMes_ano()))) {
+		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime()))) && (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
 			if(gcDAO.insert(gc)) {
 				System.out.println("Deu");
 			}else{
