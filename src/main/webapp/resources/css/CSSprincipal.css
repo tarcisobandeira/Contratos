@@ -97,9 +97,13 @@ ui-dataview-content ui-widget-content {
 	border: none;
 }
 
+.conteiner{
+	background: white !important;
+}
+
 .dataV .ui-paginator {
 	background: white !important;
-	width: 358px;
+	width: 30%;
 	margin: auto;
 	border: 1px solid;
 	border-top-left-radius: 3px;

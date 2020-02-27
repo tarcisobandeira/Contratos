@@ -27,7 +27,6 @@ public class GerarContaMB {
 	List<GerarConta> listGc = new ArrayList<GerarConta>();
 
 	public void atualizar() {
-		criarGc();
 		listGc = gcDAO.listarTodos(cc.getId());
 	}
 
@@ -37,14 +36,15 @@ public class GerarContaMB {
 		gc.setId_conta(cc.getId());
 		calendar.add(Calendar.MONDAY, 1);
 		gc.setMes_ano(sdf.format(calendar.getTime()));
-		sdf= new SimpleDateFormat("dd");
-		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime()))) && (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
-			if(gcDAO.insert(gc)) {
+		sdf = new SimpleDateFormat("dd");
+		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime())))
+				&& (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
+			if (gcDAO.insert(gc)) {
 				System.out.println("Deu");
-			}else{
+			} else {
 				System.out.println("n deu");
 			}
-		}else {
+		} else {
 			System.out.println("Já existe");
 		}
 	}
@@ -80,6 +80,22 @@ public class GerarContaMB {
 
 	public void setListGc(List<GerarConta> listGc) {
 		this.listGc = listGc;
+	}
+
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
+
+	public SimpleDateFormat getSdf() {
+		return sdf;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
 	}
 
 }

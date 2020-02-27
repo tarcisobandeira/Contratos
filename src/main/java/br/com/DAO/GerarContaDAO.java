@@ -151,4 +151,22 @@ public class GerarContaDAO {
 		i++;
 		return i;
 	}
+
+	public Integer retornoId(Conta cc) {
+		String sql = " SELECT cc.id AS ID FROM Conta cc WHERE nome = ? AND id_empresa = ? ";
+		int i = 0;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, cc.getNome());
+			ps.setInt(2, cc.getId_empresa());
+			ResultSet rs = ps.executeQuery();
+			if (rs.first()) {
+				i = rs.getInt("ID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return i;
+	}
 }
