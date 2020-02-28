@@ -6,28 +6,56 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formHContas">
-		<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}" var="hc" id="gridContas"
-			layout="grid" paginator="true" rows="6" rowsPerPageTemplate="3,6,9"
-			paginatorPosition="bottom"
-			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}">
 
-			<p:dataViewGridItem>
-				<p:panel header="#{hc.conta.nome}" styleClass="camposItens">
-					<h:outputText value="#{hc.status_conta.descricao}" />
-					<br />
-					<h:outputText value="#{hc.mes_ano}" />
-					<br />
-					<b:buttonGroup>
-						<b:commandButton>
+		<b:panel title="Em Aberto" look="primary" styleClass="painel">
+			<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}"
+				var="hc" id="gridContasA" layout="grid" paginator="true" rows="6"
+				paginatorPosition="top"
+				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
 
-						</b:commandButton>
-						<b:commandButton>
+				<p:dataViewGridItem>
+					<p:panel header="#{hc.conta.nome}" styleClass="camposItens">
+						<h:outputText value="#{hc.status_conta.descricao}" />
+						<br />
+						<h:outputText value="#{hc.mes_ano}" />
+						<br />
+						<b:buttonGroup>
+							<b:commandButton>
 
-						</b:commandButton>
-					</b:buttonGroup>
-				</p:panel>
-			</p:dataViewGridItem>
-		</p:dataView>
+							</b:commandButton>
+							<b:commandButton>
+
+							</b:commandButton>
+						</b:buttonGroup>
+					</p:panel>
+				</p:dataViewGridItem>
+			</p:dataView>
+		</b:panel>
+
+		<b:panel title="Fechados" look="primary" styleClass="painel">
+			<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}"
+				var="hc" id="gridContas" layout="grid" paginator="true" rows="6"
+				paginatorPosition="top"
+				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
+
+				<p:dataViewGridItem>
+					<p:panel header="#{hc.conta.nome}" styleClass="camposItens">
+						<h:outputText value="#{hc.status_conta.descricao}" />
+						<br />
+						<h:outputText value="#{hc.mes_ano}" />
+						<br />
+						<b:buttonGroup>
+							<b:commandButton>
+
+							</b:commandButton>
+							<b:commandButton>
+
+							</b:commandButton>
+						</b:buttonGroup>
+					</p:panel>
+				</p:dataViewGridItem>
+			</p:dataView>
+		</b:panel>
+
 	</h:form>
-
 </ui:composition>

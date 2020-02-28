@@ -14,6 +14,7 @@ html {
 #formTemplate {
 	margin-left: 1em !important;
 	margin-right: 1em !important;
+	margin-top: 50px; 
 }
 
 .ui-panel .ui-panel-title {
@@ -33,6 +34,14 @@ ui-dataview-content ui-widget-content {
 	border-radius: 0;
 	border: 0;
 	background: #337ab7;
+}
+
+.menuBut{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+	z-index: 99
 }
 
 .menuBut li, .menuBut a {
@@ -86,6 +95,7 @@ ui-dataview-content ui-widget-content {
 .camposItens .ui-widget-header {
 	border: none;
 	background: none;
+	text-shadow: none;
 }
 
 .camposItens .ui-panel-content {
@@ -97,7 +107,7 @@ ui-dataview-content ui-widget-content {
 	border: none;
 }
 
-.conteiner{
+.conteiner {
 	background: white !important;
 }
 
@@ -105,7 +115,20 @@ ui-dataview-content ui-widget-content {
 	background: white !important;
 	width: 30%;
 	margin: auto;
-	border: 1px solid;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
+	border: none;
+	border-radius: 3px;
+}
+
+.painel, .painel a {
+	background: none;
+	border: none;
+	text-decoration: none;
+}
+
+.painel .panel-heading {
+	border-radius: 3px !important;
+}
+
+.painel .panel-body {
+	border: none !important;
 }
