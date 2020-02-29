@@ -10,7 +10,7 @@
 		<p:dataView value="#{gerarContaMB.listGc}" var="gc" id="gridGContas"
 			layout="grid" paginator="true" rows="6" paginatorPosition="top"
 			styleClass="dataV"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">>
+			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
 			<p:dataViewGridItem>
 				<p:panel header="#{gc.mes_ano}" styleClass="camposItens">
 					<h:outputText value="Status: #{gc.status_conta.descricao}" />
