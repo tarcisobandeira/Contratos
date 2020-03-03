@@ -18,6 +18,7 @@ public class HomeContasMB {
 
 	GerarContaDAO gcDAO = new GerarContaDAO();
 	Calendar calendar = new GregorianCalendar();
+	ComparadorDataMB cMB = new ComparadorDataMB();
 	SimpleDateFormat sdf;
 	List<GerarConta> listGc = new ArrayList<GerarConta>();
 	List<GerarConta> listAberto = new ArrayList<GerarConta>();
@@ -26,6 +27,8 @@ public class HomeContasMB {
 
 	public HomeContasMB() {
 		listGc = gcDAO.listarTodos();
+		listAberto = gcDAO.listarTodosAbertos();
+		listFechados = gcDAO.listarTodosFechado();
 		atualizar();
 	}
 
@@ -33,8 +36,9 @@ public class HomeContasMB {
 		System.out.println("Verificando contas...");
 		for (GerarConta gc : listGc) {
 			calendar = new GregorianCalendar();
-			sdf = new SimpleDateFormat("dd");
-			if ((gc.getConta().getDia_emissao().equals(sdf.format(calendar.getTime())))
+			sdf = new SimpleDateFormat("dd/MMM/yyyy");
+			String data = "" + gc.getConta().getDia_vencimento() + "/" + gc.getMes_ano() + "";
+			if ((cMB.calcular(sdf.format(calendar.getTime()), data) <= 0)
 					&& (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
 				sdf = new SimpleDateFormat("MMM/yyyy");
 				calendar.add(Calendar.MONDAY, 1);

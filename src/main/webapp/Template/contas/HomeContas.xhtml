@@ -8,7 +8,7 @@
 	<h:form id="formHContas">
 
 		<b:panel title="Em Aberto" look="primary" styleClass="painel">
-			<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}"
+			<p:dataView styleClass="dataV" value="#{homeContasMB.listAberto}"
 				var="hc" id="gridContasA" layout="grid" paginator="true" rows="6"
 				paginatorPosition="top"
 				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
@@ -33,16 +33,16 @@
 		</b:panel>
 
 		<b:panel title="Fechados" look="primary" styleClass="painel">
-			<p:dataView styleClass="dataV" value="#{homeContasMB.listGc}"
-				var="hc" id="gridContas" layout="grid" paginator="true" rows="6"
+			<p:dataView styleClass="dataV" value="#{homeContasMB.listFechados}"
+				var="lf" id="gridContas" layout="grid" paginator="true" rows="6"
 				paginatorPosition="top"
 				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
 
 				<p:dataViewGridItem>
-					<p:panel header="#{hc.conta.nome}" styleClass="camposItens">
-						<h:outputText value="#{hc.status_conta.descricao}" />
+					<p:panel header="#{lf.conta.nome}" styleClass="camposItens">
+						<h:outputText value="#{lf.status_conta.descricao}" />
 						<br />
-						<h:outputText value="#{hc.mes_ano}" />
+						<h:outputText value="#{lf.mes_ano}" />
 						<br />
 						<b:buttonGroup>
 							<b:commandButton>

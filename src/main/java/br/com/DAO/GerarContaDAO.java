@@ -111,6 +111,76 @@ public class GerarContaDAO {
 
 		return list;
 	}
+	
+	public List<GerarConta> listarTodosAbertos() {
+		String sql = " SELECT gc.*, s.descricao AS texto, c.id AS idConta, c.nome AS nome, c.dia_emissao AS diaE, c.dia_vencimento AS diaV "
+				+ " FROM GerarConta gc " + " INNER JOIN Status_conta s ON (gc.id_status_conta = s.id) "
+				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) "
+				+ " WHERE gc.id_status_conta != 3 ";
+		List<GerarConta> list = new ArrayList<GerarConta>();
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				GerarConta gc = new GerarConta();
+				gc.setId(rs.getInt("id"));
+				gc.setId_conta(rs.getInt("id_conta"));
+				gc.setContador(rs.getInt("contador"));
+				gc.setMes_ano(rs.getString("mes_ano"));
+				gc.setDia_pagamento(rs.getString("dia_pagamento"));
+				gc.setValor(rs.getString("valor"));
+				gc.setObs(rs.getString("obs"));
+				gc.setId_status_conta(rs.getInt("id_status_conta"));
+				gc.setConta(new Conta(rs.getInt("idConta"), null, rs.getString("nome"), rs.getString("diaE"),
+						rs.getString("diaV"), null));
+				gc.setStatus_conta(new Status_conta(rs.getInt("id_status_conta"), rs.getString("texto")));
+
+				list.add(gc);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public List<GerarConta> listarTodosFechado() {
+		String sql = " SELECT gc.*, s.descricao AS texto, c.id AS idConta, c.nome AS nome, c.dia_emissao AS diaE, c.dia_vencimento AS diaV "
+				+ " FROM GerarConta gc " + " INNER JOIN Status_conta s ON (gc.id_status_conta = s.id) "
+				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) "
+				+ " WHERE gc.id_status_conta = 3 ";
+		List<GerarConta> list = new ArrayList<GerarConta>();
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				GerarConta gc = new GerarConta();
+				gc.setId(rs.getInt("id"));
+				gc.setId_conta(rs.getInt("id_conta"));
+				gc.setContador(rs.getInt("contador"));
+				gc.setMes_ano(rs.getString("mes_ano"));
+				gc.setDia_pagamento(rs.getString("dia_pagamento"));
+				gc.setValor(rs.getString("valor"));
+				gc.setObs(rs.getString("obs"));
+				gc.setId_status_conta(rs.getInt("id_status_conta"));
+				gc.setConta(new Conta(rs.getInt("idConta"), null, rs.getString("nome"), rs.getString("diaE"),
+						rs.getString("diaV"), null));
+				gc.setStatus_conta(new Status_conta(rs.getInt("id_status_conta"), rs.getString("texto")));
+
+				list.add(gc);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 	public boolean existe(String s, int i) {
 		String sql = " SELECT * FROM GerarConta WHERE mes_ano = ? AND id_conta = ?";
