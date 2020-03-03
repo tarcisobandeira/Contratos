@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 public class TemplateMB {
 
 	public int opt = 1;
+	public boolean show = false;
 
 	public String mudar() {
 		if (opt == 1) {
@@ -38,13 +39,30 @@ public class TemplateMB {
 		return null;
 	}
 
+	public void mostrar() {
+		if (show == false) {
+			show = true;
+		} else {
+			show = false;
+		}
+	}
+
 	public int getOpt() {
 		return opt;
 	}
 
 	public void setOpt(int opt) {
 		this.opt = opt;
+		show = false;
 		mudar();
+	}
+
+	public boolean isShow() {
+		return show;
+	}
+
+	public void setShow(boolean show) {
+		this.show = show;
 	}
 
 }

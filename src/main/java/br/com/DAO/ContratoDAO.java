@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.Entities.AnexoContrato;
 import br.com.Entities.Contrato;
 import br.com.jdbc.ConnectionDB;
 
@@ -20,20 +21,16 @@ public class ContratoDAO {
 	}
 
 	public boolean insert(Contrato c, int id_empresa) {
-		String sql = " INSERT INTO Contrato (id_empresa, nome, descricao, inicio_c, fim_c, dia_emissao_conta, dia_vencimento_conta, valor_mensal, arquivo, ativo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String sql = " INSERT INTO Contrato (id_empresa, nome, descricao, inicio, fim, ativo) VALUES (?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id_empresa);
 			ps.setString(2, c.getNome());
 			ps.setString(3, c.getDescricao());
-			ps.setString(4, c.getInicio_c());
-			ps.setString(5, c.getFim_c());
-			ps.setString(6, c.getDia_emissao_conta());
-			ps.setString(7, c.getDia_vencimento_conta());
-			ps.setString(8, c.getValor_mensal());
-			ps.setString(9, c.getArquivo());
-			ps.setInt(10, 1);
+			ps.setString(4, c.getInicio());
+			ps.setString(5, c.getFim());
+			ps.setInt(6, 1);
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -48,7 +45,7 @@ public class ContratoDAO {
 
 	public List<Contrato> listarContrato() {
 		List<Contrato> list = new ArrayList<Contrato>();
-		String sql = " SELECT * FROM Contrato ";
+		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -60,13 +57,10 @@ public class ContratoDAO {
 				c.setId_empresa(rs.getInt("id_empresa"));
 				c.setNome(rs.getString("nome"));
 				c.setDescricao(rs.getString("descricao"));
-				c.setInicio_c(rs.getString("inicio_c"));
-				c.setFim_c(rs.getString("fim_c"));
-				c.setDia_emissao_conta(rs.getString("dia_emissao_conta"));
-				c.setDia_vencimento_conta(rs.getString("dia_vencimento_conta"));
-				c.setValor_mensal(rs.getString("valor_mensal"));
-				c.setArquivo(rs.getString("arquivo"));
+				c.setInicio(rs.getString("inicio"));
+				c.setFim(rs.getString("fim"));
 				c.setAtivo(rs.getInt("ativo"));
+				c.setAcontrato(new AnexoContrato(null, null, rs.getString("arquivoc")));
 				list.add(c);
 			}
 		} catch (SQLException e) {
@@ -79,7 +73,7 @@ public class ContratoDAO {
 
 	public List<Contrato> listarContratoIdEmp(int id_empresa) {
 		List<Contrato> list = new ArrayList<Contrato>();
-		String sql = " SELECT * FROM Contrato WHERE id_empresa = ? ";
+		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id WHERE id_empresa = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -92,12 +86,8 @@ public class ContratoDAO {
 				c.setId_empresa(rs.getInt("id_empresa"));
 				c.setNome(rs.getString("nome"));
 				c.setDescricao(rs.getString("descricao"));
-				c.setInicio_c(rs.getString("inicio_c"));
-				c.setFim_c(rs.getString("fim_c"));
-				c.setDia_emissao_conta(rs.getString("dia_emissao_conta"));
-				c.setDia_vencimento_conta(rs.getString("dia_vencimento_conta"));
-				c.setValor_mensal(rs.getString("valor_mensal"));
-				c.setArquivo(rs.getString("arquivo"));
+				c.setInicio(rs.getString("inicio"));
+				c.setFim(rs.getString("fim"));
 				c.setAtivo(rs.getInt("ativo"));
 				list.add(c);
 			}
@@ -109,13 +99,13 @@ public class ContratoDAO {
 		return list;
 	}
 
-	public boolean updateArquivo(File file, Contrato c) {
-		String sql = " UPDATE Contrato SET arquivo = ? WHERE ID = ? ";
+	public boolean addArquivo(File file, Contrato c) {
+		String sql = " INSERT INTO AnexoContrato (id_contrato, arquivo) VALUES (?,?) ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, file.toString());
-			ps.setInt(2, c.getId());
+			ps.setInt(1, c.getId());
+			ps.setString(2, file.toString());
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -128,7 +118,7 @@ public class ContratoDAO {
 	}
 
 	public Contrato listarContratoComId(Contrato contrato) {
-		String sql = " SELECT * FROM Contrato WHERE id_empresa = ? and nome = ? ";
+		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id WHERE id_empresa = ? AND nome = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -142,14 +132,11 @@ public class ContratoDAO {
 				c.setId_empresa(rs.getInt("id_empresa"));
 				c.setNome(rs.getString("nome"));
 				c.setDescricao(rs.getString("descricao"));
-				c.setInicio_c(rs.getString("inicio_c"));
-				c.setFim_c(rs.getString("fim_c"));
-				c.setDia_emissao_conta(rs.getString("dia_emissao_conta"));
-				c.setDia_vencimento_conta(rs.getString("dia_vencimento_conta"));
-				c.setValor_mensal(rs.getString("valor_mensal"));
-				c.setArquivo(rs.getString("arquivo"));
+				c.setInicio(rs.getString("inicio"));
+				c.setFim(rs.getString("fim"));
 				c.setAtivo(rs.getInt("ativo"));
-
+				c.setAcontrato(new AnexoContrato(null, null, rs.getString("arquivoc")));
+				
 				return c;
 			}
 		} catch (SQLException e) {

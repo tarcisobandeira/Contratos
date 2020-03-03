@@ -21,7 +21,6 @@ CREATE TABLE Contrato(
 	descricao VARCHAR(500),
 	inicio VARCHAR(50),
 	fim VARCHAR(50),
-    arquivo VARCHAR(100),
     ativo INT,
     FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
@@ -54,6 +53,13 @@ CREATE TABLE AnexoConta(
     id_conta INT,
     arquivo VARCHAR(100),
     FOREIGN KEY (id_conta) REFERENCES Conta(id)
+);
+
+CREATE TABLE AnexoContrato(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_contrato INT,
+    arquivo VARCHAR(100),
+    FOREIGN KEY (id_contrato) REFERENCES Contrato(id)
 );
 
 CREATE TABLE Usuario(
@@ -124,7 +130,10 @@ VALUES  ("Tarciso", "tjbandeira", "123", 1);
 
 INSERT INTO Status_conta (id, descricao)
 VALUES  (1, "Aberto"),
-        (2, "Proximo do fechamento"),
+        (2, "Próximo do vencimento"),
         (3, "Fechado"),
         (4, "Atrasado"),
-        (5, "Fechado com juros");
+        (5, "Solicitada"),
+        (6, "Impressa"),
+        (7, "Entregue"),
+        (8, "Aprovação")

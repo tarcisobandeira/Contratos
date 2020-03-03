@@ -4,7 +4,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -13,7 +12,6 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.StreamedContent;
 
-import br.com.DAO.ContasDAO;
 import br.com.DAO.ContratoDAO;
 import br.com.Entities.Contrato;
 import br.com.Entities.Empresa;
@@ -31,7 +29,6 @@ public class ContratoMB extends UploadDownloadBM {
 	Contrato c = new Contrato();
 
 	ContratoDAO cDAO = new ContratoDAO();
-	ContasDAO ccDAO = new ContasDAO();
 
 	String conteudo;
 	String exec = "Contrato";
@@ -44,20 +41,16 @@ public class ContratoMB extends UploadDownloadBM {
 	}
 
 	public void criarContrato() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		c.setInicio_c(sdf.format(inicio));
-		c.setFim_c(sdf.format(fim));
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+		c.setInicio(sdf.format(inicio));
+		c.setFim(sdf.format(fim));
 
 		if (cDAO.insert(c, em.getId())) {
 			System.out.println("deu Contrato");
-			c.setId_empresa(em.getId());
-			c = cDAO.listarContratoComId(c);
-			GregorianCalendar d = new GregorianCalendar();
-			String data = sdf.format(d.getTime());
-			if (ccDAO.insertConta(c, data)) {
-				System.out.println("deu Conta");
-			} else {
-				System.out.println("ndeu Conta");
+			if(cDAO.addArquivo(null, c)) {
+				System.out.println("deu arquivo");
+			}else {
+				System.out.println("no");
 			}
 		} else {
 			System.out.println("ndeu");
@@ -65,25 +58,16 @@ public class ContratoMB extends UploadDownloadBM {
 	}
 
 	public void addAnexo(FileUploadEvent event) {
-		// TODO Auto-generated method stub
 		File file = super.addAnexo(event, exec);
-		if (cDAO.updateArquivo(file, anexo)) {
+		if (cDAO.addArquivo(file, anexo)) {
 			System.out.println("FOI");
 		} else {
 			System.out.println("NOLP");
 		}
 	}
 
-	public void mostrar() {
-		if (show == false) {
-			show = true;
-		} else {
-			show = false;
-		}
-	}
-
 	public StreamedContent download(String ll) {
-		return sc = super.download(anexo.getArquivo());
+		return sc = super.download(anexo.getAcontrato().getArquivo());
 	}
 
 	public void atualizar() {
@@ -178,14 +162,6 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setShow(boolean show) {
 		this.show = show;
-	}
-
-	public ContasDAO getCcDAO() {
-		return ccDAO;
-	}
-
-	public void setCcDAO(ContasDAO ccDAO) {
-		this.ccDAO = ccDAO;
 	}
 
 }

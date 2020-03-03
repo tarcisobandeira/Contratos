@@ -38,11 +38,9 @@ public class UploadDownloadBM {
 				out.write(upFile.getContents());
 				out.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return file;
@@ -79,7 +77,6 @@ public class UploadDownloadBM {
 			StreamedContent a = new DefaultStreamedContent(in, pegarExtensao(ll), pegarNome(ll));
 			return a;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

@@ -19,7 +19,7 @@ public class GerarContaMB {
 
 	Calendar calendar = new GregorianCalendar();
 	SimpleDateFormat sdf;
-
+	ComparadorDataMB cMB = new ComparadorDataMB();
 	Conta cc;
 	GerarConta gc = new GerarConta();
 	GerarContaDAO gcDAO = new GerarContaDAO();
@@ -36,8 +36,9 @@ public class GerarContaMB {
 		gc.setId_conta(cc.getId());
 		calendar.add(Calendar.MONDAY, 1);
 		gc.setMes_ano(sdf.format(calendar.getTime()));
-		sdf = new SimpleDateFormat("dd");
-		if ((cc.getDia_emissao().equals(sdf.format(calendar.getTime())))
+		sdf = new SimpleDateFormat("dd/MMM/yyyy");
+		String data = "" + gc.getConta().getDia_vencimento() + "/" + gc.getMes_ano() + "";
+		if ((cMB.calcular(sdf.format(calendar.getTime()), data) <= 0)
 				&& (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
 			if (gcDAO.insert(gc)) {
 				System.out.println("Deu");

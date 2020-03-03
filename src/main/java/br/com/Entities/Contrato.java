@@ -7,12 +7,12 @@ public class Contrato {
 	private String descricao;
 	private String inicio;
 	private String fim;
-	private String arquivo;
 	private Integer ativo;
 	private Empresa empresa;
+	private AnexoContrato acontrato;
 
 	public Contrato(Integer id, Integer id_empresa, String nome, String descricao, String inicio, String fim,
-			String arquivo, Integer ativo) {
+			Integer ativo) {
 		super();
 		this.id = id;
 		this.id_empresa = id_empresa;
@@ -20,7 +20,6 @@ public class Contrato {
 		this.descricao = descricao;
 		this.inicio = inicio;
 		this.fim = fim;
-		this.arquivo = arquivo;
 		this.ativo = ativo;
 	}
 
@@ -76,14 +75,6 @@ public class Contrato {
 		this.fim = fim;
 	}
 
-	public String getArquivo() {
-		return arquivo;
-	}
-
-	public void setArquivo(String arquivo) {
-		this.arquivo = arquivo;
-	}
-
 	public Integer getAtivo() {
 		return ativo;
 	}
@@ -98,6 +89,14 @@ public class Contrato {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	public AnexoContrato getAcontrato() {
+		return acontrato;
+	}
+
+	public void setAcontrato(AnexoContrato acontrato) {
+		this.acontrato = acontrato;
 	}
 
 }

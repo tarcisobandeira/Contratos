@@ -10,30 +10,26 @@
 			action="#{templateMB.setOpt(5)}" />
 
 		<p:dataView value="#{contratoMB.listC}" var="c" id="gridContrato"
-			layout="grid">
+			styleClass="dataV" paginatorPosition="top" layout="grid"
+			paginator="true" rows="6"
+			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} ">
 			<p:dataViewGridItem>
-				<p:panel header="#{c.id}" style="text-align:center">
+				<p:panel header="#{c.descricao}" styleClass="camposItens">
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{c.nome}" />
 						<br />
-						<b:buttonGroup>
-							<b:commandButton actionListener="#{contratoMB.mostrar}"
-								look="primary" value="Anexo">
-								<f:setPropertyActionListener value="#{c}"
-									target="#{contratoMB.anexo}" />
-							</b:commandButton>
-							<b:commandButton value="Contas" look="primary"
-								action="#{templateMB.setOpt(10)}">
-								<f:setPropertyActionListener value="#{c}" target="#{contasMB.c}" />
-							</b:commandButton>
-						</b:buttonGroup>
+						<b:commandButton actionListener="#{templateMB.mostrar}"
+							look="primary" value="Anexo">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{contratoMB.anexo}" />
+						</b:commandButton>
 					</h:panelGrid>
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>
 	</h:form>
-	<h:form id="formAnexo" rendered="#{contratoMB.show == true}"
-		enctype="multipart/form-data">
+	<h:form id="formAnexo" rendered="#{templateMB.show == true}"
+		enctype="multipart/form-data" >
 		<b:tabView tabPosition="left">
 			<b:tab title="UpLoad">
 				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
@@ -43,10 +39,10 @@
 			<b:tab title="DownLoad">
 				<b:container fluid="true" style="float: none">
 					<b:panel collapsible="false" look="primary">
-						<h:outputText value="#{contratoMB.anexo.arquivo}" />
+						<h:outputText value="#{contratoMB.anexo.acontrato.arquivo}" />
 						<br />
 						<b:commandButton value="Baixar" ajax="true"
-							disabled="#{contratoMB.anexo.arquivo == null}"
+							disabled="#{contratoMB.anexo.acontrato.arquivo == null}"
 							actionListener="#{contratoMB.download}">
 							<p:fileDownload value="#{contratoMB.sc}" />
 						</b:commandButton>
