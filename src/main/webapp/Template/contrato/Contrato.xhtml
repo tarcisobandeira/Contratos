@@ -29,7 +29,7 @@
 		</p:dataView>
 	</h:form>
 	<h:form id="formAnexo" rendered="#{templateMB.show == true}"
-		enctype="multipart/form-data" >
+		enctype="multipart/form-data">
 		<b:tabView tabPosition="left">
 			<b:tab title="UpLoad">
 				<p:fileUpload fileUploadListener="#{contratoMB.addAnexo}"
@@ -37,17 +37,21 @@
 					invalidFileMessage="São permitidas somente imagens e PDF (png, jpeg, jpg, pdf)" />
 			</b:tab>
 			<b:tab title="DownLoad">
-				<b:container fluid="true" style="float: none">
-					<b:panel collapsible="false" look="primary">
-						<h:outputText value="#{contratoMB.anexo.acontrato.arquivo}" />
-						<br />
-						<b:commandButton value="Baixar" ajax="true"
-							disabled="#{contratoMB.anexo.acontrato.arquivo == null}"
-							actionListener="#{contratoMB.download}">
-							<p:fileDownload value="#{contratoMB.sc}" />
-						</b:commandButton>
-					</b:panel>
-				</b:container>
+				<p:dataView value="#{contratoMB.listAc}" var="ac" layout="grid"
+					styleClass="dataV">
+					<p:dataViewGridItem>
+						<p:panel styleClass="contatos">
+							<h:outputText value="#{ac.arquivo}" />
+							<br />
+							<b:commandButton value="Baixar" ajax="true"
+								disabled="#{ac.arquivo == null}">
+								<f:setPropertyActionListener value="#{ac}"
+									target="#{contratoMB.ac}" />
+								<p:fileDownload value="#{contratoMB.sc}" />
+							</b:commandButton>
+						</p:panel>
+					</p:dataViewGridItem>
+				</p:dataView>
 			</b:tab>
 		</b:tabView>
 	</h:form>

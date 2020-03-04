@@ -13,6 +13,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.StreamedContent;
 
 import br.com.DAO.ContratoDAO;
+import br.com.Entities.AnexoContrato;
 import br.com.Entities.Contrato;
 import br.com.Entities.Empresa;
 
@@ -26,8 +27,10 @@ public class ContratoMB extends UploadDownloadBM {
 	private StreamedContent sc;
 
 	List<Contrato> listC = new ArrayList<Contrato>();
-	Contrato c = new Contrato();
+	List<AnexoContrato> listAc = new ArrayList<AnexoContrato>();
 
+	Contrato c = new Contrato();
+	AnexoContrato ac = new AnexoContrato();
 	ContratoDAO cDAO = new ContratoDAO();
 
 	String conteudo;
@@ -37,7 +40,7 @@ public class ContratoMB extends UploadDownloadBM {
 	Date fim;
 
 	public ContratoMB() {
-
+		
 	}
 
 	public void criarContrato() {
@@ -47,11 +50,6 @@ public class ContratoMB extends UploadDownloadBM {
 
 		if (cDAO.insert(c, em.getId())) {
 			System.out.println("deu Contrato");
-			if(cDAO.addArquivo(null, c)) {
-				System.out.println("deu arquivo");
-			}else {
-				System.out.println("no");
-			}
 		} else {
 			System.out.println("ndeu");
 		}
@@ -66,13 +64,17 @@ public class ContratoMB extends UploadDownloadBM {
 		}
 	}
 
-	public StreamedContent download(String ll) {
-		return sc = super.download(anexo.getAcontrato().getArquivo());
+	public StreamedContent download() {
+		return sc = super.download(ac.getArquivo());
 	}
 
 	public void atualizar() {
 		listC = cDAO.listarContratoIdEmp(em.getId());
 		show = false;
+	}
+
+	public void pegarArquivos() {
+		listAc = cDAO.listarArquivosId(anexo.getId());
 	}
 
 	public Empresa getEm() {
@@ -114,6 +116,7 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setAnexo(Contrato anexo) {
 		this.anexo = anexo;
+		pegarArquivos();
 	}
 
 	public String getConteudo() {
@@ -162,6 +165,23 @@ public class ContratoMB extends UploadDownloadBM {
 
 	public void setShow(boolean show) {
 		this.show = show;
+	}
+
+	public List<AnexoContrato> getListAc() {
+		return listAc;
+	}
+
+	public void setListAc(List<AnexoContrato> listAc) {
+		this.listAc = listAc;
+	}
+
+	public AnexoContrato getAc() {
+		return ac;
+	}
+
+	public void setAc(AnexoContrato ac) {
+		this.ac = ac;
+		download();
 	}
 
 }

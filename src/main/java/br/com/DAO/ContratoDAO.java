@@ -45,7 +45,7 @@ public class ContratoDAO {
 
 	public List<Contrato> listarContrato() {
 		List<Contrato> list = new ArrayList<Contrato>();
-		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id ";
+		String sql = " SELECT * FROM Contrato ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -60,7 +60,6 @@ public class ContratoDAO {
 				c.setInicio(rs.getString("inicio"));
 				c.setFim(rs.getString("fim"));
 				c.setAtivo(rs.getInt("ativo"));
-				c.setAcontrato(new AnexoContrato(null, null, rs.getString("arquivoc")));
 				list.add(c);
 			}
 		} catch (SQLException e) {
@@ -73,7 +72,7 @@ public class ContratoDAO {
 
 	public List<Contrato> listarContratoIdEmp(int id_empresa) {
 		List<Contrato> list = new ArrayList<Contrato>();
-		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id WHERE id_empresa = ? ";
+		String sql = " SELECT * FROM Contrato WHERE id_empresa = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -118,7 +117,7 @@ public class ContratoDAO {
 	}
 
 	public Contrato listarContratoComId(Contrato contrato) {
-		String sql = " SELECT c.*, ac.arquivo AS arquivoc FROM Contrato c INNER JOIN AnexoContrato ac ON ac.id_contrato = c.id WHERE id_empresa = ? AND nome = ? ";
+		String sql = " SELECT * FROM Contrato WHERE id_empresa = ? AND nome = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -135,8 +134,7 @@ public class ContratoDAO {
 				c.setInicio(rs.getString("inicio"));
 				c.setFim(rs.getString("fim"));
 				c.setAtivo(rs.getInt("ativo"));
-				c.setAcontrato(new AnexoContrato(null, null, rs.getString("arquivoc")));
-				
+
 				return c;
 			}
 		} catch (SQLException e) {
@@ -145,5 +143,47 @@ public class ContratoDAO {
 		}
 
 		return null;
+	}
+
+	public boolean updateArquivo(File file, Contrato anexo) {
+		String sql = " UPDATE AnexoContrato SET arquivo = ? WHERE id_contrato = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, file.toString());
+			ps.setInt(2, anexo.getId());
+
+			if (ps.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public List<AnexoContrato> listarArquivosId(int id) {
+		List<AnexoContrato> list = new ArrayList<AnexoContrato>();
+		String sql = " SELECT * FROM AnexoContrato WHERE id_contrato = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				AnexoContrato ac = new AnexoContrato();
+				ac.setId(rs.getInt("id"));
+				ac.setId_contrato(rs.getInt("id_contrato"));
+				ac.setArquivo(rs.getString("arquivo"));
+
+				list.add(ac);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
