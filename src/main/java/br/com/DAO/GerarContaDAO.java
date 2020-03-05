@@ -43,6 +43,27 @@ public class GerarContaDAO {
 		return false;
 	}
 
+	public boolean updateGC(GerarConta gc) {
+		String sql = " UPDATE GerarConta SET dia_pagamento = ?, valor = ?, obs = ?, id_status_conta = ? WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, gc.getDia_pagamento());
+			ps.setString(2, gc.getValor());
+			ps.setString(3, gc.getObs());
+			ps.setInt(4, gc.getId_status_conta());
+			ps.setInt(5, gc.getId());
+
+			if (ps.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public List<GerarConta> listarTodos(Integer i) {
 		String sql = " SELECT gc.*, s.descricao AS texto, c.id AS idConta, c.dia_emissao AS diaE, c.dia_vencimento AS diaV "
 				+ " FROM GerarConta gc " + " INNER JOIN Status_conta s ON (gc.id_status_conta = s.id) "
@@ -111,12 +132,11 @@ public class GerarContaDAO {
 
 		return list;
 	}
-	
+
 	public List<GerarConta> listarTodosAbertos() {
 		String sql = " SELECT gc.*, s.descricao AS texto, c.id AS idConta, c.nome AS nome, c.dia_emissao AS diaE, c.dia_vencimento AS diaV "
 				+ " FROM GerarConta gc " + " INNER JOIN Status_conta s ON (gc.id_status_conta = s.id) "
-				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) "
-				+ " WHERE gc.id_status_conta != 3 ";
+				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) " + " WHERE gc.id_status_conta != 3 ";
 		List<GerarConta> list = new ArrayList<GerarConta>();
 
 		try {
@@ -146,12 +166,11 @@ public class GerarContaDAO {
 
 		return list;
 	}
-	
+
 	public List<GerarConta> listarTodosFechado() {
 		String sql = " SELECT gc.*, s.descricao AS texto, c.id AS idConta, c.nome AS nome, c.dia_emissao AS diaE, c.dia_vencimento AS diaV "
 				+ " FROM GerarConta gc " + " INNER JOIN Status_conta s ON (gc.id_status_conta = s.id) "
-				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) "
-				+ " WHERE gc.id_status_conta = 3 ";
+				+ " INNER JOIN Conta c ON (gc.id_conta = c.id) " + " WHERE gc.id_status_conta = 3 ";
 		List<GerarConta> list = new ArrayList<GerarConta>();
 
 		try {
@@ -238,5 +257,27 @@ public class GerarContaDAO {
 		}
 
 		return i;
+	}
+
+	public List<Status_conta> listarStatus() {
+		List<Status_conta> list = new ArrayList<Status_conta>();
+		String sql = " SELECT * FROM status_conta ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Status_conta sc = new Status_conta();
+				sc.setId(rs.getInt("id"));
+				sc.setDescricao(rs.getString("descricao"));
+
+				list.add(sc);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

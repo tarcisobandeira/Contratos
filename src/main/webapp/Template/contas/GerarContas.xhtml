@@ -15,9 +15,14 @@
 				<p:panel header="#{gc.mes_ano}" styleClass="camposItens">
 					<h:outputText value="Status: #{gc.status_conta.descricao}" />
 					<br />
-					<b:commandButton value="Anexos" look="primary">
-						<f:setPropertyActionListener value="#{cc}" target="#{contasMB.em}" />
-					</b:commandButton>
+					<b:buttonGroup>
+						<b:commandButton value="Editar" look="primary">
+							<f:setPropertyActionListener value="" target="" />
+						</b:commandButton>
+						<b:commandButton value="Anexos" look="primary">
+							<f:setPropertyActionListener value="" target="" />
+						</b:commandButton>
+					</b:buttonGroup>
 				</p:panel>
 			</p:dataViewGridItem>
 		</p:dataView>

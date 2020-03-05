@@ -1,5 +1,0 @@
-1 = Aberto
-2 = Proximo do fechamento
-3 = Fechado
-4 = Atrasado
-5 = Fechamento com juros

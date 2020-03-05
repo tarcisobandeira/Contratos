@@ -3,6 +3,7 @@ package br.com.MBean;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 import br.com.DAO.GerarContaDAO;
 import br.com.Entities.Conta;
 import br.com.Entities.GerarConta;
+import br.com.Entities.Status_conta;
 
 @ManagedBean
 @ViewScoped
@@ -21,10 +23,13 @@ public class GerarContaMB {
 	SimpleDateFormat sdf;
 	ComparadorDataMB cMB = new ComparadorDataMB();
 	Conta cc;
+	GerarConta editar = new GerarConta();
 	GerarConta gc = new GerarConta();
 	GerarContaDAO gcDAO = new GerarContaDAO();
+	Date pagamento;
 
 	List<GerarConta> listGc = new ArrayList<GerarConta>();
+	List<Status_conta> listSC = new ArrayList<Status_conta>();
 
 	public void atualizar() {
 		listGc = gcDAO.listarTodos(cc.getId());
@@ -47,6 +52,18 @@ public class GerarContaMB {
 			}
 		} else {
 			System.out.println("Já existe");
+		}
+	}
+
+	public void editarGC() {
+		if (pagamento != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+			editar.setDia_pagamento(sdf.format(pagamento));
+		}
+		if (gcDAO.updateGC(editar)) {
+			System.out.println("foi update");
+		} else {
+			System.out.println("nolp");
 		}
 	}
 
@@ -97,6 +114,39 @@ public class GerarContaMB {
 
 	public void setSdf(SimpleDateFormat sdf) {
 		this.sdf = sdf;
+	}
+
+	public ComparadorDataMB getcMB() {
+		return cMB;
+	}
+
+	public void setcMB(ComparadorDataMB cMB) {
+		this.cMB = cMB;
+	}
+
+	public GerarConta getEditar() {
+		return editar;
+	}
+
+	public void setEditar(GerarConta editar) {
+		this.editar = editar;
+		listSC = gcDAO.listarStatus();
+	}
+
+	public Date getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Date pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public List<Status_conta> getListSC() {
+		return listSC;
+	}
+
+	public void setListSC(List<Status_conta> listSC) {
+		this.listSC = listSC;
 	}
 
 }

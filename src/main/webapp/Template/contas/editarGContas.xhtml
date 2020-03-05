@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formEGC">
+		<b:container fluid="true" styleClass="col-md-8" style="float: none">
+			<b:panel title="Editar Conta" collapsible="false" look="primary">
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:dateTimePicker mode="popup" format="DD/MM/YYYY"
+							label="Dia do Pagamento:" value="#{gerarContaMB.pagamento}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText value="#{gerarContaMB.editar.valor}" label="Valor:" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:selectOneMenu value="#{gerarContaMB.editar.id_status_conta}"
+							label="Status:">
+							<f:selectItems value="#{gerarContaMB.listSC}" var="sc"
+								itemValue="#{sc.id}" itemLabel="#{sc.descricao}" />
+						</b:selectOneMenu>
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputTextarea value="#{gerarContaMB.editar.obs}" label="Obs:" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Salvar" look="primary"
+							actionListener="#{gerarContaMB.editarGC}" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+
+</ui:composition>

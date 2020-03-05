@@ -20,11 +20,13 @@
 						<h:outputText value="#{hc.mes_ano}" />
 						<br />
 						<b:buttonGroup>
-							<b:commandButton>
-
+							<b:commandButton id="editar" value="Editar" look="primary"
+								actionListener="#{templateMB.setOpt(13)}">
+								<f:setPropertyActionListener value="#{hc}"
+									target="#{gerarContaMB.editar}" />
 							</b:commandButton>
-							<b:commandButton>
-
+							<b:commandButton value="Anexos" look="primary">
+								<f:setPropertyActionListener value="" target="" />
 							</b:commandButton>
 						</b:buttonGroup>
 					</p:panel>
@@ -44,14 +46,9 @@
 						<br />
 						<h:outputText value="#{lf.mes_ano}" />
 						<br />
-						<b:buttonGroup>
-							<b:commandButton>
-
-							</b:commandButton>
-							<b:commandButton>
-
-							</b:commandButton>
-						</b:buttonGroup>
+						<b:commandButton value="Anexos" look="primary">
+							<f:setPropertyActionListener value="" target="" />
+						</b:commandButton>
 					</p:panel>
 				</p:dataViewGridItem>
 			</p:dataView>
