@@ -28,12 +28,44 @@
 							<b:commandButton value="Anexos" look="primary">
 								<f:setPropertyActionListener value="" target="" />
 							</b:commandButton>
+							<b:commandButton look="primary" id="info" value="Info"
+								ajax="true" />
 						</b:buttonGroup>
+						<p:overlayPanel for="info" hideEffect="fade"
+							styleClass="conteiner">
+							<b:column>
+								<h:outputText styleClass="bold" value="Conta: " />
+								<h:outputText value="#{hc.conta.nome}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Contador: " />
+								<h:outputText value="#{hc.contador}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Mês e ano: " />
+								<h:outputText value="#{hc.mes_ano}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Pagamento: " />
+								<h:outputText value="#{hc.dia_pagamento}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Valor: " />
+								<h:outputText value="#{hc.valor}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Obs: " />
+								<h:outputText value="#{hc.obs}" />
+							</b:column>
+							<b:column>
+								<h:outputText styleClass="bold" value="Status: " />
+								<h:outputText value="#{hc.status_conta.descricao}" />
+							</b:column>
+						</p:overlayPanel>
 					</p:panel>
 				</p:dataViewGridItem>
 			</p:dataView>
 		</b:panel>
-
 		<b:panel title="Fechados" look="primary" styleClass="painel">
 			<p:dataView styleClass="dataV" value="#{homeContasMB.listFechados}"
 				var="lf" id="gridContas" layout="grid" paginator="true" rows="6"
@@ -53,6 +85,5 @@
 				</p:dataViewGridItem>
 			</p:dataView>
 		</b:panel>
-
 	</h:form>
 </ui:composition>

@@ -15,7 +15,14 @@
 			paginator="true" rows="6"
 			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} ">
 			<p:dataViewGridItem>
-				<p:panel header="#{e.nome}" styleClass="camposItens">
+
+				<p:panel header="#{e.nome}" styleClass="camposItens positionR">
+					<b:kebab content-disabled="false" id="kebab" styleClass="positionA">
+						<b:listLinks>
+							<b:navLink value="Editar" href="#" />
+							<b:navLink value="Excluir" href="#" />
+						</b:listLinks>
+					</b:kebab>
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{e.getFormatTipo()}" />
 						<br />
@@ -76,7 +83,8 @@
 								<b:row />
 								<b:commandButton styleClass="information" look="primary"
 									id="info" value="Info" ajax="true" />
-								<p:overlayPanel for="info" hideEffect="fade" styleClass="conteiner">
+								<p:overlayPanel for="info" hideEffect="fade"
+									styleClass="conteiner">
 									<b:column>
 										<h:outputText value="Usuário: " />
 										<h:outputText value="#{s.usuario}" />

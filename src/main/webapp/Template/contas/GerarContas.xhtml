@@ -16,12 +16,14 @@
 					<h:outputText value="Status: #{gc.status_conta.descricao}" />
 					<br />
 					<b:buttonGroup>
-						<b:commandButton value="Editar" look="primary">
-							<f:setPropertyActionListener value="" target="" />
-						</b:commandButton>
-						<b:commandButton value="Anexos" look="primary">
-							<f:setPropertyActionListener value="" target="" />
-						</b:commandButton>
+						<b:commandButton id="editar" value="Editar" look="primary"
+								actionListener="#{templateMB.setOpt(13)}">
+								<f:setPropertyActionListener value="#{gc}"
+									target="#{gerarContaMB.editar}" />
+							</b:commandButton>
+							<b:commandButton value="Anexos" look="primary">
+								<f:setPropertyActionListener value="" target="" />
+							</b:commandButton>
 					</b:buttonGroup>
 				</p:panel>
 			</p:dataViewGridItem>
