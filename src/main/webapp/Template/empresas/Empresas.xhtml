@@ -17,10 +17,10 @@
 			<p:dataViewGridItem>
 
 				<p:panel header="#{e.nome}" styleClass="camposItens positionR">
-					<b:kebab content-disabled="false" id="kebab" styleClass="positionA">
+					<b:kebab id="kebab" styleClass="positionA">
 						<b:listLinks>
-							<b:navLink value="Editar" href="#" />
-							<b:navLink value="Excluir" href="#" />
+							<b:navLink value="Editar" action="#{templateMB.setOpt(14)}" />
+							<b:navLink value="Excluir" action="#" />
 						</b:listLinks>
 					</b:kebab>
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
