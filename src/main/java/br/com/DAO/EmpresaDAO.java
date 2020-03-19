@@ -61,4 +61,63 @@ public class EmpresaDAO {
 
 		return list;
 	}
+
+	public Empresa buscarEmpresa(int id) {
+		String sql = " SELECT * FROM Empresa WHERE id = ? ";
+		Empresa em = new Empresa();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				em.setId(rs.getInt("id"));
+				em.setNome(rs.getString("nome"));
+				em.setTipo(rs.getInt("tipo"));
+				em.setAtivo(rs.getInt("ativo"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return em;
+	}
+
+	public boolean updateEmpresa(Empresa em) {
+		String sql = " UPDATE Empresa SET nome = ?, tipo = ? WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, em.getNome());
+			ps.setInt(2, em.getTipo());
+			ps.setInt(3, em.getId());
+
+			if (ps.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean buscarEmpresaNome(Empresa em) {
+		String sql = " SELECT * FROM Empresa WHERE nome = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, em.getNome());
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

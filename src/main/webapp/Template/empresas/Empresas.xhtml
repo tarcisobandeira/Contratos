@@ -17,11 +17,14 @@
 			<p:dataViewGridItem>
 
 				<p:panel header="#{e.nome}" styleClass="camposItens positionR">
-					<b:kebab id="kebab" styleClass="positionA">
-						<b:listLinks>
-							<b:navLink value="Editar" action="#{templateMB.setOpt(14)}" />
-							<b:navLink value="Excluir" action="#" />
-						</b:listLinks>
+					<b:kebab id="kebab" styleClass="kebab positionA">
+						<b:buttonGroup orientation="vertical" size="xs">
+							<b:commandButton value="Editar" action="#{templateMB.setOpt(3)}">
+								<f:setPropertyActionListener value="#{e}"
+									target="#{empresaMB.em}" />
+							</b:commandButton>
+							<b:commandButton value="Excluir" action="#" />
+						</b:buttonGroup>
 					</b:kebab>
 					<h:panelGrid columns="1" style="width:100%;text-align:center">
 						<h:outputText value="#{e.getFormatTipo()}" />

@@ -148,10 +148,19 @@ ui-dataview-content ui-widget-content {
 	font-weight: bold;
 }
 
-#kebab {
+.kebab {
 	float: left !important;
 	top: 5;
 	left: 10;
+}
+
+.kebab .btn-group-vertical{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.kebab .dropdown-menu{
+	min-width: auto !important;
 }
 
 .positionR {

@@ -44,13 +44,42 @@ public class EmpresaMB {
 		atualizar();
 	}
 
-	public void criarEmpresa() {
-		if (eDAO.insert(em)) {
-			System.out.println("deu");
-			atualizar();
-			tMB.setOpt(2);
+	public void salvar() {
+		if (em.getId() != null) {
+			Empresa empresa = eDAO.buscarEmpresa(em.getId());
+			if (empresa != null && empresa.getId().equals(em.getId())) {
+				editarEmpresa();
+			}
 		} else {
-			System.out.println("nolp");
+			criarEmpresa();
+		}
+	}
+
+	public void editarEmpresa() {
+		if (!eDAO.buscarEmpresaNome(em)) {
+			if (eDAO.updateEmpresa(em)) {
+				System.out.println("deu update");
+				atualizar();
+				tMB.setOpt(2);
+			} else {
+				System.out.println("nolp");
+			}
+		} else {
+			System.out.println("Contratos: Nome repetido em Empresa.");
+		}
+	}
+
+	public void criarEmpresa() {
+		if (!eDAO.buscarEmpresaNome(em)) {
+			if (eDAO.insert(em)) {
+				System.out.println("deu");
+				atualizar();
+				tMB.setOpt(2);
+			} else {
+				System.out.println("nolp");
+			}
+		} else {
+			System.out.println("Contratos: Nome repetido em Empresa.");
 		}
 	}
 

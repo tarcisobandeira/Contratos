@@ -7,14 +7,17 @@
 
 	<h:form id="formCE">
 		<b:container fluid="true" styleClass="col-md-8" style="float: none">
-			<b:panel title="Nova Empresa" collapsible="false" look="primary">
+			<b:panel title="Criar/Editar Empresa" collapsible="false"
+				look="primary">
 				<b:row>
 					<b:column offset-md="2" col-xs="12" col-md="4">
-						<b:inputText value="#{empresaMB.em.nome}" label="Nome da Empresa:" />
+						<b:inputText value="#{empresaMB.em.nome}" label="Nome da Empresa:"
+							required="true" />
 					</b:column>
 					<b:column col-xs="12" col-md="4">
-						<b:selectOneMenu value="#{empresaMB.em.tipo}" label="Tipo:">
-							<f:selectItem itemLabel="Selecione" itemValue=""/>
+						<b:selectOneMenu value="#{empresaMB.em.tipo}" label="Tipo:"
+							required="true">
+							<f:selectItem itemLabel="Selecione" itemValue="" />
 							<f:selectItem itemLabel="Fixo" itemValue="1" />
 							<f:selectItem itemLabel="Ocasional" itemValue="2" />
 						</b:selectOneMenu>
@@ -23,14 +26,12 @@
 				<b:row>
 					<b:column offset="4" col-xs="12" col-md="2">
 						<b:commandButton value="Salvar" look="primary" style="width:100%"
-							actionListener="#{empresaMB.criarEmpresa}"
-							action="#{templateMB.setOpt(2)}" />
+							actionListener="#{empresaMB.salvar}" />
 					</b:column>
 					<b:column col-xs="12" col-md="2">
 						<b:commandButton value="Voltar" look="primary"
 							actionListener="#{empresaMB.atualizar}" style="width:100%"
-							action="#{templateMB.setOpt(2)}" ajax="true"
-							update=":formTemplate" />
+							action="#{templateMB.setOpt(2)}" immediate="true" />
 					</b:column>
 				</b:row>
 			</b:panel>
