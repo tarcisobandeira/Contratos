@@ -15,9 +15,10 @@
 <h:body styleClass="body">
 	<h:form id="formNavbar" styleClass="form">
 		<p:menubar styleClass="menuBut">
-			<p:menuitem value="Contas" action="#{templateMB.setOpt(1)}" />
+			<p:menuitem value="Contas" action="#{templateMB.setOpt(1)}"
+				ajax="true" update=":formTemplate" />
 			<p:menuitem value="Empresas" actionListener="#{empresaMB.atualizar}"
-				action="#{templateMB.setOpt(2)}" />
+				action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
 		</p:menubar>
 	</h:form>
 	<h:form id="formTemplate">

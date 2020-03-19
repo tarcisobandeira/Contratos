@@ -120,4 +120,24 @@ public class EmpresaDAO {
 		}
 		return false;
 	}
+	
+	public boolean buscarEmpresaIdNome(Empresa em) {
+		String sql = " SELECT * FROM Empresa WHERE id != ? AND nome = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, em.getNome());
+			ps.setInt(2, em.getId());
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

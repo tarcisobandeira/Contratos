@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import br.com.DAO.ContatosDAO;
@@ -20,7 +21,8 @@ public class EmpresaMB {
 
 	int debito;
 
-	TemplateMB tMB = new TemplateMB();
+	@ManagedProperty(value = "#{templateMB}")
+	TemplateMB tMB;
 
 	Empresa em = new Empresa();
 	Empresa empresa;
@@ -56,7 +58,7 @@ public class EmpresaMB {
 	}
 
 	public void editarEmpresa() {
-		if (!eDAO.buscarEmpresaNome(em)) {
+		if (!eDAO.buscarEmpresaIdNome(em)) {
 			if (eDAO.updateEmpresa(em)) {
 				System.out.println("deu update");
 				atualizar();
