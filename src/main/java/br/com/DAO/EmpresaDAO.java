@@ -120,7 +120,30 @@ public class EmpresaDAO {
 		}
 		return false;
 	}
-	
+
+	public Empresa buscarEmpresaNomeReturn(Empresa em) {
+		Empresa empresa = new Empresa();
+		String sql = " SELECT * FROM Empresa WHERE nome = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, em.getNome());
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				empresa.setId(rs.getInt("id"));
+				empresa.setNome(rs.getString("nome"));
+				empresa.setTipo(rs.getInt("tipo"));
+				empresa.setAtivo(rs.getInt("ativo"));
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return empresa;
+	}
+
 	public boolean buscarEmpresaIdNome(Empresa em) {
 		String sql = " SELECT * FROM Empresa WHERE id != ? AND nome = ? ";
 

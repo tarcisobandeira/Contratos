@@ -22,6 +22,8 @@
 		</p:menubar>
 	</h:form>
 	<h:form id="formTemplate">
+		<b:growl id="growlP" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true"/>
 		<ui:insert>
 			<ui:include src="#{templateMB.mudar()}" />
 		</ui:insert>

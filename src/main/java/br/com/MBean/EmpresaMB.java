@@ -3,12 +3,14 @@ package br.com.MBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import br.com.DAO.ContatosDAO;
 import br.com.DAO.EmpresaDAO;
+import br.com.DAO.LinkDAO;
 import br.com.Entities.Email;
 import br.com.Entities.Empresa;
 import br.com.Entities.Financeiro;
@@ -20,7 +22,8 @@ import br.com.Entities.Telefone;
 public class EmpresaMB {
 
 	int debito;
-
+	@ManagedProperty(value = "#{loginMB}")
+	LoginMB lMB;
 	@ManagedProperty(value = "#{templateMB}")
 	TemplateMB tMB;
 
@@ -31,6 +34,7 @@ public class EmpresaMB {
 	Site s = new Site();
 	Financeiro f = new Financeiro();
 
+	LinkDAO lDAO = new LinkDAO();
 	EmpresaDAO eDAO = new EmpresaDAO();
 	ContatosDAO ctDAO = new ContatosDAO();
 
@@ -60,27 +64,35 @@ public class EmpresaMB {
 	public void editarEmpresa() {
 		if (!eDAO.buscarEmpresaIdNome(em)) {
 			if (eDAO.updateEmpresa(em)) {
-				System.out.println("deu update");
+				tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Empresa foi editada."));
+				System.out.println("Contratos: Empresa foi editada.");
 				atualizar();
 				tMB.setOpt(2);
 			} else {
-				System.out.println("nolp");
+				tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_ERROR, "",
+						"Erro ao editar a empresa, tentar novamente."));
+				System.out.println("Contratos: Erro ao conectar com o Banco.");
 			}
 		} else {
+			tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_WARN, "", "Nome da empresa já existe."));
 			System.out.println("Contratos: Nome repetido em Empresa.");
 		}
 	}
 
 	public void criarEmpresa() {
 		if (!eDAO.buscarEmpresaNome(em)) {
-			if (eDAO.insert(em)) {
-				System.out.println("deu");
+			if (eDAO.insert(em) && lDAO.insert(eDAO.buscarEmpresaNomeReturn(em), lMB.getU())) {
+				tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Empresa " + em.getNome() + " foi criada."));
+				System.out.println("Contratos: Empresa " + em.getNome() + " criada.");
 				atualizar();
 				tMB.setOpt(2);
 			} else {
-				System.out.println("nolp");
+				tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_ERROR, "",
+						"Erro ao criar a empresa, tentar novamente."));
+				System.out.println("Contratos: Erro ao conectar com o Banco.");
 			}
 		} else {
+			tMB.setFm(new FacesMessage(FacesMessage.SEVERITY_WARN, "", "Nome da empresa já existe."));
 			System.out.println("Contratos: Nome repetido em Empresa.");
 		}
 	}
@@ -285,6 +297,14 @@ public class EmpresaMB {
 
 	public void setShow(boolean show) {
 		this.show = show;
+	}
+
+	public LoginMB getlMB() {
+		return lMB;
+	}
+
+	public void setlMB(LoginMB lMB) {
+		this.lMB = lMB;
 	}
 
 }

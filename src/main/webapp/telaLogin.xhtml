@@ -7,51 +7,34 @@
 <h:head>
 	<title>Login</title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </h:head>
 <h:body
-	style="padding-top: 50px; padding-bottom: 20px; background: #343a40">
+	style="padding-top: 75px; padding-bottom: 20px; background: #343a40">
 	<h:form>
-		<b:container layout="fluid">
+		<b:growl id="growlL" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true" />
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
 			<b:panel title="Login" collapsible="false" look="primary">
 				<b:row>
-					<b:column medium-screen="2">
-						<h:outputText value="Usuário:" for="username" />
-					</b:column>
-					<b:column medium-screen="4">
-						<b:inputText placeholder="Username" id="username"
-							value="#{loginMB.login}" ajax="true" autocomplete="false"
-							update="@(.message)">
-							<f:facet name="prepend">
-								<b:icon name="user" />
-							</f:facet>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:inputText label="Usuário: " placeholder="Usuário" id="username"
+							value="#{loginMB.login}" required="true">
 						</b:inputText>
 					</b:column>
-					<b:column medium-screen="6" style-class="message">
-						<b:message for="username" />
-					</b:column>
 				</b:row>
 				<b:row>
-					<b:column medium-screen="2">
-						<h:outputText value="Senha:" />
-					</b:column>
-					<b:column medium-screen="4">
-						<b:inputSecret placeholder="Password" id="password"
-							value="#{loginMB.senha}" ajax="true" autocomplete="false"
-							update="@(.message)">
-							<f:facet name="prepend">
-								<b:iconAwesome name="key" />
-							</f:facet>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:inputSecret label="Senha: " placeholder="Senha" id="password"
+							value="#{loginMB.senha}" required="true">
 						</b:inputSecret>
 					</b:column>
-					<b:column medium-screen="6" styleClass="message">
-						<b:message for="password" line-break-tag="p hr p" />
-					</b:column>
 				</b:row>
 				<b:row>
-					<b:column span="2" offset="2">
-						<b:commandButton value="login"
-							action="#{loginMB.verificar}" look="primary"
-							style="width:100%" />
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:commandButton value="login" action="#{loginMB.verificar}"
+							look="primary" style="width:100%" />
 					</b:column>
 				</b:row>
 			</b:panel>

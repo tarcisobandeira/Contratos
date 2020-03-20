@@ -1,7 +1,9 @@
 package br.com.MBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -9,6 +11,7 @@ public class TemplateMB {
 
 	public int opt = 1;
 	public boolean show = false;
+	public FacesMessage fm;
 
 	public String mudar() {
 		if (opt == 1) {
@@ -65,6 +68,16 @@ public class TemplateMB {
 
 	public void setShow(boolean show) {
 		this.show = show;
+	}
+
+	public FacesMessage getFm() {
+		return fm;
+	}
+
+	public void setFm(FacesMessage fm) {
+		this.fm = fm;
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, fm);
 	}
 
 }
