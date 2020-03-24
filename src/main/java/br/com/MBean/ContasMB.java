@@ -1,5 +1,7 @@
 package br.com.MBean;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,6 +38,29 @@ public class ContasMB {
 	TemplateMB tMB = new TemplateMB();
 
 	List<Conta> listCC = new ArrayList<Conta>();
+
+	public void salvar() {
+		if (cc.getId() != null) {
+			Conta conta = ccDAO.buscarConta(cc);
+			if (conta != null && conta.getId().equals(cc.getId())) {
+				editarConta();
+			}
+		} else {
+			criarConta();
+		}
+	}
+
+	public void editarConta() {
+		sdf = new SimpleDateFormat("dd");
+		cc.setDia_emissao(sdf.format(emissao));
+		cc.setDia_vencimento(sdf.format(vencimento));
+
+		if (ccDAO.updateConta(cc)) {
+			System.out.println("deu");
+		} else {
+			System.out.println("nolp");
+		}
+	}
 
 	public void criarConta() {
 		sdf = new SimpleDateFormat("dd");
@@ -90,6 +115,16 @@ public class ContasMB {
 
 	public void setCc(Conta cc) {
 		this.cc = cc;
+		if (cc.getDia_emissao() != null && cc.getDia_vencimento() != null) {
+			DateFormat f = new SimpleDateFormat("dd");
+			try {
+				emissao = f.parse(cc.getDia_emissao());
+				vencimento = f.parse(cc.getDia_vencimento());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public ContasDAO getCcDAO() {

@@ -14,7 +14,16 @@
 			styleClass="dataV"
 			paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}">
 			<p:dataViewGridItem>
-				<p:panel header="#{cc.nome}" styleClass="camposItens">
+				<p:panel header="#{cc.nome}" styleClass="camposItens positionR">
+					<b:kebab id="kebab2" styleClass="kebab positionA">
+						<b:buttonGroup orientation="vertical" size="xs">
+							<b:commandButton value="Editar" action="#{templateMB.setOpt(11)}">
+								<f:setPropertyActionListener value="#{cc}"
+									target="#{contasMB.cc}" />
+							</b:commandButton>
+							<b:commandButton value="Excluir" action="#" />
+						</b:buttonGroup>
+					</b:kebab>
 					<b:commandButton value="Dependências" look="primary"
 						action="#{templateMB.setOpt(12)}">
 						<f:setPropertyActionListener value="#{cc}"
