@@ -43,6 +43,7 @@ CREATE TABLE GerarConta(
     dia_pagamento  VARCHAR(50),
     valor VARCHAR(50),
 	obs VARCHAR(500),
+    referencia BOOLEAN,
     id_status_conta INT,
 	FOREIGN KEY (id_conta) REFERENCES Conta(id),
     FOREIGN KEY (id_status_conta) REFERENCES Status_conta(id)

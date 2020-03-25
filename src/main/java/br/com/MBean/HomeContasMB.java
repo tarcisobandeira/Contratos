@@ -38,15 +38,16 @@ public class HomeContasMB {
 			calendar = new GregorianCalendar();
 			sdf = new SimpleDateFormat("dd/MMM/yyyy");
 			String data = "" + gc.getConta().getDia_vencimento() + "/" + gc.getMes_ano() + "";
-			if ((cMB.calcular(sdf.format(calendar.getTime()), data) <= 0)
-					&& (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta()))) {
+			if (cMB.calcular(sdf.format(calendar.getTime()), data) <= 0) {
 				sdf = new SimpleDateFormat("MMM/yyyy");
 				calendar.add(Calendar.MONDAY, 1);
 				gc.setMes_ano(sdf.format(calendar.getTime()));
-				if (gcDAO.insert(gc)) {
-					System.out.println("Deu");
-				} else {
-					System.out.println("n deu");
+				if (!gcDAO.existe(gc.getMes_ano(), gc.getId_conta())) {
+					if (gcDAO.insert(gc)) {
+						System.out.println("Deu");
+					} else {
+						System.out.println("n deu");
+					}
 				}
 			}
 		}

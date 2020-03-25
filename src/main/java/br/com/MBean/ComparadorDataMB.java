@@ -17,13 +17,14 @@ public class ComparadorDataMB {
 	DateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
 	Calendar c = new GregorianCalendar();
 
-	public long calcular(String inicio, String fim){
+	public long calcular(String inicio, String fim) {
 		Date dtInicial;
 		Date dtFinal;
 		try {
 			dtInicial = df.parse(inicio);
 			dtFinal = df.parse(fim);
-			return (dtFinal.getTime() - dtInicial.getTime() + 3600000L) / 86400000L;
+			long l = (dtFinal.getTime() - dtInicial.getTime() + 3600000L) / 86400000L;
+			return l;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

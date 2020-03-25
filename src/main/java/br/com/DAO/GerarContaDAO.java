@@ -21,7 +21,7 @@ public class GerarContaDAO {
 	}
 
 	public boolean insert(GerarConta gc) {
-		String sql = " INSERT INTO GerarConta (id_conta, contador, mes_ano, dia_pagamento, valor, obs, id_status_conta) VALUES (?,?,?,?,?,?,?)";
+		String sql = " INSERT INTO GerarConta (id_conta, contador, mes_ano, dia_pagamento, valor, referencia, obs, id_status_conta) VALUES (?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -30,8 +30,9 @@ public class GerarContaDAO {
 			ps.setString(3, gc.getMes_ano());
 			ps.setString(4, null);
 			ps.setString(5, null);
-			ps.setString(6, null);
-			ps.setInt(7, 1);
+			ps.setBoolean(6, true);
+			ps.setString(7, null);
+			ps.setInt(8, 1);
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -83,6 +84,7 @@ public class GerarContaDAO {
 				gc.setMes_ano(rs.getString("mes_ano"));
 				gc.setDia_pagamento(rs.getString("dia_pagamento"));
 				gc.setValor(rs.getString("valor"));
+				gc.setReferencia(rs.getBoolean("referencia"));
 				gc.setObs(rs.getString("obs"));
 				gc.setId_status_conta(rs.getInt("id_status_conta"));
 				gc.setConta(
@@ -117,6 +119,7 @@ public class GerarContaDAO {
 				gc.setMes_ano(rs.getString("mes_ano"));
 				gc.setDia_pagamento(rs.getString("dia_pagamento"));
 				gc.setValor(rs.getString("valor"));
+				gc.setReferencia(rs.getBoolean("referencia"));
 				gc.setObs(rs.getString("obs"));
 				gc.setId_status_conta(rs.getInt("id_status_conta"));
 				gc.setConta(new Conta(rs.getInt("idConta"), null, rs.getString("nome"), rs.getString("diaE"),
@@ -151,6 +154,7 @@ public class GerarContaDAO {
 				gc.setMes_ano(rs.getString("mes_ano"));
 				gc.setDia_pagamento(rs.getString("dia_pagamento"));
 				gc.setValor(rs.getString("valor"));
+				gc.setReferencia(rs.getBoolean("referencia"));
 				gc.setObs(rs.getString("obs"));
 				gc.setId_status_conta(rs.getInt("id_status_conta"));
 				gc.setConta(new Conta(rs.getInt("idConta"), null, rs.getString("nome"), rs.getString("diaE"),
@@ -185,6 +189,7 @@ public class GerarContaDAO {
 				gc.setMes_ano(rs.getString("mes_ano"));
 				gc.setDia_pagamento(rs.getString("dia_pagamento"));
 				gc.setValor(rs.getString("valor"));
+				gc.setReferencia(rs.getBoolean("referencia"));
 				gc.setObs(rs.getString("obs"));
 				gc.setId_status_conta(rs.getInt("id_status_conta"));
 				gc.setConta(new Conta(rs.getInt("idConta"), null, rs.getString("nome"), rs.getString("diaE"),

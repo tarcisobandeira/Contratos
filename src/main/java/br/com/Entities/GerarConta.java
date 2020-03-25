@@ -7,13 +7,14 @@ public class GerarConta {
 	private String mes_ano;
 	private String dia_pagamento;
 	private String valor;
+	private boolean referencia;
 	private String obs;
 	private Integer id_status_conta;
 	private Conta conta;
 	private Status_conta status_conta;
 
 	public GerarConta(Integer id, Integer id_conta, Integer contador, String mes_ano, String dia_pagamento,
-			String valor, Integer id_status_conta, String obs) {
+			String valor, Integer id_status_conta, String obs, boolean referencia) {
 		super();
 		this.id = id;
 		this.id_conta = id_conta;
@@ -21,6 +22,7 @@ public class GerarConta {
 		this.mes_ano = mes_ano;
 		this.dia_pagamento = dia_pagamento;
 		this.valor = valor;
+		this.referencia = referencia;
 		this.obs = obs;
 		this.id_status_conta = id_status_conta;
 	}
@@ -107,6 +109,14 @@ public class GerarConta {
 
 	public void setStatus_conta(Status_conta status_conta) {
 		this.status_conta = status_conta;
+	}
+
+	public boolean isReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(boolean referencia) {
+		this.referencia = referencia;
 	}
 
 }
